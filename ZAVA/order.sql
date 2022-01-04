@@ -6,7 +6,7 @@ ostatus NUMBER,
 payment NUMBER,
 address VARCHAR2(999) NOT NULL,
 oname VARCHAR2(100) NOT NULL,
-ophone VARCHAR2(15) NOT NULL,
+ophone VARCHAR2(15) NOT NULL
 );
 
 
