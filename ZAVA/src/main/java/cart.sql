@@ -1,7 +1,0 @@
-CREATE TABLE zava_cart(
-cid VARCHAR2(100) CONSTRAINT zava_cid_pk PRIMARY KEY,
-pid VARCHAR2(100),
-mid VARCHAR2(100),
-pcnt NUMBER,
-price NUMBER
-)
