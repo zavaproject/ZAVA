@@ -121,22 +121,22 @@ header, nav, section, aside, footer {
 						<li class="menu">
 							<p>WOMAN</p>
 							<ul class="hide">
-								<li><a href="#">TOP</a></li>
-								<li><a href="#">PANTS</a></li>
+								<li><a href="/product/list/2010">TOP</a></li>
+								<li><a href="/product/list/2020">PANTS</a></li>
 							</ul>
 						</li>
 						<li class="menu">
 							<p>MAN</p>
 							<ul class="hide">
-								<li><a href="#">TOP</a></li>
-								<li><a href="#">PANTS</a></li>
+								<li><a href="/product/list/1010">TOP</a></li>
+								<li><a href="/product/list/1020">PANTS</a></li>
 							</ul>
 						</li>
 						<li class="menu">
 							<p>KIDS</p>
 							<ul class="hide">
-								<li><a href="#">GIRL</a></li>
-								<li><a href="#">BOY</a></li>
+								<li><a href="/product/list/3010">GIRL</a></li>
+								<li><a href="/product/list/3020">BOY</a></li>
 							</ul>
 						</li>
 						<li class="menu">

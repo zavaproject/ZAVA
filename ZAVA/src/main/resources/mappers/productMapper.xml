@@ -5,9 +5,24 @@
   
   <mapper namespace="kr.co.product">
   	<insert id="insert">
-  		INSERT INTO zava_product (pid,pname,descript,category,price,stock,mid) 
-  		VALUES(#{pid},#{pname},#{descript},#{category},#{price},#{stock},#{mid})
+  		INSERT INTO zava_product (pid,pname,descript,category,price,mid) 
+  		VALUES(#{pid},#{pname},#{descript},#{category},#{price},#{mid})
   	</insert>
   
+  	<select id="list" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE category = #{category}
+  	</select>
   
+  	<select id="read" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE pid = #{pid}
+  	</select>
+  	<update id="pupdate">
+  		UPDATE zava_product SET pname = #{pname}, price = #{price}, category = #{category},descript = #{descript},regdate = SYSDATE, mid = #{mid} WHERE pid = #{pid}
+  	</update>
+  	<delete id="delete">
+  		DELETE FROM zava_product WHERE pid = #{pid}
+  	</delete>
+  	
   </mapper>
+  
+  
