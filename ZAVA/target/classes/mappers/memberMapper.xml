@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.member">
+
+	<select id="login" resultType="kr.co.domain.MemberVO">
+		SELECT userid, username FROM tbl_member 
+		WHERE userid = #{userid} AND userpw = #{userpw}
+	</select>
+
+	<select id="idcheck" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM tbl_member WHERE userid = #{userid}
+	</select>
+
+	<select id="searchByName" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM tbl_member WHERE UPPER(username) LIKE '%'||UPPER(#{username})||'%'
+	</select>
+
+
+	<select id="list" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM tbl_member
+	</select>
+
+
+	<delete id="delete">
+		DELETE FROM tbl_member WHERE userid = #{userid} AND userpw=#{userpw}
+	</delete>
+
+
+	<update id="update">
+		UPDATE tbl_member SET username=#{username}, email = #{email}, updatedate=sysdate
+		WHERE userid=#{userid} AND userpw = #{userpw}
+	</update>
+
+
+
+	<insert id="insertMember">
+		INSERT INTO tbl_member (userid, userpw, username, email)
+		VALUES
+		(#{userid}, #{userpw}, #{username}, #{email})
+
+	</insert>
+
+	<select id="read" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM tbl_member WHERE userid = #{userid}
+	</select>
+	
+	<select id="updateUI" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM tbl_member WHERE userid = #{userid}
+	</select>
+	
+	
+	
+
+</mapper>
