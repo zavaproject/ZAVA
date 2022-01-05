@@ -1,9 +1,0 @@
-manifest.mf
-
-pom.properties
-
-/.metadata/
-
-Servers/
-
-*.sql
