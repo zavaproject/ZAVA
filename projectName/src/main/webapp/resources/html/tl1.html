@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div id="replies">
+
+
+
+</div>
+
+<img src="/resources/img/bbb.png">
+
+<input placeholder="이름을 입력하세요">
+<button>저장 버튼</button>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button").click(function() {
+			var name = $("[name='name']").val();
+			var url = $("[name='url']").val();
+			$("#replies").append(basicTag(url, name));
+		});
+	});
+	
+	
+	function basicTag(url, name) {
+		var msg = `
+			<div class="insertel">
+			<p>good morning</p>
+			<a href="${url}">${name}</a>
+			<button>수정</button> <button>삭제</button>
+		</div>
+			
+			`
+			
+			return msg;
+		
+	}
+	
+	
+	
+	
+</script>
+
+
+</body>
+</html>

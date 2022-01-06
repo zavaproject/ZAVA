@@ -18,12 +18,12 @@
 <h1>주문화면입니다.</h1>
 	<form action="/order/order" method="post">
 	제품 번호 : ${vo.pid} <br>
+	<input type="hidden", >
 	제품 가격 : ${vo.payment} <br>
 	배송지 : <input name="address"><br>
 	받으실분 성함 : <input name="oname"><br>
 	받으실분 연락처 : <input name="ophone"><br>
 	<input type="submit" value="주문 완료">
 	</form>
-
 </body>
 </html>

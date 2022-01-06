@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.reply">
+
+	<select id="getAmountReplyByBno" resultType="Integer">
+		SELECT COUNT(rno) FROM tbl_reply WHERE bno = #{bno}
+	</select>
+
+	<select id="getRepliesPage" resultType="kr.co.domain.ReplyVO">
+		SELECT * FROM tbl_reply WHERE bno = #{bno} ORDER BY rno DESC
+	</select>
+
+	<delete id="deleteReply">
+		DELETE FROM tbl_reply WHERE rno = #{rno}
+	</delete>
+
+	<update id="updateReply">
+		UPDATE tbl_reply SET reply = #{reply}, updatedate = SYSDATE 
+		WHERE rno = #{rno}
+	</update>
+	
+
+	<insert id="insert">
+		INSERT INTO tbl_reply (rno, bno, replyer, reply) 
+		VALUES
+		(seq_reply_rno.NEXTVAL, #{bno}, #{replyer}, #{reply})
+		
+	</insert>
+	
+	<select id="getAllReplies" resultType="kr.co.domain.ReplyVO">
+		SELECT * FROM tbl_reply WHERE bno = #{bno} ORDER BY rno DESC
+	</select>
+	
+
+
+</mapper>

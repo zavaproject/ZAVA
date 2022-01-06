@@ -16,18 +16,27 @@ public class OrderController {
 	@Inject
 	private OrderService oService;
 	
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public void orderUI() {
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public String payment()	{
 		
+		
+		return "order/payment";
+	}
+	
+	
+	@RequestMapping(value = "/orderui", method = RequestMethod.GET)
+	public String orderui() {
+		
+		
+		return "order/order";
 	}
 	
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public String order(OrderVO vo) {
-		System.out.println("주문화면");
 		
 		oService.order(vo);
 		
-		return "order/order";
+		return "redirect:/order/payment";
 	}
 	
 }

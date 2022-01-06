@@ -15,14 +15,18 @@ public class OrderDAOImpl implements OrderDAO {
 	
 	private final String NS = "kr.co.order";
 
-	
 
 	@Override
 	public void order(OrderVO vo) {
 		// TODO Auto-generated method stub
 		sqlSession.insert(NS+".order", vo);
 	}
-	
-	
+
+
+	@Override
+	public void payment(OrderVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(NS+".payment", vo);
+	}
 	
 }

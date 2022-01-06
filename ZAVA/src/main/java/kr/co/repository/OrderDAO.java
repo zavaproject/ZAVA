@@ -9,5 +9,7 @@ public interface OrderDAO {
 
 
 	void order(OrderVO vo);
+
+	void payment(OrderVO vo);
 	
 }

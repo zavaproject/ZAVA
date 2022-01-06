@@ -1,5 +1,9 @@
 package kr.co.service;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -15,12 +19,19 @@ public class OrderServeceImpl implements OrderService {
 	private OrderDAO oDAO;
 	
 	
-
+	
 	@Override
 	public void order(OrderVO vo) {
-		// TODO Auto-generated method stub
 		oDAO.order(vo);
+		
+		
 	}
 
-	
+
+
+	@Override
+	public void payment(OrderVO vo) {
+		// TODO Auto-generated method stub
+		oDAO.payment(vo);
+	}
 }

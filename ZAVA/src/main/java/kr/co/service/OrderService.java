@@ -11,4 +11,6 @@ public interface OrderService {
 
 	void order(OrderVO vo);
 
+	void payment(OrderVO vo);
+
 }
