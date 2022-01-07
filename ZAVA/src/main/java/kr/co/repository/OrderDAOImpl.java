@@ -1,10 +1,13 @@
 package kr.co.repository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import kr.co.domain.OrderDetailVO;
 import kr.co.domain.OrderVO;
 
 @Repository
@@ -23,10 +26,19 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 
+
 	@Override
-	public void payment(OrderVO vo) {
-		// TODO Auto-generated method stub
-		sqlSession.insert(NS+".payment", vo);
+	public void orderDetail(OrderDetailVO odVo) {
+		sqlSession.insert(NS+".orderDetail", odVo);
+		
+	}
+
+
+
+	@Override
+	public List<OrderVO> orderList(OrderVO oVo){
+		
+		return sqlSession.selectList(NS+".orderList", oVo);
 	}
 	
 }

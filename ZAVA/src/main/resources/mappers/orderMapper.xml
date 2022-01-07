@@ -10,5 +10,10 @@
   		VALUES(#{oid},#{pid},#{mid},#{odate},#{ostatus},#{payment},#{address},#{oname},#{ophone})
   	</insert>
   
+  <insert id="orderDetail">
+  	insert into zava_order_detail(oDid, oid, pid, pcnt)
+     select zava_order_detail_seq.nextval, #{oid}, pid, pcnt
+         from zava_cart
+  </insert>
   
   </mapper>
