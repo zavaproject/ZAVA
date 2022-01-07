@@ -5,53 +5,40 @@
 
 <mapper namespace="kr.co.member">
 
-	<select id="login" resultType="kr.co.domain.MemberVO">
-		SELECT userid, username FROM tbl_member 
-		WHERE userid = #{userid} AND userpw = #{userpw}
-	</select>
-
-	<select id="idcheck" resultType="kr.co.domain.MemberVO">
-		SELECT * FROM tbl_member WHERE userid = #{userid}
-	</select>
-
-	<select id="searchByName" resultType="kr.co.domain.MemberVO">
-		SELECT * FROM tbl_member WHERE UPPER(username) LIKE '%'||UPPER(#{username})||'%'
-	</select>
-
-
 	<select id="list" resultType="kr.co.domain.MemberVO">
-		SELECT * FROM tbl_member
+		SELECT * FROM zava_member where mcode = 0
 	</select>
-
-
-	<delete id="delete">
-		DELETE FROM tbl_member WHERE userid = #{userid} AND userpw=#{userpw}
-	</delete>
-
-
-	<update id="update">
-		UPDATE tbl_member SET username=#{username}, email = #{email}, updatedate=sysdate
-		WHERE userid=#{userid} AND userpw = #{userpw}
-	</update>
-
-
-
-	<insert id="insertMember">
-		INSERT INTO tbl_member (userid, userpw, username, email)
+	
+	<select id="read" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<select id="login" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member 
+		WHERE mid = #{mid} AND mpw = #{mpw}
+	</select>
+	
+	<insert id="insertmember">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber, 
+		memail, postcode, address, extraAddress, detailAddress, mcode)
 		VALUES
-		(#{userid}, #{userpw}, #{username}, #{email})
-
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		 #{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 0)
 	</insert>
 
-	<select id="read" resultType="kr.co.domain.MemberVO">
-		SELECT * FROM tbl_member WHERE userid = #{userid}
-	</select>
+	<update id="update">
+		UPDATE zava_member SET mname=#{mname}, mgender = #{mgender}, 
+		mphonenumber = #{mphonenumber}, memail=#{memail}
+		WHERE mid=#{mid}
+	</update>
 	
 	<select id="updateUI" resultType="kr.co.domain.MemberVO">
-		SELECT * FROM tbl_member WHERE userid = #{userid}
+		SELECT * FROM zava_member WHERE mid = #{mid}
 	</select>
 	
+	<delete id="delete">
+		DELETE FROM zava_member WHERE mid = #{mid}
+	</delete>
 	
-	
-
 </mapper>
