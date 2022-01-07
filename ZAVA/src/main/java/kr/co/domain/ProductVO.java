@@ -12,14 +12,13 @@ private String pname;
 private String descript;
 private int category;
 private int price;
-private int stock;
-private int regdate;
+private String regdate;
 private int readcnt;
 private String mid;
 
 public ProductVO() {}
 
-public ProductVO(String pid, String pname, String descript, int category, int price, int stock, int regdate,
+public ProductVO(String pid, String pname, String descript, int category, int price, String regdate,
 		int readcnt, String mid) {
 	super();
 	this.pid = pid;
@@ -27,7 +26,6 @@ public ProductVO(String pid, String pname, String descript, int category, int pr
 	this.descript = descript;
 	this.category = category;
 	this.price = price;
-	this.stock = stock;
 	this.regdate = regdate;
 	this.readcnt = readcnt;
 	this.mid = mid;
@@ -75,19 +73,12 @@ public void setPrice(int price) {
 	this.price = price;
 }
 
-public int getStock() {
-	return stock;
-}
 
-public void setStock(int stock) {
-	this.stock = stock;
-}
-
-public int getRegdate() {
+public String getRegdate() {
 	return regdate;
 }
 
-public void setRegdate(int regdate) {
+public void setRegdate(String regdate) {
 	this.regdate = regdate;
 }
 
