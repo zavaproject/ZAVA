@@ -13,7 +13,10 @@ public class MemberVO implements Serializable {
 	private String mgender;
 	private String mphonenumber;
 	private String memail;
-	private String maddress;
+	private String postcode;
+	private String address;
+	private String extraAddress;
+	private String detailAddress;
 	private int mcode;
 
 	public MemberVO() {
@@ -27,8 +30,10 @@ public class MemberVO implements Serializable {
 		this.memail = memail;
 	}
 
+
+
 	public MemberVO(String mid, String mpw, String mname, String mgender, String mphonenumber, String memail,
-			String maddress, int mcode) {
+			String postcode, String address, String extraAddress, String detailAddress, int mcode) {
 		super();
 		this.mid = mid;
 		this.mpw = mpw;
@@ -36,7 +41,10 @@ public class MemberVO implements Serializable {
 		this.mgender = mgender;
 		this.mphonenumber = mphonenumber;
 		this.memail = memail;
-		this.maddress = maddress;
+		this.postcode = postcode;
+		this.address = address;
+		this.extraAddress = extraAddress;
+		this.detailAddress = detailAddress;
 		this.mcode = mcode;
 	}
 
@@ -88,12 +96,36 @@ public class MemberVO implements Serializable {
 		this.memail = memail;
 	}
 
-	public String getMaddress() {
-		return maddress;
+	public String getPostcode() {
+		return postcode;
 	}
 
-	public void setMaddress(String maddress) {
-		this.maddress = maddress;
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getExtraAddress() {
+		return extraAddress;
+	}
+
+	public void setExtraAddress(String extraAddress) {
+		this.extraAddress = extraAddress;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 
 	public int getMcode() {

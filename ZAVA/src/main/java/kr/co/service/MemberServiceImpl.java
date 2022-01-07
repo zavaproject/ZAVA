@@ -14,59 +14,42 @@ public class MemberServiceImpl implements MemberService {
 
 	@Inject
 	private MemberDAO mDAO;
-
-	@Override
-	public void insertMember(MemberVO vo) {
-		mDAO.insertMember(vo);
-		
-	}
-
-	@Override
-	public MemberVO read(String userid) {
-		return mDAO.read(userid);
-	}
-
-	@Override
-	public MemberVO updateUI(String userid) {
-		return mDAO.updateUI(userid);
-	}
-
-	@Override
-	public void update(MemberVO vo) {
-		// TODO Auto-generated method stub
-		mDAO.update(vo);
-	}
-
-	@Override
-	public void delete(MemberVO vo) {
-		mDAO.delete(vo);
-	}
-	
-	
 	
 	@Override
 	public List<MemberVO> list() {
 		
 		return mDAO.list();
 	}
-	
-	
-	@Override
-	public List<MemberVO> searchByName(String username) {
-		// TODO Auto-generated method stub
-		return mDAO.searchByName(username);
-	}
 
 	@Override
-	public MemberVO idcheck(String userid) {
-		// TODO Auto-generated method stub
-		return mDAO.idcheck(userid);
+	public MemberVO read(String mid) {
+		return mDAO.read(mid);
 	}
 
 	@Override
 	public MemberVO login(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return mDAO.login(vo);
 	}
 
+	@Override
+	public void insert(MemberVO vo) {
+		mDAO.insert(vo);
+	}
+
+	@Override
+	public void update(MemberVO vo) {
+		mDAO.update(vo);
+	}
+
+	@Override
+	public MemberVO updateUI(String mid) {
+		return mDAO.updateUI(mid);
+	}
+
+	@Override
+	public void delete(MemberVO vo) {
+		mDAO.delete(vo);
+	}
+
+	
 }
