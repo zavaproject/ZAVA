@@ -3,3 +3,7 @@
 Servers/
 
 *.sql
+
+manifest.mf
+
+pom.properties
