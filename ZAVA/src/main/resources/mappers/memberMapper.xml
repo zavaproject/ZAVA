@@ -24,7 +24,16 @@
 		memail, postcode, address, extraAddress, detailAddress, mcode)
 		VALUES
 		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
-		 #{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 0)
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 0)
+	</insert>
+	
+	<insert id="insertoperator">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber,
+		memail, postcode, address, extraAddress, detailAddress, mcode)
+		VALUES
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 1)
 	</insert>
 
 	<update id="update">
@@ -40,5 +49,9 @@
 	<delete id="delete">
 		DELETE FROM zava_member WHERE mid = #{mid}
 	</delete>
+	
+	<select id="idcheck" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
 	
 </mapper>

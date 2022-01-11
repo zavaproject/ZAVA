@@ -51,5 +51,14 @@ public class MemberServiceImpl implements MemberService {
 		mDAO.delete(vo);
 	}
 
+	@Override
+	public void insertoperator(MemberVO vo) {
+		mDAO.insertoperator(vo);
+	}
+
+	@Override
+	public MemberVO idcheck(String mid) {
+		return mDAO.idcheck(mid);
+	}
 	
 }

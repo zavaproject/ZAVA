@@ -23,23 +23,31 @@
 <body>
 	<jsp:include page="../header.jsp" />
 	<section>
-
-		<h2>
-			<span>로그인</span>
-		</h2>
-		<form action="/member/login" method="post">
-			id: <input name="mid"><br> 
-			pw: <input type="password"name="mpw"><br>
-			<input type="submit" value="login">
-		</form>
-		<h2>
-			<span>등록</span>
-		</h2>
-		<strong>ZAVA</strong> 회원으로 가입하시면 빠르고 편리하게 이용하실 수 있습니다.<br> 아직 <strong>ZAVA</strong>
-		의 회원이 아니시라면 간편하게 가입하실 수 있습니다.
-		<div>
-			<a href="/member/insert">계정 만들기</a>
-		</div>
+		<table border-collapse: separate; class="login">
+			<thead>
+				<tr>
+					<th style="border: none;">
+						<h2>
+							<span>로그인</span>
+						</h2>
+						<form action="/member/login" method="post">
+							id: <input name="mid"><br> 
+							pw: <input type="password" name="mpw"><br> 
+							<input type="submit" value="login">
+						</form>
+					</th>
+					<th style="border: none;">
+						<h2>
+							<span>등록</span>
+						</h2> <strong>ZAVA</strong> 회원으로 가입하시면 빠르고 편리하게 이용하실 수 있습니다.<br>
+						아직 <strong>ZAVA</strong> 의 회원이 아니시라면 간편하게 가입하실 수 있습니다.
+						<div>
+							<a href="/member/insert"><strong>계정 만들기</strong></a>
+						</div>
+					</th>
+				</tr>
+			</thead>
+		</table>
 	</section>
 	<jsp:include page="../footer.jsp" />
 	<script type="text/javascript">

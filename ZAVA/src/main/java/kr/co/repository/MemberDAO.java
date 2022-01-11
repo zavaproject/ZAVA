@@ -20,5 +20,8 @@ public interface MemberDAO {
 
 	public void delete(MemberVO vo);
 
+	public void insertoperator(MemberVO vo);
+
+	public MemberVO idcheck(String mid);
 
 }

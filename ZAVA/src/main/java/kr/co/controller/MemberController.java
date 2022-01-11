@@ -46,13 +46,17 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(MemberVO vo, Model model, HttpServletRequest request) {
 		
-		MemberVO login = mService.login(vo);
-		
-        HttpSession session = request.getSession();
-        System.out.println(login.getMcode());
-        
-        session.setAttribute("login", login);
-        
+		try {
+			MemberVO login = mService.login(vo);
+			
+			HttpSession session = request.getSession();
+			System.out.println(login.getMcode());
+			
+			session.setAttribute("login", login);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/member/login";
+		}
 		return "/zava";
 	}
 
@@ -107,4 +111,31 @@ public class MemberController {
 
 		return "redirect:/zava";
 	}
+	
+	@RequestMapping(value = "/mkoperator", method = RequestMethod.GET)
+	public void insertoperatorUI() {
+
+	}
+
+	@RequestMapping(value = "/mkoperator", method = RequestMethod.POST)
+	public String insertoperator(MemberVO vo) {
+		
+		mService.insertoperator(vo);
+		
+		return "redirect:/zava";
+	}
+	
+	@RequestMapping(value = "/idcheck", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
+	@ResponseBody
+	public String idcheck(String mid) {
+		MemberVO vo = mService.idcheck(mid);
+
+		if (vo == null) {
+			return "사용 가능한 아이디 입니다.";
+		} else {
+			return "이미 사용되고 있는 아이디 입니다. 다른 아이디를 이용하여 주세요.";
+		}
+
+	}
+	
 }
