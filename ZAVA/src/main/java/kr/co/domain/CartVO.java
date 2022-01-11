@@ -7,18 +7,24 @@ public class CartVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	// cart
 	private String cid;
 	private String pid;
 	private String mid;
 	private int pcnt;
 	
+	// product
 	private String pname;
 	private int price;
-	private int money;
+	private double pDiscount;
+	
+	private int salePrice;
+	private int totalPrice;
 	
 	public CartVO() {}
 
-	public CartVO(String cid, String pid, String mid, int pcnt, String pname, int price, int money) {
+	public CartVO(String cid, String pid, String mid, int pcnt, String pname, int price, double pDiscount,
+			int salePrice, int totalPrice) {
 		super();
 		this.cid = cid;
 		this.pid = pid;
@@ -26,7 +32,9 @@ public class CartVO implements Serializable{
 		this.pcnt = pcnt;
 		this.pname = pname;
 		this.price = price;
-		this.money = money;
+		this.pDiscount = pDiscount;
+		this.salePrice = salePrice;
+		this.totalPrice = totalPrice;
 	}
 
 	public String getCid() {
@@ -77,21 +85,34 @@ public class CartVO implements Serializable{
 		this.price = price;
 	}
 
-	public int getMoney() {
-		return money;
+	public double getpDiscount() {
+		return pDiscount;
 	}
 
-	public void setMoney(int money) {
-		this.money = money;
+	public void setpDiscount(double pDiscount) {
+		this.pDiscount = pDiscount;
+	}
+
+	public int getSalePrice() {
+		return salePrice;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public void initSaleTotal() {
+		this.salePrice = (int) (this.price * (1-this.pDiscount));
+		this.totalPrice = this.salePrice * this.pcnt;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cid, mid);
+		return Objects.hash(cid, mid, pid);
 	}
 
 	@Override
@@ -103,14 +124,16 @@ public class CartVO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CartVO other = (CartVO) obj;
-		return Objects.equals(cid, other.cid) && Objects.equals(mid, other.mid);
+		return Objects.equals(cid, other.cid) && Objects.equals(mid, other.mid) && Objects.equals(pid, other.pid);
 	}
-
+	
 	@Override
 	public String toString() {
 		return "CartVO [cid=" + cid + ", pid=" + pid + ", mid=" + mid + ", pcnt=" + pcnt + ", pname=" + pname
-				+ ", price=" + price + ", money=" + money + "]";
+				+ ", price=" + price + ", pDiscount=" + pDiscount + ", salePrice=" + salePrice + ", totalPrice="
+				+ totalPrice + "]";
 	}
+
 	
 	
 
