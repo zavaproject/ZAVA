@@ -1,41 +1,38 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객 등록</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-  	input{
-  		padding: 10px;
-  	}
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+<title>make operator</title>
 </head>
 <body>
+
 	<jsp:include page="../header.jsp" />
-	<section>
-<form action="/member/insert" method="post">
+		<section>
+	
+<form action="/member/mkoperator" method="post">
 <input name="mid" placeholder="아이디"><button id="idcheck">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
 <input name="mpw" type="password" placeholder="비밀번호" value="123"><br>
 <input name="mname" placeholder="이름" value="member"><br>
 <input name="mgender" placeholder="성별" value="남"><br>
 <input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호" value="010-9999-9999"/><br>
-<input name="memail" type="email" placeholder="이메일" value="member@gmail.com"><br>
+<input name="memail" type="email" placeholder="이메일" value="operator@gmail.com"><br>
 
 <input name="postcode" type="text" id="postcode" placeholder="우편번호" readonly value="13494">
 <input type="button" onclick="execPostcode()" value="우편번호 찾기"><br>
 <input name="address" type="text" style="width: 365px;" id="address" placeholder="주소" readonly value="경기 성남시 분당구 판교역로 235"><br>
 <input name="extraAddress" type="text" style="width: 365px;" id="extraAddress" placeholder="참고항목" readonly value=" (삼평동)"><br>
 <input name="detailAddress" type="text" style="width: 365px;" id="detailAddress" placeholder="상세주소" value="101호">
-
 
 <br>
 <input type="submit" value="회원 등록">
@@ -217,10 +214,8 @@
             }).open();
         }
    </script> 
-
-
-
-	</section>
+	
+		</section>
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>
