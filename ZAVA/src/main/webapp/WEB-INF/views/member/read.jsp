@@ -18,7 +18,7 @@
 	<jsp:include page="../header.jsp"/>
 		<section>
 			<h1>고객정보</h1>
-				<table>
+				<table id="table">
 					<thead>
 						<tr>
 							<th>아이디</th>

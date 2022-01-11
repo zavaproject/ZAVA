@@ -35,7 +35,6 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void insert(MemberVO vo) {
 		sqlSession.insert(NS + ".insertmember", vo);
-		
 	}
 
 	@Override
@@ -52,5 +51,16 @@ public class MemberDAOImpl implements MemberDAO {
 	public void delete(MemberVO vo) {
 		sqlSession.delete(NS+".delete", vo);
 	}
-	
+
+	@Override
+	public void insertoperator(MemberVO vo) {
+		sqlSession.insert(NS + ".insertoperator", vo);
+		
+	}
+
+	@Override
+	public MemberVO idcheck(String mid) {
+		return sqlSession.selectOne(NS+".idcheck", mid);
+	}
+
 }
