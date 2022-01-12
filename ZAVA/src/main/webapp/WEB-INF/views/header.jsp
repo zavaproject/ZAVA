@@ -5,48 +5,47 @@
 <header class="inline-block fixed">
 	<div class="layout-header__main">
 		<div class="left-menu">
-			<input id="BT" type="button" value="≡" onclick="view()">
-			<div id="category">
-				<ul id="hidden" style="display: none" type="none">
-					<li class="menu">
-						<p>MAN</p>
-						<ul class="hide">
-							<li><a href="/product/list/1010">TOP</a></li>
-							<li><a href="/product/list/2010">PANTS</a></li>
-						</ul>
+			<div id="menu-container">
+				<div id="menu-wrapper">
+					<div id="hamburger-menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<ul class="menu-list accordion">
+					<li id="nav1" class="toggle accordion-toggle">
+					<span class="icon-plus"></span>
+					<a class="menu-link">MAN</a></li>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="/product/list/1010">TOP</a></li>
+						<li><a class="head" href="/product/list/1020">PANTS</a></li>
+					</ul>
+					<li id="nav2" class="toggle accordion-toggle">
+					<spanclass="icon-plus"></span> 
+					<a class="menu-link">WOMAN</a>
 					</li>
-					<li class="menu">
-						<p>WOMAN</p>
-						<ul class="hide">
-							<li><a href="/product/list/2010">TOP</a></li>
-							<li><a href="/product/list/2020">PANTS</a></li>
-						</ul>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="/product/list/2010">TOP</a></li>
+						<li><a class="head" href="/product/list/2020">PANTS</a></li>
+					</ul>
+					<li id="nav3" class="toggle accordion-toggle">
+					<span class="icon-plus"></span> 
+					<a class="menu-link">KIDS</a></li>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="/product/list/3010">GIRL</a></li>
+						<li><a class="head" href="/product/list/3020">BOY</a></li>
+					</ul>
+					<li id="nav4" class="toggle accordion-toggle">
+					<span class="icon-plus"></span> 
+					<a class="menu-link">BEAUTY</a>
 					</li>
-					<li class="menu">
-						<p>KIDS</p>
-						<ul class="hide">
-							<li><a href="/product/list/3010">GIRL</a></li>
-							<li><a href="/product/list/3020">BOY</a></li>
-						</ul>
-					</li>
-					<li class="menu">
-						<p>BEAUTY</p>
-						<ul class="hide">
-							<li><a href="#">MAKEUP</a></li>
-							<li></li>
-						</ul>
-					</li>
-					<li class="menu">
-						<p>SHOES & BAGS</p>
-						<ul class="hide">
-							<li></li>
-							<li></li>
-						</ul>
-					</li>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="#">MAKEUP</a></li>
+					</ul>
 				</ul>
 			</div>
 		</div>
-
 		<a href="/zava" class="zava">ZAVA</a>
 		<div class="right-menu">
 			<a href="#">검색</a>
@@ -67,9 +66,9 @@
 				<div class="dropdown">
 					<button class="dropbtn">CEOmenu</button>
 					<div class="dropdown-content">
-						<a href="/member/mkoperator">make operator</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 3</a>
+						<a href="/member/mkoperator">Make Operator</a>
+						<a href="/member/dailysales">Daily Sales</a>
+						<a href="/member/monthlysales">Monthly Sales</a>
 					</div>
 				</div>
 			</c:if>
@@ -79,23 +78,27 @@
 	</div>
 </header>
 <script>
-	function view() {
-		if (hidden.style.display == "none") {
-			hidden.style.display = "block";
-			BT.value = "Ⅹ";
-		} else {
-			hidden.style.display = "none";
-			BT.value = "≡";
-		}
-	}
-	$(document).ready(function() {
-		$("#category .menu>p").click(function() {
-			var submenu = $(this).next("ul");
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-			} else {
-				submenu.slideDown();
-			}
-		});
-	});
+	
+	$(function() {
+		  function slideMenu() {
+		    var activeState = $("#menu-container .menu-list").hasClass("active");
+		    $("#menu-container .menu-list").animate({left: activeState ? "0%" : "-100%"}, 400);
+		  }
+		  $("#menu-wrapper").click(function(event) {
+		    event.stopPropagation();
+		    $("#hamburger-menu").toggleClass("open");
+		    $("#menu-container .menu-list").toggleClass("active");
+		    slideMenu();
+
+		    $("body").toggleClass("overflow-hidden");
+		  });
+
+		  $(".menu-list").find(".accordion-toggle").click(function() {
+		    $(this).next().toggleClass("open").slideToggle("fast");
+		    $(this).toggleClass("active-tab").find(".menu-link").toggleClass("active");
+
+		    $(".menu-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
+		    $(".menu-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
+		  });
+		}); // jQuery load
 </script>
