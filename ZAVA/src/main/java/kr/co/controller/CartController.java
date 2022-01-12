@@ -33,9 +33,9 @@ public class CartController {
 	
 	// 장바구니 추가
 	@ResponseBody
-	@RequestMapping(value = "/insert", method = RequestMethod.POST) // get? post?
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(CartVO vo, HttpSession session) {
-		String mid = (String) session.getAttribute("mid");
+		String mid = (String) session.getAttribute("login");
 		vo.setMid(mid);
 		
 		// 장바구니에 기존 상품이 있는지
@@ -57,7 +57,7 @@ public class CartController {
 		
 		String mid = member.getMid();
 		
-		List<CartVO> cartList = cService.list(mid); // 테스트할 때만 list(mid) 제거
+		List<CartVO> cartList = cService.list(mid);
 		
 		model.addAttribute("cartList", cartList);
 	}

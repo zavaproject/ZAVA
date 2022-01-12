@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>바스켓백</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -34,13 +35,13 @@
                         <div class="pname">상품명</div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketprice">가격</div>
+                        <div class="basketprice">판매가</div>
                         <div class="num">수량</div>
-                        <div class="sum">합계</div>
+                        <div class="sum">주문금액</div>
                     </div>
                     <div class="subdiv">
     
-                        <div class="basketcmd">삭제</div>
+                        <div class="basketcmd">주문관리</div>
                     </div>
                     <div class="split"></div>
                 </div>
@@ -58,7 +59,8 @@
                         </div>
                         <div class="img"><img src="../../resources/img/cartTest.jpg" width="60"></div>
                         <div class="pname">
-                            <span>${cartList.pname}</span>
+                        	<!-- 상품 자세히보기 연결 -->
+                            <span><a href="#">${cartList.pname}</a></span>
                             <span>${cartList.pid}</span>
                         </div>
                     </div>
@@ -81,7 +83,7 @@
                         </div>
                     </div>
                     <div class="subdiv">
-                        <div class="delete"><button type="button" class="delete_btn abutton" data-cId="${cartList.cid}">삭제</button></div>
+                        <div class="delete"><button type="button" class="delete_btn abutton" data-cId="${cartList.cid}">삭제하기</button></div>
             	</div>
             </div>
             	<c:set var="sum_amount" value="${sum_amount + (cartList.pcnt)}"/>
@@ -214,7 +216,7 @@
 		
 		/* 그냥 삭제 버튼 delete_btn */
 		$(".delete_btn").click(function() {
-			var confirm_val = confirm("정말 삭제하시겠습니까?");
+			var confirm_val = confirm("상품을 삭제하시겠습니까?");
 			
 			if(confirm_val){
 				var checkArr = new Array();
