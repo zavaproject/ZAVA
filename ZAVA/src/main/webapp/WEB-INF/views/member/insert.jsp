@@ -26,7 +26,10 @@
 <input name="mid" placeholder="아이디"><button id="idcheck">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
 <input name="mpw" type="password" placeholder="비밀번호" value="123"><br>
 <input name="mname" placeholder="이름" value="member"><br>
-<input name="mgender" placeholder="성별" value="남"><br>
+성별
+<input type='radio' name='mgender' value='남' checked/>남성
+<input type='radio' name='mgender' value='여' />여성
+<br>
 <input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호" value="010-9999-9999"/><br>
 <input name="memail" type="email" placeholder="이메일" value="member@gmail.com"><br>
 
@@ -56,12 +59,6 @@
 			var mname = $("[name='mname']").val();
 			if(mname==''){
 				$("[name='mname']").focus();
-				return;
-			}
-			
-			var mgender = $("[name='mgender']").val();
-			if(mgender==''){
-				$("[name='mgender']").focus();
 				return;
 			}
 			

@@ -6,14 +6,12 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.domain.MemberVO;
@@ -83,7 +81,7 @@ public class MemberController {
 		
 		mService.insert(vo);
 		
-		return "redirect:/member/read/" + vo.getMid();
+		return "redirect:/zava";
 	}
 
 	@RequestMapping(value = "/update/{mid}", method = RequestMethod.GET)
@@ -135,6 +133,16 @@ public class MemberController {
 		} else {
 			return "이미 사용되고 있는 아이디 입니다. 다른 아이디를 이용하여 주세요.";
 		}
+
+	}
+	
+	@RequestMapping(value = "/dailysales", method = RequestMethod.GET)
+	public void dailysales() {
+
+	}
+	
+	@RequestMapping(value = "/monthlysales", method = RequestMethod.GET)
+	public void monthlysales() {
 
 	}
 	
