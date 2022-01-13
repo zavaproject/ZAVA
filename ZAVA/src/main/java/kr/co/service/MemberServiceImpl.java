@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.PageTO;
 import kr.co.repository.MemberDAO;
 
 @Service
@@ -59,6 +60,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO idcheck(String mid) {
 		return mDAO.idcheck(mid);
+	}
+
+	@Override
+	public PageTO<MemberVO> list(PageTO<MemberVO> pt) {
+		int amount = mDAO.getAmount();
+		pt.setAmount(amount);
+		
+		List<MemberVO> list = mDAO.list(pt);
+		pt.setList(list);
+
+		return pt;
 	}
 	
 }

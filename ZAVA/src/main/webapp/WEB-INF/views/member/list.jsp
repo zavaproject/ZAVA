@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${list}" var="member">
+				<c:forEach items="${pt.list}" var="member">
 					<tr>
 						<td><a href="/member/read/${member.mid}">${member.mid}</a></td>
 						<td>${member.mname}</td>
@@ -41,6 +41,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<jsp:include page="page.jsp"/>
 	</section>
 	<jsp:include page="../footer.jsp" />
 </body>

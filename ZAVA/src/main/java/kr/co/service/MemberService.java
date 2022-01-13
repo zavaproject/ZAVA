@@ -3,6 +3,7 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.PageTO;
 
 public interface MemberService {
 
@@ -23,5 +24,8 @@ public interface MemberService {
 	public void insertoperator(MemberVO vo);
 
 	public MemberVO idcheck(String mid);
+
+	public PageTO<MemberVO> list(PageTO<MemberVO> pt);
+
 	
 }

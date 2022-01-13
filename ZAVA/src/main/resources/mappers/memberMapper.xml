@@ -54,4 +54,8 @@
 		SELECT * FROM zava_member WHERE mid = #{mid}
 	</select>
 	
+	<select id="getAmount" resultType="Integer">
+		SELECT COUNT(mid) FROM zava_member
+	</select>
+	
 </mapper>
