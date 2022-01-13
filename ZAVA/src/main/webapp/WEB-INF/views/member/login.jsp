@@ -31,8 +31,8 @@
 							<span>로그인</span>
 						</h2>
 						<form action="/member/login" method="post">
-							id: <input name="mid"><br> 
-							pw: <input type="password" name="mpw"><br> 
+							id: <input name="mid"><br>
+							pw: <input type="password" name="mpw"><br>
 							<input type="submit" value="login">
 						</form>
 					</th>

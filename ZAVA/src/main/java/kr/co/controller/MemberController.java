@@ -1,7 +1,5 @@
 package kr.co.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.PageTO;
 import kr.co.service.MemberService;
 
 @Controller
@@ -23,12 +22,24 @@ public class MemberController {
 
 	@Inject
 	private MemberService mService;
-
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(Model model) {
-		List<MemberVO> list = mService.list();
+	public void list(PageTO<MemberVO> pt, Model model) {
+		pt = mService.list(pt);
 
-		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+	}
+	
+	@RequestMapping(value = "/list/{curPage}", method = RequestMethod.GET)
+	public String list(@PathVariable("curPage") int curPage, PageTO<MemberVO> pt, Model model) {
+		
+		pt.setCurPage(curPage);
+			
+		pt = mService.list(pt);
+
+		model.addAttribute("pt", pt);
+		
+		return "member/list";
 	}
 
 	@RequestMapping(value = "/read/{member}", method = RequestMethod.GET)
@@ -55,7 +66,7 @@ public class MemberController {
 			e.printStackTrace();
 			return "/member/login";
 		}
-		return "/zava";
+		return "redirect:/zava";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

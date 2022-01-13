@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.PageTO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -20,6 +22,14 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<MemberVO> list() {
 		return sqlSession.selectList(NS+".list");
+	}
+
+	@Override
+	public List<MemberVO> list(PageTO<MemberVO> pt) {
+		
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		
+		return sqlSession.selectList(NS+".list", null, rbs);
 	}
 
 	@Override
@@ -61,6 +71,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO idcheck(String mid) {
 		return sqlSession.selectOne(NS+".idcheck", mid);
+	}
+
+	@Override
+	public int getAmount() {
+		return sqlSession.selectOne(NS+".getAmount");
 	}
 
 }
