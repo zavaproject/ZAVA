@@ -16,10 +16,10 @@ public class CartInterceptor implements HandlerInterceptor {
 			throws Exception {
 		HttpSession session = request.getSession();
 		
-		MemberVO mVo = (MemberVO) session.getAttribute("mid"); 
+		MemberVO mVo = (MemberVO) session.getAttribute("login"); 
 		
 		if(mVo == null) {
-			response.sendRedirect("/member/loginGet");
+			response.sendRedirect("/member/login");
 			return false;
 		}else {
 			return true;

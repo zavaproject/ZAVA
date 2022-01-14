@@ -12,9 +12,9 @@
   
   	<!-- 장바구니 목록 -->
   	<select id="list" resultType="kr.co.domain.CartVO">
-		SELECT c.cid, c.pid, c.mid, p.pname, c.pcnt, p.price, (p.price*c.pcnt) tPrice
-		FROM zava_member m, zava_cart c, zava_product p
-		WHERE m.mid=c.mid AND c.pid=p.pid AND c.mid=#{mid} ORDER BY c.cid
+		SELECT c.cid, c.pid, c.mid, p.pname, c.pcnt, p.price, (p.price*c.pcnt) tPrice, a.filename
+		FROM zava_member m, zava_cart c, zava_product p, zava_p_attach a
+		WHERE m.mid=c.mid AND c.pid=p.pid AND c.mid=#{mid} AND a.pid=p.pid ORDER BY c.cid
 	</select>
 	
 	<!-- 장바구니 상품 삭제 -->
@@ -30,7 +30,7 @@
 	</select>
 	
 	<!-- 장바구니에 기존상품이 있는지 -->
-	<select id="countCart" resultType="kr.co.domain.CartVO">
+	<select id="countCart" resultType="int">
 		SELECT COUNT(*) FROM zava_cart WHERE mid=#{mid} AND pid=#{pid}
 	</select>
 	

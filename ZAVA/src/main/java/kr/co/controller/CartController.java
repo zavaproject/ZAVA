@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.domain.CartVO;
 import kr.co.domain.MemberVO;
+import kr.co.domain.OptionVO;
+import kr.co.domain.ProductVO;
 import kr.co.service.CartService;
+import kr.co.service.ProductService;
 
 @Controller
 @RequestMapping("cart")
@@ -31,22 +34,53 @@ public class CartController {
 		
 	}
 	
+	/*
+	 * // 장바구니 추가
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "/insert", method = RequestMethod.POST) public String
+	 * insert(@RequestParam(value = "pid") String pid, CartVO vo, HttpSession
+	 * session) { MemberVO member = (MemberVO) session.getAttribute("login"); String
+	 * mid = member.getMid();
+	 * 
+	 * vo.setMid(mid); vo.setPid(pid);
+	 * 
+	 * // 장바구니에 기존 상품이 있는지 int count = cService.countCart(vo.getPid(), mid); // 상품이
+	 * 몇개 있는지 카운트
+	 * 
+	 * if(count == 0) { cService.insert(vo); }else { cService.updateCart(vo); }
+	 * 
+	 * return "redirect:/cart/list"; }
+	 */
+	
 	// 장바구니 추가
 	@ResponseBody
-	@RequestMapping(value = "/insert", method = RequestMethod.POST) // get? post?
-	public String insert(CartVO vo, HttpSession session) {
-		String mid = (String) session.getAttribute("mid");
-		vo.setMid(mid);
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public int insert(@RequestParam(value = "pid") String pid, CartVO vo, HttpSession session) {
+		int result = 0;
 		
-		// 장바구니에 기존 상품이 있는지
-		int count = cService.countCart(vo.getPid(), mid); // 상품이 몇개 있는지 카운트
-		if(count == 0) {
-			cService.insert(vo);
-		}else {
-			cService.updateCart(vo);
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		
+		System.out.println(member);
+		
+		if(member != null) {
+			String mid = member.getMid();
+			
+			vo.setMid(mid);
+			vo.setPid(pid);
+			
+			int count = cService.countCart(pid, mid); // 상품이 몇개 있는지 카운트
+			
+			if(count == 0) {
+				cService.insert(vo);
+				result = 1;
+			}else{
+				result = 2;
+			}
 		}
-		
-		return "redirect:/cart/list";
+			
+		return result;
 	}
 	
 	
@@ -57,7 +91,7 @@ public class CartController {
 		
 		String mid = member.getMid();
 		
-		List<CartVO> cartList = cService.list(mid); // 테스트할 때만 list(mid) 제거
+		List<CartVO> cartList = cService.list(mid);
 		
 		model.addAttribute("cartList", cartList);
 	}
