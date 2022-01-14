@@ -1,5 +1,6 @@
 package kr.co.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,11 +35,27 @@ public class ProductController {
 //		
 //	}
 	
+
 	@RequestMapping(value = "/list/{category}", method = RequestMethod.GET)
 	public String list(@PathVariable("category") int category, Model model) {
 		
 		List<ProductVO> list= pService.list(category);
+		List<String> pidlist = new ArrayList<String>();
+		List<String> pnamelist = new ArrayList<String>();
+		
+		for(int i = 0; i < list.size(); i++) {
+			pidlist.add(list.get(i).getPid());
+		}
+		for(int i = 0; i < list.size(); i++) {
+			pnamelist.add(list.get(i).getPname());
+		}
+		
+		
+		model.addAttribute("pidlist", pidlist);
+		model.addAttribute("pnamelist", pnamelist);
+		
 		model.addAttribute("list", list);
+		
 		
 		return "product/list";
 	}

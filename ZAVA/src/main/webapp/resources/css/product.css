@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.uploadeditem img{
+	display:flex;
+	width:500px;
+	height:700px;
+	position:relative;	
+}

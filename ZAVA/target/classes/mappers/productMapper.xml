@@ -23,6 +23,10 @@
   		DELETE FROM zava_product WHERE pid = #{pid}
   	</delete>
   	
+  <select id="pname" resultType="String">
+  		SELECT pname FROM zava_product WHERE pid = #{pid}
+  	</select>
+  	
   </mapper>
   
   

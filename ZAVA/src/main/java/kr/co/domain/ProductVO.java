@@ -15,6 +15,8 @@ private int price;
 private String regdate;
 private int readcnt;
 private String mid;
+private String[] insertfiles;
+private String[] deletefiles;
 
 public ProductVO() {}
 
@@ -32,6 +34,38 @@ public ProductVO(String pid, String pname, String descript, int category, int pr
 }
 
 
+
+public ProductVO(String pid, String pname, String descript, int category, int price, String regdate, int readcnt,
+		String mid, String[] insertfiles, String[] deletefiles) {
+	super();
+	this.pid = pid;
+	this.pname = pname;
+	this.descript = descript;
+	this.category = category;
+	this.price = price;
+	this.regdate = regdate;
+	this.readcnt = readcnt;
+	this.mid = mid;
+	this.insertfiles = insertfiles;
+	this.deletefiles = deletefiles;
+}
+
+
+public String[] getInsertfiles() {
+	return insertfiles;
+}
+
+public void setInsertfiles(String[] insertfiles) {
+	this.insertfiles = insertfiles;
+}
+
+public String[] getDeletefiles() {
+	return deletefiles;
+}
+
+public void setDeletefiles(String[] deletefiles) {
+	this.deletefiles = deletefiles;
+}
 
 public String getPid() {
 	return pid;

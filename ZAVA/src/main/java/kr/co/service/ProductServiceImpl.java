@@ -1,6 +1,8 @@
 package kr.co.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.domain.OptionVO;
 import kr.co.domain.ProductVO;
+import kr.co.repository.AttachDAO;
 import kr.co.repository.ProductDAO;
 
 @Service
@@ -17,15 +20,28 @@ public class ProductServiceImpl implements ProductService {
 	@Inject
 	private ProductDAO pDao;
 	
+	@Inject
+	private AttachDAO aDao;
+	
 	@Override
 	public void insert(ProductVO vo) {
 		// TODO Auto-generated method stub
 		pDao.insert(vo);
+		
+		String pid = vo.getPid();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pid", pid);
+		for(int i = 0; i < vo.getInsertfiles().length; i++ ) {
+			map.put("filename", vo.getInsertfiles()[i]);
+			aDao.insert(map);
+		}
+		
 	}
 
 	@Override
 	public List<ProductVO> list(int category) {
 		// TODO Auto-generated method stub
+		
 		return pDao.list(category);
 	}
 	

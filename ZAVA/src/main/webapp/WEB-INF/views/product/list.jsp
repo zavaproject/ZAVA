@@ -1,3 +1,5 @@
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,8 +15,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/resources/js/product.js"> </script>
+ <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+ 
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
+   <section>
 <c:if test="${category == 1010}">
 <h1>MAN TOP PRODUCT</h1>
 </c:if>
@@ -36,9 +43,72 @@
 
 <div class="container">
  <c:forEach items="${list}" var="list">
- 	<a href="/product/read/${list.pid}">${list.pname}</a> &nbsp; &nbsp;
- </c:forEach>
-</div>
 
+
+ 	<a href="/product/read/${list.pid}">${list.pname}</a> &nbsp; &nbsp;
+
+ </c:forEach>
+ <div class="uploadedList row">
+
+</div>
+</div>
+<%
+   List<String> list = (List<String>)request.getAttribute("pidlist");
+   
+   ObjectMapper mapper = new ObjectMapper();
+   String strList = mapper.writeValueAsString(list);
+   
+   pageContext.setAttribute("strList", strList);
+   
+   
+%>
+
+
+<script type="text/javascript">
+	
+	var arr = '${strList}';
+
+	arr = eval(arr);
+
+	for (var i = 0; i < arr.length; i++) {
+		var pid = arr[i];
+		
+		console.log(pid)
+
+		$.getJSON("/productimg/getAttach2/" + pid, function(farr) {
+			
+			
+			
+
+			console.log(farr)
+			for(var key in farr){
+				console.log(key);
+				var pname = key
+				
+				for(var key2 in farr[key]){
+					
+					console.log(farr[key][key2]);
+				if (farr[key][key2][0] == null) {
+					return;
+				}
+				console.log(key);
+				var keyarr = [key2,key];
+				console.log(keyarr)
+				var msg = uploadedItemForRead2(farr[key][key2][0],keyarr);
+				$(".uploadedList").append(msg);
+			}
+			}
+// 			var filename = farr.get();
+			
+
+// 			var msg = uploadedItemForRead2(filename, pid);
+// 			$(".uploadedList").append(msg);
+
+		});
+	}
+</script>
+
+</section>
+   <jsp:include page="../footer.jsp" />
 </body>
 </html>
