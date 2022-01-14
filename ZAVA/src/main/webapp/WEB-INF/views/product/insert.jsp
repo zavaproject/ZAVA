@@ -14,12 +14,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js"> </script>
+<link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
 
+<style type="text/css">
+  	.fileDrop{
+  		width: 100%;
+  		height: 200px;
+  		border: 1px solid red;  	
+  		margin-top: 20px;
+  	}
+
+  </style>
+ <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div>
+  <jsp:include page="../header.jsp"/>
+   <section>
+<div class="container">
 	<h1>제품등록</h1>
-	<form action="" method="post"> <br>
+	<form action="" method="post" name="insertform"> <br>
 		등록 ID : <input name="mid" maxlength="33" class="mid"><br>
 		제품 ID : <input name="pid" maxlength="33" class="pid"><br>
 		제품 NAME : <input name="pname" maxlength="30" class="pname"><br>
@@ -44,38 +57,55 @@
 		
 	</form>
 	
+	<div class="fileDrop">
+		</div>
+
+	<div class="uploadedList row">
+	</div>
+	
 	<form>
 	<h3>옵션</h3>
-			옵션 코드 : <input class="ocode" name="ocode" maxlength="33"> ex) aa제품 빨강 90사이즈 = aa-r-90<br>
+			옵션 코드 : <input class="ocode" name="ocode" maxlength="33"> ex)제품ID-색상-사이즈<br>
 			재고 : <input class="ostock" name="ostock" type="number" maxlength="33"><br>
-			사이즈 : <input class="ocolor" name="ocolor" maxlength="33"><br>
-			색상 : <input class="osize" name="osize" maxlength="33"><br>
-			
+			색상 : <input class="ocolor" name="ocolor" maxlength="33"><br>
+			사이즈 : <input class="osize" name="osize" maxlength="33"><br>			
 	</form>
 	
-	
- </div>
+	<div class="option_button">
+	</div>
+
 <button>추가</button>
-	<input type="submit" value="제품등록완료" id="product_add">
+	<input type="submit" style="float:right" value="제품등록완료" id="product_add">
+	
+</div>
 	
 <script type="text/javascript">
 
 
 	$(document).ready(function() {
 		var arr = $("form");
-		
-		
-		
+
+
+		$("#a").click(function(event) {
+			event.preventDefault();
+			var arrDeleteItem = $(".deleteitem");
+			for(var i = 0; i<arrDeleteItem.length; i++){
+				var filename=$(arrDeleteItem[i]).attr("data-filename");
+				
+				 var msg = insertFile(filename);
+				 $("form[0]").append(msg);
+			}
+		});
 		
 		$("button").click(function() {
 			arr = $("form");
 			var msg = form();
-			$("div").append(msg);
+			$(".option_button").append(msg);
 			
 		});
 
 		$("#product_add").click(function() {
-	
+			
 			arr = $("form");
 			var mid = $(arr[0]).children("input.mid").val();
 			var pid = $(arr[0]).children("input.pid").val();
@@ -84,6 +114,21 @@
 			var price = $(arr[0]).children("input.price").val(); 
 			var descript = $(arr[0]).children("textarea.descript").val();
 			
+			var arrDeleteItem = $(".deleteitem");
+			for(var i=0;i<arrDeleteItem.length;i++){
+				var filename = $(arrDeleteItem[i]).attr("data-filename");
+				var msg = insertFile(filename)
+				$("form[name='insertform']").append(msg);
+// 				var insertfiles =  $(arr[0]).children("input[name='insertfiles']").val(); 
+			}
+			var inputArr = $("form > input[name='insertfiles']");
+			var insertfiles = [];
+			for(var i=0; i<inputArr.length; i++){
+				insertfiles.push(inputArr[i].value);
+			}
+			
+			
+			console.log(insertfiles)
 			$.ajax({
 				type : "post",
 				url : "/options/pinsert",
@@ -98,7 +143,8 @@
 					pname : pname,
 					category : category,
 					price : price,
-					descript : descript
+					descript : descript,
+					insertfiles : insertfiles
 				}),
 				success : function(result) {
 			
@@ -126,6 +172,7 @@
 							osize : osize
 						}),
 						success : function(result) {
+			
 							location.assign("/product/list/"+category);
 						}
 
@@ -138,8 +185,60 @@
 		 });
 
 	});
+		
+		
+		$(".fileDrop").on("dragenter dragover", function(event) {
+			event.preventDefault();
+		});
+		
+		$(".fileDrop").on("drop", function(event) {
+			event.preventDefault();
+
+			var files = event.originalEvent.dataTransfer.files;
+			var file = files[0]
+			
+			var formData = new FormData();
+			formData.append("file", file);
+			
+			$.ajax({
+				type : "post",
+				url : "/productimg/uploadajax",
+				dataType : "text",
+				data : formData,
+				processData : false,
+				contentType: false,
+				success : function(result) {
+					var msg = uploadedItem(result);
+					$(".uploadedList").append(msg);
+				}
+			});
+		});
+		
+		
+		$(".uploadedList").on("click", ".deleteitem", function() {
+			var clikckedDeleteItemBtn = $(this);
+			var filename = $(this).attr("data-filename");
+			
+			$.ajax({
+				type : "post",
+				url : "/productimg/deletefile",
+				dataType : "text", 
+				data : {
+					filename : filename
+				}, 
+				success : function(result){
+					if(result == "SUCCESS"){
+						clikckedDeleteItemBtn.parent().parent().remove();
+					}else{
+						alert("삭제 실패");
+					}
+				}
+			});
+		});
+		
 	});
 </script>
-
+</section>
+   <jsp:include page="../footer.jsp" />
 </body>
 </html>
