@@ -22,19 +22,28 @@
 <body>
 	<jsp:include page="../header.jsp" />
 	<section>
-<form action="/member/insert" method="post">
+<form action="/member/insert" method="post" id="insert">
 <input name="mid" placeholder="아이디"><button id="idcheck">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
 <input name="mpw" type="password" placeholder="비밀번호" value="123"><br>
 <input name="mname" placeholder="이름" value="member"><br>
-성별
-<input type='radio' name='mgender' value='남' checked/>남성
-<input type='radio' name='mgender' value='여' />여성
-<br>
+
+<div class="radiotoggle">
+	성별
+<label class="radio">
+  <input type="radio" name='mgender' value='남' checked>
+  <i></i>남
+</label>
+<label class="radio">
+  <input type="radio" name='mgender' value='여'>
+  <i></i>여
+</label>
+</div>
+
 <input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호" value="010-9999-9999"/><br>
 <input name="memail" type="email" placeholder="이메일" value="member@gmail.com"><br>
 
 <input name="postcode" type="text" id="postcode" placeholder="우편번호" readonly value="13494">
-<input type="button" onclick="execPostcode()" value="우편번호 찾기"><br>
+<input type="submit" onclick="execPostcode()" value="우편번호 찾기"><br>
 <input name="address" type="text" style="width: 365px;" id="address" placeholder="주소" readonly value="경기 성남시 분당구 판교역로 235"><br>
 <input name="extraAddress" type="text" style="width: 365px;" id="extraAddress" placeholder="참고항목" readonly value=" (삼평동)"><br>
 <input name="detailAddress" type="text" style="width: 365px;" id="detailAddress" placeholder="상세주소" value="101호">

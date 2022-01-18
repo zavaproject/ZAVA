@@ -120,6 +120,24 @@ input {
         border-collapse:collapse;
 }
 
+input[type=submit], button {
+	  border: solid 1px #d7d7d7;
+  border-radius: 0.2rem;
+  color: #7d7d7d;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5rem 0.9rem;
+  box-shadow: 3px 3px 3px #666666;
+}
+
+input[type=submit]:hover, button:hover {
+  padding: 0.5rem 0.9rem;
+  border: solid 1px #d7d7d7;
+  box-shadow: 3px 3px 3px #666666 inset;
+  
+}
+
 #table {
 	margin-left: auto;
 	margin-right: auto;
@@ -146,6 +164,17 @@ tr>td {
 
 #table a:hover {
 	color: #fff;	
+}
+
+.radiotoggle input[type=radio]{
+    display: none;
+}
+.radiotoggle input[type=radio] + label {
+    color: #adadad;
+    font-size: 2em;
+}
+.radiotoggle input[type=radio]:checked + label {
+    color: #000;
 }
 
 .login {
@@ -319,11 +348,6 @@ tr>td {
     opacity: 0;
 }
 
-
-
-
-
-
 .container:after {
   clear: both;
   content: "";
@@ -362,3 +386,38 @@ tr>td {
   border: solid 1px #d7d7d7;	
   box-shadow: 3px 3px 3px #666666 inset;
 }	
+
+.radio{
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.radio > input{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.radio > i{ 
+  display: inline-block;
+  vertical-align: middle;
+  width:  16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: 0.2s;
+  box-shadow: inset 0 0 0 8px #fff;
+  border: 1px solid gray;
+  background: gray;
+}
+.radio:hover > i{
+  box-shadow: inset 0 0 0 3px #fff;
+  background: gray;
+}
+.radio > input:checked + i{
+  box-shadow: inset 0 0 0 3px #fff;
+  background: black;
+}
+#insert{
+	margin: 88px 255px 0 255px;
+}

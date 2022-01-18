@@ -124,7 +124,6 @@ public class PageTO<T> {
 		beginPageNum = ((curPage - 1) / perLine) * perLine + 1;
 
 		endPageNum = beginPageNum + perLine - 1;		
-		
 		if (endPageNum > totalPage) {
 			endPageNum = totalPage;
 		}
@@ -138,8 +137,5 @@ public class PageTO<T> {
 	public void setAttachList(List<String> attachList) {
 		this.attachList = attachList;
 	}
-	
-	
-	
 	
 }

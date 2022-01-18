@@ -22,8 +22,8 @@ public class MemberController {
 
 	@Inject
 	private MemberService mService;
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/list/", method = RequestMethod.GET)
 	public void list(PageTO<MemberVO> pt, Model model) {
 		pt = mService.list(pt);
 
@@ -51,16 +51,15 @@ public class MemberController {
 
 		return "member/read";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(MemberVO vo, Model model, HttpServletRequest request) {
-		
+
 		try {
 			MemberVO login = mService.login(vo);
-			
+
 			HttpSession session = request.getSession();
-			System.out.println(login.getMcode());
-			
+
 			session.setAttribute("login", login);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,17 +70,17 @@ public class MemberController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		
+
 		return "member/login";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ModelAndView logout(HttpSession session) {
-        session.invalidate();
-        ModelAndView mav = new ModelAndView("redirect:/zava");
-        return mav;
-    }
-	
+	public ModelAndView logout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mav = new ModelAndView("redirect:/zava");
+		return mav;
+	}
+
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public void insertUI() {
 
@@ -89,9 +88,9 @@ public class MemberController {
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(MemberVO vo) {
-		
+
 		mService.insert(vo);
-		
+
 		return "redirect:/zava";
 	}
 
@@ -104,23 +103,23 @@ public class MemberController {
 
 		return "/member/update";
 	}
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(MemberVO vo) {
 		mService.update(vo);
 
 		return "redirect:/member/read/" + vo.getMid();
 	}
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(MemberVO vo, HttpSession session) {
-        session.invalidate();
-		
-		mService.delete(vo); 
+		session.invalidate();
+
+		mService.delete(vo);
 
 		return "redirect:/zava";
 	}
-	
+
 	@RequestMapping(value = "/mkoperator", method = RequestMethod.GET)
 	public void insertoperatorUI() {
 
@@ -128,12 +127,12 @@ public class MemberController {
 
 	@RequestMapping(value = "/mkoperator", method = RequestMethod.POST)
 	public String insertoperator(MemberVO vo) {
-		
+
 		mService.insertoperator(vo);
-		
+
 		return "redirect:/zava";
 	}
-	
+
 	@RequestMapping(value = "/idcheck", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String idcheck(String mid) {
@@ -146,15 +145,15 @@ public class MemberController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = "/dailysales", method = RequestMethod.GET)
 	public void dailysales() {
 
 	}
-	
+
 	@RequestMapping(value = "/monthlysales", method = RequestMethod.GET)
 	public void monthlysales() {
 
 	}
-	
+
 }
