@@ -19,6 +19,8 @@
   <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
+   <section>
 
 
     <form name="cart" id="cart" method="post" class="orderform" action="/cart/list">
@@ -34,13 +36,12 @@
                         <div class="pname">상품명</div>
                     </div>
                     <div class="subdiv">
-                        <div class="basketprice">가격</div>
+                        <div class="basketprice">판매가</div>
                         <div class="num">수량</div>
-                        <div class="sum">합계</div>
+                        <div class="sum">주문금액</div>
                     </div>
                     <div class="subdiv">
-    
-                        <div class="basketcmd">삭제</div>
+                        <div class="basketcmd">주문관리</div>
                     </div>
                     <div class="split"></div>
                 </div>
@@ -48,7 +49,11 @@
                 <c:set var="sum_amount" value="0"/>
                 <c:set var="sum" value="0"/>
                 
-        
+                <c:choose>
+                	<c:when test="${empty cartList}">
+                		<div align="center" style="font-size: 30px;">장바구니가 비었습니다.</div>
+                	</c:when>
+                	<c:otherwise>
         		<c:forEach items="${cartList}" var="cartList" varStatus="status">
         
                 <div class="row data" id="item_list">
@@ -56,10 +61,15 @@
                         <div class="check">
                         	<input type="checkbox" class="checkbox" name="buy" data-cId="${cartList.cid}" checked>&nbsp;
                         </div>
-                        <div class="img"><img src="../../resources/img/cartTest.jpg" width="60"></div>
+                        <div class="img">
+                        	<a href="/product/read/${cartList.pid}">
+                        		<img alt="thumbnail" src="/resources/productupload/${cartList.filename}" width="40">
+                        	</a>
+                        </div>
                         <div class="pname">
-                            <span>${cartList.pname}</span>
-                            <span>${cartList.pid}</span>
+                        	<!-- 상품 자세히보기 연결 -->
+                            <span><a href="/product/read/${cartList.pid}">${cartList.pname}</a></span><br>
+                            <span style="font-size: 12px;">옵션:${cartList.ocode} 이부분,, 옵션마다 pid가 같아서 리스트에 여러개 들어오무ㅜ 머리아픔..!</span>
                         </div>
                     </div>
                     <div class="subdiv">
@@ -68,11 +78,9 @@
                         </div>
                         <div class="num">
                             <div class="updown">
+                                <button type="button" name="minus_btn" class="minus_btn abutton" data-pcnt="${cartList.cid}">-</button>
                                 <input type="text" name="p_num" id="p_num" size="2" data-pId="${cartList.pid}" class="p_num" value="${cartList.pcnt}" readonly>                                
-                                <span id="plma">
-                                	<button type="button" name="plus_btn" class="plus_btn abutton" data-pcnt="${cartList.cid}">+</button>
-                                	<button type="button" name="minus_btn" class="minus_btn abutton" data-pcnt="${cartList.cid}">-</button>
-                                </span>
+                                <button type="button" name="plus_btn" class="plus_btn abutton" data-pcnt="${cartList.cid}">+</button>
                             </div>
                         </div>
                         <div>
@@ -81,17 +89,18 @@
                         </div>
                     </div>
                     <div class="subdiv">
-                        <div class="delete"><button type="button" class="delete_btn abutton" data-cId="${cartList.cid}">삭제</button></div>
+                        <div class="delete"><button type="button" class="delete_btn abutton" data-cId="${cartList.cid}">삭제하기</button></div>
             	</div>
             </div>
             	<c:set var="sum_amount" value="${sum_amount + (cartList.pcnt)}"/>
             	<c:set var="sum" value="${sum + (cartList.price * cartList.pcnt)}"/>
         	    </c:forEach>
+        	    </c:otherwise>
+                </c:choose>
         	    
     
             <div class="right-align basketrowcmd">
                 <button type="button" class="selectDelete_btn abutton">선택상품삭제</button>
-                <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
             </div>
     
             <div class="bigtext right-align sumcount" id="sum">
@@ -102,15 +111,12 @@
             <div id="goorder" class="">
                 <div class="clear"></div>
                 <div class="buttongroup center-align cmd">
-                    <a href="/order/list">선택한 상품 주문</a>
+                    <a href="/order/cartList">선택한 상품 주문</a>
                 </div>
             </div>
             </div>
         </form>
         
-        
-<jsp:include page="../footer.jsp"/>
-
 
 <script type="text/javascript">
 
@@ -214,7 +220,7 @@
 		
 		/* 그냥 삭제 버튼 delete_btn */
 		$(".delete_btn").click(function() {
-			var confirm_val = confirm("정말 삭제하시겠습니까?");
+			var confirm_val = confirm("상품을 삭제하시겠습니까?");
 			
 			if(confirm_val){
 				var checkArr = new Array();
@@ -239,31 +245,6 @@
 		});
 		
 		
-		/* 나중에 product read의 장바구니 버튼으로 코드 옮기기 */
-		/* $(".addCart_btn").click(function() {
-			var pid = $("#pid").val();
-			var pcnt = $(".#").val();
-			
-			var data = {
-					pid : pid,
-					pcnt : pcnt
-			};
-			
-			$.ajax({
-				url : "/cart/insert",
-				type : "post",
-				data : data,
-				success : function() {
-					alert("카트 담기 성공");
-					$(".#").val("1");
-				},
-				error : function() {
-					alert("카트 담기 실패");
-				}
-			});
-			
-		}); */
-		
 		
 		
 		/* 상품의 장바구니 추가 버튼 누르면 장바구니에 추가하는 기능, 나중에 장바구니 버튼 구현되어있는곳에 옮기기*/
@@ -286,24 +267,14 @@
 				}
 			});
 			
-		});
-		
-		function cartAlert(result){
-			if(result == 0){
-				alert("장바구니에 추가를 하지 못하였습니다.");
-			} else if(result == 1){
-				alert("장바구니에 추가되었습니다.");
-			} else if(result == 2){
-				alert("장바구니에 이미 추가되어져 있습니다.");
-			} else if(result == 5){
-				alert("로그인이 필요합니다.");
-			}
-		} */
+		}); */
 		
 	});
 
 </script>
 
+</section>
+   <jsp:include page="../footer.jsp" />
 </body>
 
 </html>

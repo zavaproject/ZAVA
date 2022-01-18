@@ -3,28 +3,37 @@ package kr.co.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class CartVO implements Serializable{
-	
+public class CartVO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	// cart
 	private String cid;
 	private String pid;
 	private String mid;
 	private int pcnt;
-	
+
 	// product
 	private String pname;
 	private int price;
 	private double pDiscount;
-	
+
+	// option
+	private String ocolor;
+	private String osize;
+	private String ocode;
+
+	// attach
+	private String filename;
+
 	private int salePrice;
 	private int totalPrice;
-	
-	public CartVO() {}
+
+	public CartVO() {
+	}
 
 	public CartVO(String cid, String pid, String mid, int pcnt, String pname, int price, double pDiscount,
-			int salePrice, int totalPrice) {
+			String ocolor, String osize, String ocode, String filename, int salePrice, int totalPrice) {
 		super();
 		this.cid = cid;
 		this.pid = pid;
@@ -33,6 +42,10 @@ public class CartVO implements Serializable{
 		this.pname = pname;
 		this.price = price;
 		this.pDiscount = pDiscount;
+		this.ocolor = ocolor;
+		this.osize = osize;
+		this.ocode = ocode;
+		this.filename = filename;
 		this.salePrice = salePrice;
 		this.totalPrice = totalPrice;
 	}
@@ -101,12 +114,44 @@ public class CartVO implements Serializable{
 		return totalPrice;
 	}
 
+	public String getOcolor() {
+		return ocolor;
+	}
+
+	public void setOcolor(String ocolor) {
+		this.ocolor = ocolor;
+	}
+
+	public String getOsize() {
+		return osize;
+	}
+
+	public void setOsize(String osize) {
+		this.osize = osize;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getOcode() {
+		return ocode;
+	}
+
+	public void setOcode(String ocode) {
+		this.ocode = ocode;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	public void initSaleTotal() {
-		this.salePrice = (int) (this.price * (1-this.pDiscount));
+		this.salePrice = (int) (this.price * (1 - this.pDiscount));
 		this.totalPrice = this.salePrice * this.pcnt;
 	}
 
@@ -126,15 +171,13 @@ public class CartVO implements Serializable{
 		CartVO other = (CartVO) obj;
 		return Objects.equals(cid, other.cid) && Objects.equals(mid, other.mid) && Objects.equals(pid, other.pid);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "CartVO [cid=" + cid + ", pid=" + pid + ", mid=" + mid + ", pcnt=" + pcnt + ", pname=" + pname
-				+ ", price=" + price + ", pDiscount=" + pDiscount + ", salePrice=" + salePrice + ", totalPrice="
+				+ ", price=" + price + ", pDiscount=" + pDiscount + ", ocolor=" + ocolor + ", osize=" + osize
+				+ ", ocode=" + ocode + ", filename=" + filename + ", salePrice=" + salePrice + ", totalPrice="
 				+ totalPrice + "]";
 	}
-
-	
-	
 
 }

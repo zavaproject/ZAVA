@@ -45,13 +45,13 @@
 		base-package="kr.co.controller"></context:component-scan>
 	
 	<!-- 카트 인터셉터 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/cart/**"/>
 			<exclude-mapping path="/cart/insert"/>
 			<beans:bean id="CartInterceptor" class="kr.co.interceptor.CartInterceptor"></beans:bean>
 		</interceptor>
-	</interceptors> -->
+	</interceptors>
 
 
 
