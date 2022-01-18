@@ -23,10 +23,16 @@
 <form action="/member/mkoperator" method="post">
 <input name="mid" placeholder="아이디"><button id="idcheck">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
 <input name="mpw" type="password" placeholder="비밀번호" value="123"><br>
-<input name="mname" placeholder="이름" value="member"><br>
-성별
-<input type='radio' name='mgender' value='남' />남성
-<input type='radio' name='mgender' value='여' />여성
+<input name="mname" placeholder="이름" value="operator"><br>
+
+<div class="radiotoggle">
+	성별
+	<input type="radio" id="toggle1" name="mgender" value='남' checked>
+	<label for="toggle1">●</label>남자
+	<input type="radio" id="toggle2" name="mgender" value='여'> 
+	<label for="toggle2">●</label>여자
+</div>
+
 <br>
 <input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호" value="010-9999-9999"/><br>
 <input name="memail" type="email" placeholder="이메일" value="operator@gmail.com"><br>

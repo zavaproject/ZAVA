@@ -6,25 +6,20 @@
 <div class="container">
   <ul class="pagination">
   <li>	
-      <a href="/member/list/1">FIRST</a>
+      <a href="1">FIRST</a>
     </li>
     <li>
-      <a href="/member/list/${pt.curPage>1?pt.curPage-1:1}">&lt;</a>
+      <a href="${pt.curPage>1?pt.curPage-1:1}">&lt;</a>
     </li>
     <c:forEach begin="${pt.beginPageNum}" end="${pt.endPageNum}" var="i">
-    	<li class="${pt.curPage==i?'active':'' }"><a href="/member/list/${i}">${i}</a></li>
+    	<li class="${pt.curPage==i?'active':'' }"><a href="${i}">${i}</a></li>
     </c:forEach>
     <li>
-		<a href="/member/list/${pt.curPage<pt.totalPage?pt.curPage+1:pt.totalPage}">&gt;</a>		
+		<a href="${pt.curPage<pt.totalPage?pt.curPage+1:pt.totalPage}">&gt;</a>		
     </li>
     <li>
-		<a  href="/member/list/${pt.totalPage}">LAST</a>		
+		<a href="${pt.totalPage}">LAST</a>
     </li>
   </ul>
   </div>
 </nav>
-<script>
-$("li").click(function () {
-	  $(this).addClass("active").siblings().removeClass("active");
-	});
-</script>

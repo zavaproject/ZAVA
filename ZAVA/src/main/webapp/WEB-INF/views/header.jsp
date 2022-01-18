@@ -18,23 +18,23 @@
 					<span class="icon-plus"></span>
 					<a class="menu-link">MAN</a></li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/1010">TOP</a></li>
-						<li><a class="head" href="/product/list/1020">PANTS</a></li>
+						<li><a class="head" href="/product/list/1010/">TOP</a></li>
+						<li><a class="head" href="/product/list/1020/">PANTS</a></li>
 					</ul>
 					<li id="nav2" class="toggle accordion-toggle">
 					<spanclass="icon-plus"></span> 
 					<a class="menu-link">WOMAN</a>
 					</li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/2010">TOP</a></li>
-						<li><a class="head" href="/product/list/2020">PANTS</a></li>
+						<li><a class="head" href="/product/list/2010/">TOP</a></li>
+						<li><a class="head" href="/product/list/2020/">PANTS</a></li>
 					</ul>
 					<li id="nav3" class="toggle accordion-toggle">
 					<span class="icon-plus"></span> 
 					<a class="menu-link">KIDS</a></li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/3010">GIRL</a></li>
-						<li><a class="head" href="/product/list/3020">BOY</a></li>
+						<li><a class="head" href="/product/list/3010/">GIRL</a></li>
+						<li><a class="head" href="/product/list/3020/">BOY</a></li>
 					</ul>
 					<li id="nav4" class="toggle accordion-toggle">
 					<span class="icon-plus"></span> 
@@ -60,11 +60,11 @@
 				</c:when>
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
-				<a href="/member/list">고객목록</a>
+				<a href="/member/list/">고객목록</a>
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
-					<button class="dropbtn">CEOmenu</button>
+					<a class="dropbtn">CEOmenu</a>
 					<div class="dropdown-content">
 						<a href="/member/mkoperator">Make Operator</a>
 						<a href="/member/dailysales">Daily Sales</a>
