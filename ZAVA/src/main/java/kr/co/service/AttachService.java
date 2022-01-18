@@ -14,7 +14,10 @@ public interface AttachService {
 	int deleteFileByFilename(String filename);
 
 	String pname(String pid);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e8cb62 (product 90%)
 	
 
 }

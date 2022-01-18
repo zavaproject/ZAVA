@@ -17,6 +17,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js"> </script>
  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
+=======
+ <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
+>>>>>>> 5e8cb62 (product 90%)
  
 </head>
 <body>
@@ -42,6 +46,7 @@
 </c:if>
 
 <div class="container">
+<<<<<<< HEAD
  <c:forEach items="${list}" var="list">
 
 
@@ -51,6 +56,12 @@
  <div class="uploadedList row">
 
 </div>
+=======
+
+
+			<div class="uploadedList row"></div>
+ <jsp:include page="../member/page.jsp"/>
+>>>>>>> 5e8cb62 (product 90%)
 </div>
 <%
    List<String> list = (List<String>)request.getAttribute("pidlist");
@@ -67,7 +78,11 @@
 <script type="text/javascript">
 	
 	var arr = '${strList}';
+<<<<<<< HEAD
 
+=======
+	var category = ${category};
+>>>>>>> 5e8cb62 (product 90%)
 	arr = eval(arr);
 
 	for (var i = 0; i < arr.length; i++) {

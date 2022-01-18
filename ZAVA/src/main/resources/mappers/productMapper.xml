@@ -23,10 +23,24 @@
   		DELETE FROM zava_product WHERE pid = #{pid}
   	</delete>
   	
+<<<<<<< HEAD
   <select id="pname" resultType="String">
   		SELECT pname FROM zava_product WHERE pid = #{pid}
   	</select>
   	
+=======
+  <select id="pname" resultType="string">
+  		SELECT pname FROM zava_product WHERE pid = #{pid}
+  	</select>
+  	
+  	<select id="getAmount" resultType="Integer">
+  		SELECT COUNT(pid) FROM zava_product WHERE category = #{category}
+  	</select>
+  	<select id="curlist" resultType="kr.co.domain.ProductVO">
+  	SELECT * FROM zava_product WHERE category = #{category} ORDER BY pid DESC
+  	</select>
+  	
+>>>>>>> 5e8cb62 (product 90%)
   </mapper>
   
   

@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.domain.OptionVO;
+import kr.co.domain.PageTO;
 import kr.co.domain.ProductVO;
 
 @Repository
@@ -29,6 +31,20 @@ public class ProductDAOImpl implements ProductDAO {
 	public List<ProductVO> list(int category) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+".list", category);
+	}
+
+	@Override
+	public List<ProductVO> curlist(PageTO<ProductVO> pt, int category) {
+		// TODO Auto-generated method stub
+		RowBounds rbs = new RowBounds(pt.getStartNum()-1, pt.getPerPage());
+		return sqlSession.selectList(NS+".curlist", category, rbs);
+	}
+	
+
+	@Override
+	public int getAmount(int category) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getAmount",category);
 	}
 	
 	@Override

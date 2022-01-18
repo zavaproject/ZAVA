@@ -33,11 +33,16 @@
 </c:if>
 
 <form>
+<<<<<<< HEAD
 	<input type="hidden" name="rno" value="${vo.rno}">
+=======
+   <input type="hidden" name="rno" value="${vo.rno}">
+>>>>>>> 5e8cb62 (product 90%)
 </form>
 
    
    <script type="text/javascript">
+<<<<<<< HEAD
    		$(document).ready(function() {
 			$("button#update").click(function() {
 				$("form").attr("method","post")
@@ -52,6 +57,22 @@
 			});
 		
 		});
+=======
+         $(document).ready(function() {
+         $("button#update").click(function() {
+            $("form").attr("method","post")
+            $("form").attr("action","/review/updateui/${curPage}")
+            $("form").submit();
+         });
+         
+         $("button#delete").click(function() {
+            $("form").attr("method","post")
+            $("form").attr("action","/review/delete/${vo.pid}")
+            $("form").submit();
+         });
+      
+      });
+>>>>>>> 5e8cb62 (product 90%)
    
    </script>
    

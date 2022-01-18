@@ -18,6 +18,7 @@
  
 </head>
 <body>
+<<<<<<< HEAD
 <form action="/review/update/" method="post"><br>
 <p class="title_star">수정할 상품후기를 입력해주세요</p>
 평점 : <select name="rating" class="rating">
@@ -26,6 +27,16 @@
 	<option value="3" ${vo.rating==3? "selected" : ""}>3</option>
 	<option value="4" ${vo.rating==4? "selected" : ""}>4</option>
 	<option value="5" ${vo.rating==5? "selected" : ""}>5</option>
+=======
+<form action="/review/update/${curPage}" method="post"><br>
+<p class="title_star">수정할 상품후기를 입력해주세요</p>
+평점 : <select name="rating" class="rating">
+   <option value="1" ${vo.rating==1? "selected" : ""}>1</option>
+   <option value="2" ${vo.rating==2? "selected" : ""}>2</option>
+   <option value="3" ${vo.rating==3? "selected" : ""}>3</option>
+   <option value="4" ${vo.rating==4? "selected" : ""}>4</option>
+   <option value="5" ${vo.rating==5? "selected" : ""}>5</option>
+>>>>>>> 5e8cb62 (product 90%)
 </select><br>
 <input type="hidden" name="rno" value="${vo.rno}">
 작성자 : <input name="mid" value="${vo.mid}" readonly><br>

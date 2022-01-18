@@ -173,7 +173,11 @@
 						}),
 						success : function(result) {
 			
+<<<<<<< HEAD
 							location.assign("/product/list/"+category);
+=======
+							location.assign("/product/list/"+category+"/");
+>>>>>>> 5e8cb62 (product 90%)
 						}
 
 					});

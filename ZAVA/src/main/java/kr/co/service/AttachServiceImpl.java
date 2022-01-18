@@ -9,12 +9,20 @@ import org.springframework.stereotype.Service;
 
 import kr.co.domain.ProductVO;
 import kr.co.repository.AttachDAO;
+<<<<<<< HEAD
+=======
+import kr.co.repository.ProductDAO;
+>>>>>>> 5e8cb62 (product 90%)
 
 @Service
 public class AttachServiceImpl implements AttachService {
 
 	@Inject
 	private AttachDAO aDao;
+<<<<<<< HEAD
+=======
+	private ProductDAO pDao;
+>>>>>>> 5e8cb62 (product 90%)
 	
 	@Override
 	public int insert(Map<String, Object> map) {
