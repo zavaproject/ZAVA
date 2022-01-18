@@ -3,6 +3,7 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.OptionVO;
+import kr.co.domain.PageTO;
 import kr.co.domain.ProductVO;
 
 public interface ProductService {
@@ -22,5 +23,7 @@ public interface ProductService {
 	void oupdate(OptionVO ovo);
 
 	void odelete(String pid);
+
+	PageTO<ProductVO> list(int category, PageTO<ProductVO> pt);
 
 }

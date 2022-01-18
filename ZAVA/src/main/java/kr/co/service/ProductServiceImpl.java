@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.domain.OptionVO;
+import kr.co.domain.PageTO;
 import kr.co.domain.ProductVO;
 import kr.co.repository.AttachDAO;
 import kr.co.repository.ProductDAO;
@@ -43,6 +44,17 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		
 		return pDao.list(category);
+	}
+	
+	@Override
+	public PageTO<ProductVO> list(int category, PageTO<ProductVO> pt) {
+		// TODO Auto-generated method stub
+		int amount = pDao.getAmount(category);
+		
+		pt.setAmount(amount);
+		List<ProductVO> list = pDao.curlist(pt,category);
+		pt.setList(list);
+		return pt;
 	}
 	
 	@Override

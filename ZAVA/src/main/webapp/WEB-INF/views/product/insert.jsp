@@ -173,7 +173,7 @@
 						}),
 						success : function(result) {
 			
-							location.assign("/product/list/"+category);
+							location.assign("/product/list/"+category+"/");
 						}
 
 					});
