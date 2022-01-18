@@ -2,9 +2,8 @@ package kr.co.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
-public class OrderVO implements Serializable {
+public class OrderListVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String oid;
@@ -18,11 +17,19 @@ public class OrderVO implements Serializable {
 	private String address3;
 	private String oname;
 	private String ophone;
-	
-	public OrderVO() {}
 
-	public OrderVO(String oid, String pid, String mid, Date odate, int ostatus, int amount, String address1,
-			String address2, String address3, String oname, String ophone) {
+	private int oDid;
+	private int pcnt;
+
+	private String pname;
+	private int price;
+
+	public OrderListVO() {
+	}
+
+	public OrderListVO(String oid, String pid, String mid, Date odate, int ostatus, int amount, String address1,
+			String address2, String address3, String oname, String ophone, int oDid, int pcnt, String pname,
+			int price) {
 		super();
 		this.oid = oid;
 		this.pid = pid;
@@ -35,6 +42,29 @@ public class OrderVO implements Serializable {
 		this.address3 = address3;
 		this.oname = oname;
 		this.ophone = ophone;
+		this.oDid = oDid;
+		this.pcnt = pcnt;
+		this.pname = pname;
+		this.price = price;
+	}
+
+	public OrderListVO(String oid, String mid, Date odate, int ostatus, int amount, String address1, String address2,
+			String address3, String oname, String ophone, int oDid, int pcnt, String pname, int price) {
+		super();
+		this.oid = oid;
+		this.mid = mid;
+		this.odate = odate;
+		this.ostatus = ostatus;
+		this.amount = amount;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.address3 = address3;
+		this.oname = oname;
+		this.ophone = ophone;
+		this.oDid = oDid;
+		this.pcnt = pcnt;
+		this.pname = pname;
+		this.price = price;
 	}
 
 	public String getOid() {
@@ -125,32 +155,40 @@ public class OrderVO implements Serializable {
 		this.ophone = ophone;
 	}
 
+	public int getoDid() {
+		return oDid;
+	}
+
+	public void setoDid(int oDid) {
+		this.oDid = oDid;
+	}
+
+	public int getPcnt() {
+		return pcnt;
+	}
+
+	public void setPcnt(int pcnt) {
+		this.pcnt = pcnt;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(mid, oid, oname, ophone, pid);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderVO other = (OrderVO) obj;
-		return Objects.equals(mid, other.mid) && Objects.equals(oid, other.oid) && Objects.equals(oname, other.oname)
-				&& Objects.equals(ophone, other.ophone) && Objects.equals(pid, other.pid);
-	}
-
-	@Override
-	public String toString() {
-		return "OrderVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
-				+ ", amount=" + amount + ", address1=" + address1 + ", address2=" + address2 + ", address3=" + address3
-				+ ", oname=" + oname + ", ophone=" + ophone + "]";
-	}
 }
