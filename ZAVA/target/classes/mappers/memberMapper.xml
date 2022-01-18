@@ -55,7 +55,7 @@
 	</select>
 	
 	<select id="getAmount" resultType="Integer">
-		SELECT COUNT(mid) FROM zava_member
+		SELECT COUNT(mid) FROM zava_member where mcode = 0
 	</select>
 	
 </mapper>

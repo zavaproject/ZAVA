@@ -1,52 +1,49 @@
-package kr.co.repository;
+package kr.co.service;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import kr.co.domain.OrderDetailVO;
 import kr.co.domain.OrderListVO;
 import kr.co.domain.OrderVO;
+import kr.co.repository.OrderDAO;
 
-@Repository
-public class OrderDAOImpl implements OrderDAO {
+@Service
+public class OrderServiceImpl implements OrderService {
 
 	@Inject
-	private SqlSession sqlSession;
-
-	private String NS = "kr.co.order";
+	private OrderDAO oDAO;
 
 	@Override
 	public void order(OrderVO order) throws Exception {
-		sqlSession.insert(NS + ".order", order);
-
+		oDAO.order(order);
 	}
 
 	@Override
 	public void orderDetail(OrderDetailVO orderDetail) throws Exception {
-		sqlSession.insert(NS + ".orderDetail", orderDetail);
+		oDAO.orderDetail(orderDetail);
 
 	}
 
 	@Override
 	public void cartDelete(String mid) throws Exception {
-		sqlSession.delete(NS + ".cartDelete", mid);
+		oDAO.cartDelete(mid);
 
 	}
 
 	@Override
 	public List<OrderVO> orderList(OrderVO order) throws Exception {
 
-		return sqlSession.selectList(NS + ".orderList", order);
+		return oDAO.orderList(order);
 	}
 
 	@Override
 	public List<OrderListVO> orderRead(OrderVO order) throws Exception {
-
-		return sqlSession.selectList(NS + ".orderRead", order);
+		
+		return oDAO.orderRead(order);
 	}
 
 }
