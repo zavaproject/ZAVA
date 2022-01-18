@@ -17,6 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js"> </script>
  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+ <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
  
 </head>
 <body>
@@ -42,15 +43,10 @@
 </c:if>
 
 <div class="container">
- <c:forEach items="${list}" var="list">
 
 
- 	<a href="/product/read/${list.pid}">${list.pname}</a> &nbsp; &nbsp;
-
- </c:forEach>
- <div class="uploadedList row">
-
-</div>
+			<div class="uploadedList row"></div>
+ <jsp:include page="../member/page.jsp"/>
 </div>
 <%
    List<String> list = (List<String>)request.getAttribute("pidlist");
@@ -67,7 +63,7 @@
 <script type="text/javascript">
 	
 	var arr = '${strList}';
-
+	var category = ${category};
 	arr = eval(arr);
 
 	for (var i = 0; i < arr.length; i++) {

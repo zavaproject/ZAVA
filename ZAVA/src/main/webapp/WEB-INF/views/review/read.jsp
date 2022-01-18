@@ -33,25 +33,25 @@
 </c:if>
 
 <form>
-	<input type="hidden" name="rno" value="${vo.rno}">
+   <input type="hidden" name="rno" value="${vo.rno}">
 </form>
 
    
    <script type="text/javascript">
-   		$(document).ready(function() {
-			$("button#update").click(function() {
-				$("form").attr("method","post")
-				$("form").attr("action","/review/updateui")
-				$("form").submit();
-			});
-			
-			$("button#delete").click(function() {
-				$("form").attr("method","post")
-				$("form").attr("action","/review/delete/${vo.pid}")
-				$("form").submit();
-			});
-		
-		});
+         $(document).ready(function() {
+         $("button#update").click(function() {
+            $("form").attr("method","post")
+            $("form").attr("action","/review/updateui/${curPage}")
+            $("form").submit();
+         });
+         
+         $("button#delete").click(function() {
+            $("form").attr("method","post")
+            $("form").attr("action","/review/delete/${vo.pid}")
+            $("form").submit();
+         });
+      
+      });
    
    </script>
    
