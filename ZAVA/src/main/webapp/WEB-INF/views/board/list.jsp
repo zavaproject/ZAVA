@@ -30,14 +30,14 @@
 	</c:choose>
 	<div class="container">
  <h2><font color="#555555">NOTICE</font> </h2>
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<th>NO</th>
+				<th>TITLE</th>
+				<th>POSTED BY</th>
+				<th>DATE</th>
+				<th>VIEW</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -40,32 +40,31 @@
  
 <div class="container">
  <h2><font color="#555555">NOTICE</font> </h2>
-            <p>공지사항입니다.</p>
- <table class="notice_table">
+ <table class="table">
 <colgroup>
 <col style="width:130px;"/>
 <col style="width:auto;"/>
 </colgroup>
 <tbody>
    <tr>
-		<th scope="row">번호</th>
-          <td> ${vo.bno} </td>
+		<th scope="row">NO</th>
+          <td style="text-align: left;"> ${vo.bno} </td>
    </tr>
 	<tr>
-		<th scope="row">제목</th>
-          <td>${vo.title}</td>
+		<th scope="row">TITLE</th>
+          <td style="text-align: left;">${vo.title}</td>
    </tr>
 	<tr>
-		<th scope="row">작성자</th>
-          <td> ${vo.writer} </td>
+		<th scope="row">POSTED BY</th>
+          <td style="text-align: left;"> ${vo.writer} </td>
    </tr>
    <tr>
-		<th scope="row">작성일</th>
-          <td> ${vo.updatedate} </td>
+		<th scope="row">DATE</th>
+          <td style="text-align: left;"> ${vo.updatedate} </td>
    </tr>
    <tr>
-		<th scope="row">조회</th>
-          <td> ${vo.viewcnt} </td>
+		<th scope="row">VIEW</th>
+          <td style="text-align: left;"> ${vo.viewcnt} </td>
    </tr>
 </tbody>
 </table>   
