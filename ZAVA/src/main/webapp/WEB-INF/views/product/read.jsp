@@ -49,7 +49,7 @@
     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="option" id="product-option">
          <option value="">--Please choose an option--</option>
          <c:forEach items="${ovo}" var="ovo">
-         <option value="option" ${ovo.ostock == 0 ? "disabled" : ""}>색상 : ${ovo.ocolor} |사이즈 : ${ovo.osize} ${ovo.ostock == 0 ? "| 품절" : ""} </option>
+         <option value="${ovo.ocode}" ${ovo.ostock == 0 ? "disabled" : ""}>색상 : ${ovo.ocolor} |사이즈 : ${ovo.osize} ${ovo.ostock == 0 ? "| 품절" : ""} </option>
         
          </c:forEach>
       </select>   
@@ -230,7 +230,7 @@
 					pcnt : pcnt
 					/* 나중에 수량 추가 */
 			};
-
+			
 			$.ajax({
 				url : "/cart/insert",
 				type : "post",

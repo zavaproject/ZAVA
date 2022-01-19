@@ -93,11 +93,11 @@ public class CartController {
 		List<CartVO> cartList = cService.list(mid);
 		
 		for(int i = 0; i < cartList.size(); i++) {
-			System.out.println(cartList.get(i));
 			String ocode = cartList.get(i).getOcode();
 			OptionVO ovo = cService.cartOcode(ocode);
 			ProductVO pvo = cService.productCart(ovo.getPid());
 			List<String> files = cService.getfile(pvo.getPid());
+			
 			String file = files.get(0);
 			cartList.get(i).setOcolor(ovo.getOcolor());
 			cartList.get(i).setOsize(ovo.getOsize());
@@ -105,7 +105,6 @@ public class CartController {
 			cartList.get(i).setPrice(pvo.getPrice());
 			cartList.get(i).setFilename(file);
 		
-			System.out.println(cartList.get(i));
 		}
 		
 		model.addAttribute("cartList", cartList);
