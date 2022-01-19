@@ -33,8 +33,9 @@
 <div class="container">
 	<h1>제품등록</h1>
 	<form action="" method="post" name="insertform"> <br>
-		등록 ID : <input name="mid" maxlength="33" class="mid"><br>
-		제품 ID : <input name="pid" maxlength="33" class="pid"><br>
+		등록 ID : <input name="mid" maxlength="33" class="mid" value="${login.mid}" readonly><br>
+		제품 ID : <input name="pid" maxlength="33" class="pid"><br> <button id="pidcheck">중복검사</button><br>
+<p id="pidCheckResult"></p>
 		제품 NAME : <input name="pname" maxlength="30" class="pname"><br>
 		카테고리 :
 <!-- 		 <input name="category" type="number" class="category"><br> -->
@@ -74,7 +75,7 @@
 	<div class="option_button">
 	</div>
 
-<button>추가</button>
+<button id="optionadd">추가</button>
 	<input type="submit" style="float:right" value="제품등록완료" id="product_add">
 	
 </div>
@@ -86,18 +87,32 @@
 		var arr = $("form");
 
 
-		$("#a").click(function(event) {
+		$("#pidcheck").click(function(event) {
 			event.preventDefault();
-			var arrDeleteItem = $(".deleteitem");
-			for(var i = 0; i<arrDeleteItem.length; i++){
-				var filename=$(arrDeleteItem[i]).attr("data-filename");
-				
-				 var msg = insertFile(filename);
-				 $("form[0]").append(msg);
+			
+			var pid = $("[name='pid']").val();
+			
+			if(pid == ''){
+				$("[name ='pid']").focus();
+			}else{
+				$.ajax({
+					type : 'post',
+					url : '/product/pidcheck',
+					data : {
+						'pid' : pid
+					},
+					dataType : 'text',
+					success : function(result) {
+						
+						$("p#pidCheckResult").text(result);
+						
+					}
+				});
 			}
-		});
+			
+		});	
 		
-		$("button").click(function() {
+		$("#optionadd").click(function() {
 			arr = $("form");
 			var msg = form();
 			$(".option_button").append(msg);
@@ -119,7 +134,7 @@
 				var filename = $(arrDeleteItem[i]).attr("data-filename");
 				var msg = insertFile(filename)
 				$("form[name='insertform']").append(msg);
-// 				var insertfiles =  $(arr[0]).children("input[name='insertfiles']").val(); 
+
 			}
 			var inputArr = $("form > input[name='insertfiles']");
 			var insertfiles = [];
@@ -127,8 +142,20 @@
 				insertfiles.push(inputArr[i].value);
 			}
 			
+			if(pid == ''){
+				$("[name='pid']").focus();
+				return;
+			}else if(pname == ''){
+				$("[name='pname']").focus();
+				return;
+			}else if(price == ''){
+				$("[name='price']").focus();
+				return;
+			}else if(descript == ''){
+				$("[name='descript']").focus();
+				return;
+			}else{
 			
-			console.log(insertfiles)
 			$.ajax({
 				type : "post",
 				url : "/options/pinsert",
@@ -184,6 +211,8 @@
 
 		 });
 
+			}
+			
 	});
 		
 		

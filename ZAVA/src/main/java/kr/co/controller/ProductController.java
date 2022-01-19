@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.domain.OptionVO;
 import kr.co.domain.PageTO;
@@ -40,7 +41,21 @@ public class ProductController {
 //		
 //	}
 	
+	@RequestMapping(value = "/pidcheck", 
+			method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
+	@ResponseBody
+	public String pidcheck(String pid) {
+		ProductVO vo = pService.idcheck(pid);
+		
+		if(vo == null) {
+			return "사용 가능";
+		}else {
+			return "사용불가";
+		}
 
+	}
+
+	
 	@RequestMapping(value = "/list/{category}/{curPage}", method = RequestMethod.GET)
 	public String list(@PathVariable("category") int category, @PathVariable("curPage") int curPage, PageTO<ProductVO> pt,Model model) {
 		pt.setCurPage(curPage);

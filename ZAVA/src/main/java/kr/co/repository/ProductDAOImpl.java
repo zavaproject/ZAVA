@@ -26,6 +26,12 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
 		sqlSession.insert(NS+".insert", vo);
 	}
+	@Override
+	public ProductVO idcheck(String pid) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".idcheck", pid);
+	}
+	
 	
 	@Override
 	public List<ProductVO> list(int category) {

@@ -8,6 +8,7 @@
   		INSERT INTO zava_option (pid,ocode,ostock,ocolor,osize) 
   		VALUES(#{pid},#{ocode},#{ostock},#{ocolor},#{osize})
   	</insert>
+  	
 	<select id="oread" resultType="kr.co.domain.OptionVO">
   		SELECT * FROM zava_option WHERE pid = #{pid} ORDER BY ocode
   	</select>
