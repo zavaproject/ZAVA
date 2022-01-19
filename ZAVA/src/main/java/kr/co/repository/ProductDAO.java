@@ -30,6 +30,9 @@ public interface ProductDAO {
 
 	List<ProductVO> curlist(PageTO<ProductVO> pt, int category);
 
-	
+	ProductVO idcheck(String pid);
+
+
+
 
 }

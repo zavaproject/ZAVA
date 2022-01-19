@@ -15,7 +15,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/product.js"> </script>
+<script type="text/javascript" src="/resources/js/product.js?var=2"> </script>
  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
  <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
  
@@ -85,9 +85,9 @@
 					
 					console.log(farr[key][key2]);
 				if (farr[key][key2][0] == null) {
-					return;
+					farr[key][key2][0] = 'aaa.txt';
 				}
-				console.log(key);
+				console.log(farr[key][key2][0]);
 				var keyarr = [key2,key];
 				console.log(keyarr)
 				var msg = uploadedItemForRead2(farr[key][key2][0],keyarr);

@@ -138,6 +138,21 @@
 			var price = $(arr[0]).children("input.price").val(); 
 			var descript = $(arr[0]).children("textarea.descript").val();
 			
+			if(pid == ''){
+				$("[name='pid']").focus();
+				return;
+			}else if(pname == ''){
+				$("[name='pname']").focus();
+				return;
+			}else if(price == ''){
+				$("[name='price']").focus();
+				return;
+			}else if(descript == ''){
+				$("[name='descript']").focus();
+				return;
+			}else{
+			
+			
 			$.ajax({
 				type : "post",
 				url : "/options/pupdate",
@@ -190,7 +205,9 @@
 				}
 
 		 });
-
+			
+		}
+			
 	});
 		
 		

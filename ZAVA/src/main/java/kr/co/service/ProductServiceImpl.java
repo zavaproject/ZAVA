@@ -40,6 +40,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public ProductVO idcheck(String pid) {
+		// TODO Auto-generated method stub
+		return pDao.idcheck(pid);
+	}
+	
+	
+	@Override
 	public List<ProductVO> list(int category) {
 		// TODO Auto-generated method stub
 		

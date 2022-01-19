@@ -8,6 +8,10 @@
   		INSERT INTO zava_product (pid,pname,descript,category,price,mid) 
   		VALUES(#{pid},#{pname},#{descript},#{category},#{price},#{mid})
   	</insert>
+  	<select id="idcheck" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE pid = #{pid}
+  	</select>
+  
   
   	<select id="list" resultType="kr.co.domain.ProductVO">
   		SELECT * FROM zava_product WHERE category = #{category}

@@ -54,6 +54,16 @@
          </c:forEach>
       </select>   
       <br>
+   <!-- 수량 추가(임시) -->
+   수량 :
+    <select name="pcnt" id="pcnt">
+    	<c:forEach begin="1" end="10" step="1" var="i">
+        	 <option id="pcnt" value="${i}">${i}</option>
+        </c:forEach>
+    </select>
+    <br>
+      
+      <br>
       <div class="card" style="width:25rem;">
          <div class="card-body">
             <h5 class="card-title">제품 설명</h5>
@@ -63,7 +73,7 @@
       </div>
    <hr>
    <div style="float:right" class="d-grid gap-2 d-md-block">
-        <button class="btn btn-outline-success" type="button">장바구니</button>
+        <button class="btn btn-outline-success addCart" type="button">장바구니</button>
         <button class="btn btn-success" type="button">상품구매</button><br>
    </div>
    
@@ -204,6 +214,52 @@
             getReviewsPage(pid, curPage, $("#reviews"));
          });
    
+         /* 장바구니 */
+			$(".addCart").click(function() {
+			var ocode = $("select[name=option] > option:selected").val();
+			var pcnt = $("select[name=pcnt] > option:selected").val();
+			
+			if(ocode == ''){
+				alert("상품 옵션을 선택해주세요.");
+				return false;
+			}
+
+			var data = {
+					pid : pid,
+					ocode : ocode,
+					pcnt : pcnt
+					/* 나중에 수량 추가 */
+			};
+
+			$.ajax({
+				url : "/cart/insert",
+				type : "post",
+				data : data,
+				success : function(result) {
+					/* var confirm_val = confirm("카트 담기 성공, 장바구니로 이동하시겠습니까?"); */
+					console.log(result);
+					cartAlert(result)
+					}
+			})
+		});
+      
+			function cartAlert(result){
+				if(result == 1){
+					alert("장바구니에 추가되었습니다.");
+					$("#product-option").val("");
+					$("#pcnt").val("1");
+				} else if(result == 2){
+					alert("장바구니에 이미 추가되어져 있습니다.");
+					$("#product-option").val("");
+					$("#pcnt").val("1");
+				} else if(result == 0){
+					alert("로그인이 필요합니다.");
+					var confirm_val = confirm("로그인 화면으로 이동 하시겠습니까?");
+					if(confirm_val){
+						location.replace("/member/login")
+					}
+				}
+			}
       });
    
    </script>

@@ -43,11 +43,11 @@
 		<tbody>
 			<c:forEach items="${pt.list}" var="vo">
 				<tr>
-					<td>${vo.bno}</td>
-					<td><a href="/board/read/${vo.bno}/${pt.curPage}">${vo.title}</a></td>
-					<td>${vo.writer}</td>
-					<td>${vo.updatedate}</td>
-					<td>${vo.viewcnt}</td>
+					<td style="text-align: left;">${vo.bno}</td>
+					<td style="text-align: left;"><a href="/board/read/${vo.bno}/${pt.curPage}">${vo.title}</a></td>
+					<td style="text-align: left;">${vo.writer}</td>
+					<td style="text-align: left;">${vo.updatedate}</td>
+					<td style="text-align: left;">${vo.viewcnt}</td>
 				</tr>
 			</c:forEach>	
 		</tbody>

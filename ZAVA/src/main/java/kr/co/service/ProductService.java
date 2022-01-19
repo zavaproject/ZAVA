@@ -26,4 +26,7 @@ public interface ProductService {
 
 	PageTO<ProductVO> list(int category, PageTO<ProductVO> pt);
 
+	ProductVO idcheck(String pid);
+
+
 }
