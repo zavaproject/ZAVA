@@ -61,6 +61,7 @@
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
 				<a href="/member/list/">고객목록</a>
+				<a href="/product/insert">제품등록</a>
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
@@ -73,7 +74,7 @@
 				</div>
 			</c:if>
 			<a href="#">도움말</a>
-			<a href="#">바스켓백</a>
+			<a href="/cart/list">바스켓백</a>
 		</div>
 	</div>
 </header>
