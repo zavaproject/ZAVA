@@ -3,6 +3,8 @@ package kr.co.repository;
 import java.util.List;
 
 import kr.co.domain.CartVO;
+import kr.co.domain.OptionVO;
+import kr.co.domain.ProductVO;
 
 public interface CartDAO {
 
@@ -10,7 +12,7 @@ public interface CartDAO {
 
 	int sumMoney(String mid);
 
-	int countCart(String pid, String mid);
+	int countCart(String ocode, String mid);
 
 	int updateCart(CartVO vo);
 
@@ -19,5 +21,11 @@ public interface CartDAO {
 	void delete(CartVO vo);
 
 	CartVO checkCart(CartVO vo);
+
+	OptionVO cartOcode(String ocode);
+
+	ProductVO productCart(String pid);
+
+	List<String> getfile(String pid);
 
 }

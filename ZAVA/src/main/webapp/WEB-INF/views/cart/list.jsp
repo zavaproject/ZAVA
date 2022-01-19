@@ -22,9 +22,11 @@
 <jsp:include page="../header.jsp"/>
    <section>
 
-
+	<div class="container" style="margin-top: 20px;">
     <form name="cart" id="cart" method="post" class="orderform" action="/cart/list">
-    
+         <div class="right-align basketrowcmd">
+                <button type="button" class="selectDelete_btn abutton">선택상품삭제</button>
+            </div>
             <input type="hidden" name="cmd" value="order">
             <div class="basketdiv" id="basket">
                 <div class="row head">
@@ -69,7 +71,7 @@
                         <div class="pname">
                         	<!-- 상품 자세히보기 연결 -->
                             <span><a href="/product/read/${cartList.pid}">${cartList.pname}</a></span><br>
-                            <span style="font-size: 12px;">옵션:${cartList.ocode} 이부분,, 옵션마다 pid가 같아서 리스트에 여러개 들어오무ㅜ 머리아픔..!</span>
+                            <span style="font-size: 12px;">옵션:${cartList.pname}, ${cartList.ocolor}, ${cartList.osize}</span>
                         </div>
                     </div>
                     <div class="subdiv">
@@ -79,7 +81,7 @@
                         <div class="num">
                             <div class="updown">
                                 <button type="button" name="minus_btn" class="minus_btn abutton" data-pcnt="${cartList.cid}">-</button>
-                                <input type="text" name="p_num" id="p_num" size="2" data-pId="${cartList.pid}" class="p_num" value="${cartList.pcnt}" readonly>                                
+                                <input type="text" name="p_num" id="p_num" size="2" data-ocode="${cartList.ocode}" class="p_num" value="${cartList.pcnt}" readonly>                                
                                 <button type="button" name="plus_btn" class="plus_btn abutton" data-pcnt="${cartList.cid}">+</button>
                             </div>
                         </div>
@@ -99,9 +101,7 @@
                 </c:choose>
         	    
     
-            <div class="right-align basketrowcmd">
-                <button type="button" class="selectDelete_btn abutton">선택상품삭제</button>
-            </div>
+       
     
             <div class="bigtext right-align sumcount" id="sum">
             	<input type="hidden" name="sum_p_num" id="sum_p_num" class="sum_p_num" value="${sum_amount}">${sum_amount}개
@@ -116,7 +116,7 @@
             </div>
             </div>
         </form>
-        
+        </div>
 
 <script type="text/javascript">
 
@@ -125,7 +125,7 @@
 		/* 수량 변경 */
 		/* + */
 		$(".plus_btn").on("click", function() {
-			var pid = $(this).closest("div").find("input").attr("data-pId");
+			var ocode = $(this).closest("div").find("input").attr("data-ocode");
 			
 			var p_num = $(this).closest("div").find("input").val();
 			$(this).closest("div").find("input").val(++p_num);
@@ -134,7 +134,7 @@
 				url : "/cart/update",
 				type : "post",
 				data : {
-					pid : pid,
+					ocode : ocode,
 					pcnt : p_num
 				},
 				dataType : "text",
@@ -149,7 +149,7 @@
 		
 		/* - */
 		$(".minus_btn").on("click", function() {
-			var pid = $(this).closest("div").find("input").attr("data-pId");
+			var ocode = $(this).closest("div").find("input").attr("data-ocode");
 			var p_num = $(this).closest("div").find("input").val();
 			
 			if(p_num > 1){
@@ -159,7 +159,7 @@
 					url : "/cart/update",
 					type : "post",
 					data : {
-						pid : pid,
+						ocode : ocode,
 						pcnt : p_num
 					},
 					dataType : "text",

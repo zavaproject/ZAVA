@@ -57,20 +57,19 @@ public class CartController {
 	// 장바구니 추가
 	@ResponseBody
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public int insert(@RequestParam(value = "pid") String pid, CartVO vo, HttpSession session) {
+	public int insert(@RequestParam(value = "ocode") String ocode, @RequestParam(value = "pid") String pid, CartVO vo, HttpSession session) {
 		int result = 0;
 		
 		MemberVO member = (MemberVO) session.getAttribute("login");
-		
-		System.out.println(member);
 		
 		if(member != null) {
 			String mid = member.getMid();
 			
 			vo.setMid(mid);
 			vo.setPid(pid);
+			vo.setOcode(ocode);
 			
-			int count = cService.countCart(pid, mid); // 상품이 몇개 있는지 카운트
+			int count = cService.countCart(ocode, mid); // 상품이 몇개 있는지 카운트
 			
 			if(count == 0) {
 				cService.insert(vo);
@@ -92,6 +91,22 @@ public class CartController {
 		String mid = member.getMid();
 		
 		List<CartVO> cartList = cService.list(mid);
+		
+		for(int i = 0; i < cartList.size(); i++) {
+			System.out.println(cartList.get(i));
+			String ocode = cartList.get(i).getOcode();
+			OptionVO ovo = cService.cartOcode(ocode);
+			ProductVO pvo = cService.productCart(ovo.getPid());
+			List<String> files = cService.getfile(pvo.getPid());
+			String file = files.get(0);
+			cartList.get(i).setOcolor(ovo.getOcolor());
+			cartList.get(i).setOsize(ovo.getOsize());
+			cartList.get(i).setPname(pvo.getPname());
+			cartList.get(i).setPrice(pvo.getPrice());
+			cartList.get(i).setFilename(file);
+		
+			System.out.println(cartList.get(i));
+		}
 		
 		model.addAttribute("cartList", cartList);
 	}
@@ -125,7 +140,7 @@ public class CartController {
 	// 수량 변경
 	@ResponseBody
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt, @RequestParam(value = "pid") String pid, CartVO vo) {
+	public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt, @RequestParam(value = "ocode") String ocode, CartVO vo) {
 		
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		String mid = member.getMid();
@@ -133,7 +148,7 @@ public class CartController {
 		
 		if(member != null) {
 			vo.setMid(mid);
-			vo.setPid(pid);
+			vo.setPid(ocode);
 			vo.setPcnt(pcnt);
 		
 			cService.updateCart(vo);
