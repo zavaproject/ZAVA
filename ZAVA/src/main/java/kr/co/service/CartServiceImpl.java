@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.co.domain.CartVO;
+import kr.co.domain.OptionVO;
+import kr.co.domain.ProductVO;
 import kr.co.repository.CartDAO;
 
 @Service
@@ -28,9 +30,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public int countCart(String pid, String mid) {
+	public int countCart(String ocode, String mid) {
 		// TODO Auto-generated method stub
-		return cDao.countCart(pid, mid);
+		return cDao.countCart(ocode, mid);
 	}
 
 	@Override
@@ -55,6 +57,26 @@ public class CartServiceImpl implements CartService {
 	public CartVO checkCart(CartVO vo) {
 		// TODO Auto-generated method stub
 		return cDao.checkCart(vo);
+	}
+
+	@Override
+	public OptionVO cartOcode(String ocode) {
+		// TODO Auto-generated method stub
+		return cDao.cartOcode(ocode);
+	}
+
+	@Override
+	public ProductVO productCart(String pid) {
+		// TODO Auto-generated method stub
+		
+		
+		return cDao.productCart(pid);
+	}
+
+	@Override
+	public List<String> getfile(String pid) {
+		// TODO Auto-generated method stub
+		return cDao.getfile(pid);
 	}
 
 }

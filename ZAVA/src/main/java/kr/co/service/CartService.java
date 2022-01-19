@@ -3,6 +3,8 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.CartVO;
+import kr.co.domain.OptionVO;
+import kr.co.domain.ProductVO;
 
 public interface CartService {
 
@@ -11,7 +13,7 @@ public interface CartService {
 	
 	int sumMoney(String mid);
 
-	int countCart(String pid, String mid);
+	int countCart(String ocode, String mid);
 	
 	// 카트 수량 수정
 	int updateCart(CartVO vo);
@@ -24,5 +26,11 @@ public interface CartService {
 	
 	// 카트 확인
 	CartVO checkCart(CartVO vo);
+
+	OptionVO cartOcode(String ocode);
+
+	ProductVO productCart(String pid);
+
+	List<String> getfile(String pid);
 
 }
