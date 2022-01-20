@@ -13,7 +13,7 @@
 						<span></span>
 					</div>
 				</div>
-				<ul class="menu-list accordion accordiontop">
+				<ul class="menu-list accordion">
 					<li id="nav1" class="toggle accordion-toggle">
 					<span class="icon-plus"></span>
 					<a class="menu-link">MAN</a></li>
@@ -36,10 +36,17 @@
 						<li><a class="head" href="/product/list/3010/">GIRL</a></li>
 						<li><a class="head" href="/product/list/3020/">BOY</a></li>
 					</ul>
+					<li id="nav4" class="toggle accordion-toggle">
+					<span class="icon-plus"></span> 
+					<a class="menu-link">BEAUTY</a>
+					</li>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="#">MAKEUP</a></li>
+					</ul>
 				</ul>
 			</div>
 			<div style="float: left;">
-				<a href="/zava" class="zava"><img src="../../resources/img/ZAVA.png" alt="ZAVA"></a>	
+				<a href="/zava" class="zava"><img src="../../../resources/img/ZAVA.png" alt="ZAVA"></a>	
 			</div>
 		</div>
 		<div class="right-menu">
