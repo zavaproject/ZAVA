@@ -9,6 +9,10 @@ public class HomeController {
 
 	@RequestMapping(value = "/zava")
 	public void home() {
-		
+	}
+	
+	@RequestMapping(value = "/")
+	public String home2() {
+		return "redirect:/zava";
 	}
 }
