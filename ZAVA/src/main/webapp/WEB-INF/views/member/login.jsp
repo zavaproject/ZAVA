@@ -42,7 +42,7 @@
 						</h2> <strong>ZAVA</strong> 회원으로 가입하시면 빠르고 편리하게 이용하실 수 있습니다.<br>
 						아직 <strong>ZAVA</strong> 의 회원이 아니시라면 간편하게 가입하실 수 있습니다.
 						<div>
-							<button class="insert"><strong>계정 만들기</strong></button>
+							<button class="insert button"><strong>계정 만들기</strong></button>
 						</div>
 					</th>
 				</tr>
