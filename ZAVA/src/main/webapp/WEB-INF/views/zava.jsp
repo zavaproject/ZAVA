@@ -116,7 +116,7 @@ $(document).ready(function(){
 	     slidesToShow: 1,     // 보여지는 슬라이드 개수
 	     slidesToScroll: 1,   // 넘어가는 슬라이드 개수
 	     dots: true,           // 점 네비게이션 표시
-	     autoplay : true,s
+	     autoplay : true,
 		 autoplaySpeed: 4000,
 		 prevArrow : "<button class='slick-prev' style='position: absolute; z-index: 2;'></button>",
 		 nextArrow : "<button class='slick-next' style='position: absolute; z-index: 2;'></button>"
