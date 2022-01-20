@@ -43,8 +43,8 @@
 					</tbody>
 				</table>
 				<c:if test="${login.mcode == 0}">
-					<button>수정</button>
-					<button>계정 삭제</button>
+					<button class="button">수정</button>
+					<button class="button">계정 삭제</button>
 					<form></form>
 				</c:if>
 			</section>

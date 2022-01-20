@@ -1,14 +1,54 @@
 body {
 	font-family: Arial;
 	display: grid;
-	grid-template-areas: "header" "section" "footer";
-	grid-template-rows: 80px 1fr 80px;
-	grid-template-columns: 100vw;
+	grid-template-areas:     
+	"header header header"
+    "nav section aside"
+    "footer footer footer";
+	grid-template-rows: 100px 1fr 80px;
+	grid-template-columns: 15% 1fr 15%;
 	grid-gap: 5px;
-	height: 100vh;
+	height: 100%;
 	margin: 5px;
 	overflow:scroll;
 	-ms-overflow-style: none;
+}
+
+header {
+    position: fixed;
+	font-family: 'Nanum Gothic', sans-serif;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100px;
+	padding: 1rem;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	grid-area: header;
+    z-index: 9;
+  	box-shadow: 3px 3px 3px #666666;
+}
+nav {
+	grid-area: nav;
+}
+section {
+	grid-area: section;
+}
+aside {
+	grid-area: aside;
+}
+footer {
+    position: fixed;
+	grid-area: footer;
+	font-family: 'Nanum Gothic', sans-serif;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 80px;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
 }
 
 body::-webkit-scrollbar { 
@@ -17,7 +57,6 @@ body::-webkit-scrollbar {
 }
 
 #BT {
-	background-color: #999999;
 	margin-top: 16px;
 	border: none;
 	color: white;
@@ -26,22 +65,6 @@ body::-webkit-scrollbar {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-}
-
-header {
-	font-family: 'Nanum Gothic', sans-serif;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 80px;
-	padding: 1rem;
-	font-weight: bold;
-	display: flex;
-	justify-content: space-between;
-	grid-area: header;
-	background-color: #999999;
-    z-index: 9;
 }
 
 .inline-block {
@@ -89,27 +112,6 @@ ul {
 	list-style: none;
 }
 
-section {
-	grid-area: section;
-}
-
-footer {
-	grid-area: footer;
-	background-color: #999999;
-	font-family: 'Nanum Gothic', sans-serif;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 80px;
-	font-weight: bold;
-	display: flex;
-	justify-content: space-between;
-}
-
-header, nav, section, aside, footer {
-	padding: 5px;
-}
-
 p {
 	width: 100px;
 	margin: 0 auto;
@@ -121,8 +123,8 @@ input {
         border-collapse:collapse;
 }
 
-input[type=submit], button {
-	  border: solid 1px #d7d7d7;
+input[type=submit], .button {
+	border: solid 1px #d7d7d7;
   border-radius: 0.2rem;
   color: #7d7d7d;
   text-decoration: none;
@@ -132,7 +134,7 @@ input[type=submit], button {
   box-shadow: 3px 3px 3px #666666;
 }
 
-input[type=submit]:hover, button:hover {
+input[type=submit]:hover, .button:hover {
   padding: 0.5rem 0.9rem;
   border: solid 1px #d7d7d7;
   box-shadow: 3px 3px 3px #666666 inset;
@@ -181,7 +183,6 @@ tr>td {
 }
 
 .dropbtn {
-  background-color: #999;
   color: #000;
   padding: 10px;
   border: none;
@@ -214,10 +215,6 @@ tr>td {
 
 .dropdown:hover .dropdown-content {
 	display: block;
-}
-
-.dropdown:hover .dropbtn {
-	background-color: #999;
 }
 
 #menu-wrapper {
@@ -273,6 +270,7 @@ tr>td {
     padding-bottom: 20px;
     z-index: 9;
 }
+
 #menu-container .menu-list {
     padding-left: 0;
     display: block;
@@ -285,7 +283,7 @@ tr>td {
     overflow-y: auto;
     overflow-x: hidden;
     left: -100%;
-    z-index: 9;
+    z-index: 100;
 }
 
 #menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
@@ -297,6 +295,11 @@ tr>td {
 
 #menu-container .menu-list li:first-of-type {
     border-top: 0;
+}
+
+.accordiontop {
+	top: 100px;
+	z-index: 110;
 }
 
 .accordion-toggle, .accordion-content {
