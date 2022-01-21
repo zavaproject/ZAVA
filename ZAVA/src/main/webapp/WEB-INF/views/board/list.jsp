@@ -35,7 +35,7 @@
 				<tr>
 					<td style="text-align: left;">${vo.bno}</td>
 					<td style="text-align: left;"><a href="/board/read/${vo.bno}/${pt.curPage}">${vo.title}</a></td>
-					<td style="text-align: left;">${vo.writer}</td>
+					<td style="text-align: left;">${vo.mid}</td>
 					<td style="text-align: left;">${vo.updatedate}</td>
 					<td style="text-align: left;">${vo.viewcnt}</td>
 				</tr>

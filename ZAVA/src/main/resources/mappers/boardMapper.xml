@@ -10,7 +10,7 @@
 
 	<update id="update">
 		UPDATE zava_board SET 
-		title = #{title}, writer = #{writer}, content = #{content}, updatedate=SYSDATE 	
+		title = #{title}, mid = #{mid}, content = #{content}, updatedate=SYSDATE 	
 		WHERE bno = #{bno}
 	
 	</update>
@@ -34,9 +34,9 @@
 
 	<insert id="insert">
 		INSERT INTO zava_board 
-		(bno, title, content, writer) 
+		(bno, title, content, mid) 
 		VALUES 
-		((SELECT NVL2(MAX(bno), MAX(bno)+1, 1) FROM zava_board),	#{title}, #{content}, #{writer})
+		((SELECT NVL2(MAX(bno), MAX(bno)+1, 1) FROM zava_board), #{title}, #{content}, #{mid})
 		
 		<selectKey order="AFTER" keyProperty="bno" resultType="Integer">
 			SELECT MAX(bno) FROM zava_board
