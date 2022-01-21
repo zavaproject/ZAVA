@@ -12,11 +12,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/resources/js/test.js" type="text/javascript"></script>
   <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+
+ <style type="text/css">
+	#replyContainer{
+		margin-top: 20px;
+		display: none;
+	}
+	
+	.uploadedItemForReadP{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	}
+	
+	.notice_table{
+	border:0;
+	}
+</style>
+
 </head>
 <body>
-<jsp:include page="../member/header.jsp"/>
-<section>        
+<jsp:include page="../header.jsp"/>
+   <section>        
 
  
 <div class="container">
@@ -37,7 +56,7 @@
    </tr>
 	<tr>
 		<th scope="row">POSTED BY</th>
-          <td style="text-align: left;"> ${vo.mid} </td>
+          <td style="text-align: left;"> ${vo.writer} </td>
    </tr>
    <tr>
 		<th scope="row">DATE</th>
@@ -53,7 +72,7 @@
    <hr>
 <textarea class="form-control" rows="15" maxlength="1000" name="content" disabled>${vo.content}</textarea> 
  <br>
-   <button class="updateui">수정</button> 
+   <button class="updateui">수정 화면</button> 
 <button class="delete">삭제</button> 
 <button>목록</button> 
 </div>

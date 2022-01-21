@@ -12,7 +12,7 @@ public class BoardVO implements Serializable{
 	private int bno;
 	private String title;
 	private String content;
-	private String mid;
+	private String writer;
 	private String regdate;
 	private String updatedate;
 	private int viewcnt;
@@ -25,22 +25,22 @@ public class BoardVO implements Serializable{
 	
 	
 
-	public BoardVO(String title, String content, String mid) {
+	public BoardVO(String title, String content, String writer) {
 		super();
 		this.title = title;
 		this.content = content;
-		this.mid = mid;
+		this.writer = writer;
 	}
 
 
 
-	public BoardVO(int bno, String title, String content, String mid, 
+	public BoardVO(int bno, String title, String content, String writer, 
 			String regdate, String updatedate, int viewcnt) {
 		super();
 		this.bno = bno;
 		this.title = title;
 		this.content = content;
-		this.mid = mid;
+		this.writer = writer;
 		this.regdate = regdate;
 		this.updatedate = updatedate;
 		this.viewcnt = viewcnt;
@@ -50,13 +50,13 @@ public class BoardVO implements Serializable{
 	
 	
 
-	public BoardVO(int bno, String title, String content, String mid, String regdate, String updatedate, int viewcnt,
+	public BoardVO(int bno, String title, String content, String writer, String regdate, String updatedate, int viewcnt,
 			String[] insertfiles, String[] deletefiles) {
 		super();
 		this.bno = bno;
 		this.title = title;
 		this.content = content;
-		this.mid = mid;
+		this.writer = writer;
 		this.regdate = regdate;
 		this.updatedate = updatedate;
 		this.viewcnt = viewcnt;
@@ -128,14 +128,14 @@ public class BoardVO implements Serializable{
 
 
 
-	public String getMid() {
-		return mid;
+	public String getWriter() {
+		return writer;
 	}
 
 
 
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
 
@@ -184,7 +184,7 @@ public class BoardVO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", mid=" + mid + ", updatedate=" + updatedate + "]";
+		return "BoardVO [bno=" + bno + ", title=" + title + ", writer=" + writer + ", updatedate=" + updatedate + "]";
 	}
 
 

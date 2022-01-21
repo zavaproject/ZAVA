@@ -80,7 +80,7 @@
 					<c:forEach items="${orderList}" var="orderList">
 						<li>
 							<div>
-								<p><span>주문번호</span><a href="/order/orderList?oid=${orderList.oid}">${orderList.oid}</a></p>
+								<p><span>주문번호</span><a href="/cart/orderRead?oid=${orderList.oid}">${orderList.oid}</a></p>
 								<p><span>제품명</span>${orderList.pid}</p>
 								<p><span>회원ID</span>${orderList.mid}</p>
 								<p><span>주문날짜</span>${orderList.odate}</p>

@@ -21,7 +21,7 @@
  
 </head>
 <body>
-<jsp:include page="../member/header.jsp"/>
+<jsp:include page="../header.jsp"/>
    <section>
 <c:if test="${category == 1010}">
 <h1>MAN TOP PRODUCT</h1>

@@ -15,11 +15,21 @@
 	<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../member/header.jsp"/>
+<jsp:include page="../header.jsp"/>
    <section>
+	<a href="/board/insertui">게시글 작성 화면</a>
+	<c:choose>
+		<c:when test="${not empty login}">
+			${login.mname}님, 환영합니다.
+			<a href="/member/logout">로그아웃</a>
+		</c:when>
+		<c:when test="${empty login}">
+			<a href="/member/loginGet">로그인</a>
+		</c:when>
+	
+	</c:choose>
 	<div class="container">
  <h2><font color="#555555">NOTICE</font> </h2>
-	<a style="float: right" href="/board/insertui">공지사항 작성</a>
 	<table class="table">
 		<thead>
 			<tr>
@@ -35,7 +45,7 @@
 				<tr>
 					<td style="text-align: left;">${vo.bno}</td>
 					<td style="text-align: left;"><a href="/board/read/${vo.bno}/${pt.curPage}">${vo.title}</a></td>
-					<td style="text-align: left;">${vo.mid}</td>
+					<td style="text-align: left;">${vo.writer}</td>
 					<td style="text-align: left;">${vo.updatedate}</td>
 					<td style="text-align: left;">${vo.viewcnt}</td>
 				</tr>

@@ -28,8 +28,7 @@
   
 </head>
 <body>
-  <jsp:include page="../member/header.jsp"/>
-   <section>
+
 <h1>공지사항 등록</h1>
 
 <form action="/board/insert" method="post">
@@ -40,7 +39,7 @@
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">작성자</label>
-  <input class="form-control" name="mid" id="exampleFormControlInput1" value="${login.mid}">
+  <input class="form-control" name="writer" id="exampleFormControlInput1" value="${login.mid}">
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">내용</label>
@@ -72,9 +71,9 @@
 				return;
 			}
 			
-			var mid = $("[name='mid']").val();
-			if(mid == ''){
-				$("[name='mid']").focus();
+			var writer = $("[name='writer']").val();
+			if(writer == ''){
+				$("[name='writer']").focus();
 				return;
 			}
 			
@@ -98,8 +97,7 @@
 
 
 
-</section>
-   <jsp:include page="../footer.jsp" />
+
 
 </body>
 </html>

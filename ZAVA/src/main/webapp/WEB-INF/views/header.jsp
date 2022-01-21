@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
+
 <header class="inline-block fixed">
 	<div class="layout-header__main">
 		<div class="left-menu">
-			<div id="menu-container" style="float: left;">
+			<div id="menu-container">
 				<div id="menu-wrapper">
 					<div id="hamburger-menu">
 						<span></span>
@@ -13,7 +13,7 @@
 						<span></span>
 					</div>
 				</div>
-				<ul class="menu-list accordion accordiontop">
+				<ul class="menu-list accordion">
 					<li id="nav1" class="toggle accordion-toggle">
 					<span class="icon-plus"></span>
 					<a class="menu-link">MAN</a></li>
@@ -36,15 +36,20 @@
 						<li><a class="head" href="/product/list/3010/">GIRL</a></li>
 						<li><a class="head" href="/product/list/3020/">BOY</a></li>
 					</ul>
+					<li id="nav4" class="toggle accordion-toggle">
+					<span class="icon-plus"></span> 
+					<a class="menu-link">BEAUTY</a>
+					</li>
+					<ul class="menu-submenu accordion-content">
+						<li><a class="head" href="#">MAKEUP</a></li>
+					</ul>
 				</ul>
 			</div>
-			<div style="float: left;">
-				<a href="/zava" class="zava"><img src="../../resources/img/ZAVA.png" alt="ZAVA"></a>	
-			</div>
 		</div>
+		<a href="/zava" class="zava">ZAVA</a>
 		<div class="right-menu">
-			<a href="/product/searchui">검색</a>
-				
+			<a href="#">검색</a>
+			
 			<c:choose>
 				<c:when test="${empty login}">
 					<a href="/member/login">로그인</a>
@@ -68,7 +73,7 @@
 					</div>
 				</div>
 			</c:if>
-			<a href="/board/list/1">공지사항</a>
+			<a href="#">도움말</a>
 			<a href="/cart/list">바스켓백</a>
 		</div>
 	</div>

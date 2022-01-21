@@ -93,16 +93,4 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
 		sqlSession.delete(NS+".delete", pid);
 	}
-	
-	@Override
-	public List<ProductVO> search(String pname) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(NS+".search", pname);
-	}
-	
-	@Override
-	public List<String> getFile(String pid) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(NS+".getFile", pid);
-	}
 }

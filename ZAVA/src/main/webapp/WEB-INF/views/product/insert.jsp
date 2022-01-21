@@ -28,7 +28,7 @@
  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <jsp:include page="../member/header.jsp"/>
+  <jsp:include page="../header.jsp"/>
    <section>
 <div class="container">
 	<h1>제품등록</h1>

@@ -12,8 +12,6 @@ public interface OrderService {
 
 	void orderDetail(OrderDetailVO orderDetail) throws Exception;
 
-	void cartDelete(String mid) throws Exception;
-
 	List<OrderVO> orderList(OrderVO order) throws Exception;
 
 	List<OrderListVO> orderRead(OrderVO order) throws Exception;

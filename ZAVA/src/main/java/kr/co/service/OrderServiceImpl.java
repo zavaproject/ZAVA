@@ -28,11 +28,6 @@ public class OrderServiceImpl implements OrderService {
 
 	}
 
-	@Override
-	public void cartDelete(String mid) throws Exception {
-		oDAO.cartDelete(mid);
-
-	}
 
 	@Override
 	public List<OrderVO> orderList(OrderVO order) throws Exception {

@@ -17,7 +17,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Inject
 	private SqlSession sqlSession;
 
-	private String NS = "kr.co.order";
+	private String NS = "kr.co.cart";
 
 	@Override
 	public void order(OrderVO order) throws Exception {
