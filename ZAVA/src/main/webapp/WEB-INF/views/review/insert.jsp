@@ -65,6 +65,8 @@
   
 </head>
 <body>
+<jsp:include page="../member/header.jsp"/>
+   <section>
 <form action="/review/insert" method="post"><br>
 <input type="hidden" name="rate" id="rate" value="0"/>
 <p class="title_star">구매상품 평점과 리뷰를 남겨주세요.</p>
@@ -109,6 +111,7 @@
 
 
 
-</script>
+</section>
+   <jsp:include page="../footer.jsp" />
 </body>
 </html>

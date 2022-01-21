@@ -34,7 +34,7 @@
 
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../member/header.jsp"/>
    <section>        
 
  

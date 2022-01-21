@@ -19,7 +19,7 @@
 <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
+<jsp:include page="../member/header.jsp"/>
    <section>
 
 <c:if test="${vo.category == 1010}">

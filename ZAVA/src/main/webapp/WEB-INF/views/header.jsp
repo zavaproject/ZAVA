@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="right-menu">
-			<a href="#">검색</a>
+			<a href="/product/searchui">검색</a>
 				
 			<c:choose>
 				<c:when test="${empty login}">
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 			</c:if>
-			<a href="#">도움말</a>
+			<a href="/board/list/1">공지사항</a>
 			<a href="/cart/list">바스켓백</a>
 		</div>
 	</div>

@@ -18,6 +18,9 @@
  
 </head>
 <body>
+ <jsp:include page="../member/header.jsp"/>
+   <section>
+
 <form action="/review/update/${curPage}" method="post"><br>
 <p class="title_star">수정할 상품후기를 입력해주세요</p>
 평점 : <select name="rating" class="rating">
@@ -35,5 +38,8 @@
 <textarea rows="5" name="content" maxlength="1000">${vo.content}</textarea><br>
 <input type="submit" value = "후기수정완료" class="btn btn-info btn-sm">
 </form>
+
+  </section>
+   <jsp:include page="../footer.jsp" />
 </body>
 </html>

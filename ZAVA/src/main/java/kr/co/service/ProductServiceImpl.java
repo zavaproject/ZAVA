@@ -99,4 +99,20 @@ public class ProductServiceImpl implements ProductService {
 		pDao.odelete(pid);
 		pDao.delete(pid);
 	}
+	
+	@Override
+	public List<ProductVO> search(String pname) {
+		// TODO Auto-generated method stub
+		return pDao.search(pname);
+	}
+	
+	@Override
+	public List<String> getFile(String pid) {
+		// TODO Auto-generated method stub
+		return pDao.getFile(pid);
+	}
+	
+	
+	
+	
 }
