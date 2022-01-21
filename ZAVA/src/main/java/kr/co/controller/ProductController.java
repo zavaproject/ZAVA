@@ -1,6 +1,8 @@
 package kr.co.controller;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +31,32 @@ public class ProductController {
 	@Inject
 	private AttachService aService;
 	
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(String pname, Model model) {
+		List<ProductVO> pList = pService.search(pname);
+		if(pList.size()!=0) {
+		for(int i=0; i<pList.size(); i++) {
+			String pid = pList.get(i).getPid();
+			List<String> files = pService.getFile(pid);
+			if(files.size()!=0) {
+			String file = files.get(0);
+			pList.get(i).setFilename(file);
+			}
+		}
+		}
+		
+		model.addAttribute("pList", pList);
+		
+		return "product/search";
+	}
+	
+	
+	  @RequestMapping(value = "/searchui", method = RequestMethod.GET) 
+	  public void searchUI() {
+	  
+	  }
+	 
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public void insertUI() {

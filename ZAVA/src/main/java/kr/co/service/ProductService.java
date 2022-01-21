@@ -28,5 +28,8 @@ public interface ProductService {
 
 	ProductVO idcheck(String pid);
 
+	List<ProductVO> search(String pname);
+
+	List<String> getFile(String pid);
 
 }

@@ -32,7 +32,8 @@
   
 </head>
 <body>
-
+  <jsp:include page="../member/header.jsp"/>
+   <section>
 <h1>글 수정 화면</h1>
 
 <form action="/board/update/${vo.bno}/${curPage}" method="post">
@@ -90,7 +91,8 @@
 
 
 </script>
-
+</section>
+   <jsp:include page="../footer.jsp" />
 
 
 

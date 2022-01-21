@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품후기목록</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,6 +18,8 @@
   <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <jsp:include page="../member/header.jsp"/>
+   <section>
 <h3>상품후기</h3>
 
 <div class="table-responsive" style="width:70%; margin-left: 350px">
@@ -48,6 +50,7 @@
         
         <jsp:include page="../member/page.jsp"/>
      </div>       
-
+</section>
+   <jsp:include page="../footer.jsp" />
 </body>
 </html>

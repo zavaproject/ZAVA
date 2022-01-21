@@ -16,7 +16,7 @@
  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
- <jsp:include page="../header.jsp"/>
+ <jsp:include page="../member/header.jsp"/>
    <section>
    후기상품 : <input name="pid" value="${vo.pid}" readonly> <br>
    작성자 : <input name="mid" value="${vo.mid}" readonly> <br>

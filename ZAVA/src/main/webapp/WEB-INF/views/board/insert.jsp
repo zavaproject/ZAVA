@@ -28,7 +28,8 @@
   
 </head>
 <body>
-
+  <jsp:include page="../member/header.jsp"/>
+   <section>
 <h1>공지사항 등록</h1>
 
 <form action="/board/insert" method="post">
@@ -97,7 +98,8 @@
 
 
 
-
+</section>
+   <jsp:include page="../footer.jsp" />
 
 </body>
 </html>

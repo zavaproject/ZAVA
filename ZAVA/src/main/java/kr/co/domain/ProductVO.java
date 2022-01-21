@@ -17,6 +17,7 @@ private int readcnt;
 private String mid;
 private String[] insertfiles;
 private String[] deletefiles;
+private String filename;
 
 public ProductVO() {}
 
@@ -50,6 +51,13 @@ public ProductVO(String pid, String pname, String descript, int category, int pr
 	this.deletefiles = deletefiles;
 }
 
+public String getFilename() {
+	return filename;
+}
+
+public void setFilename(String filename) {
+	this.filename = filename;
+}
 
 public String[] getInsertfiles() {
 	return insertfiles;
