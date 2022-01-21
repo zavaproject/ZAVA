@@ -6,34 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 수정</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="/resources/js/test.js" type="text/javascript"></script>
-  <style type="text/css">
-  	.fileDrop{
-  		width: 100%;
-  		height: 150px;
-  		border: 1px solid red;
-  		margin-bottom: 20px;
-  	}
-  	
-  	.uploadedItemP{
-  		overflow: hidden;
-  		white-space: nowrap;
-  		text-overflow: ellipsis
-  	}
-  
-  
-  </style>
-  
+  <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <jsp:include page="../member/header.jsp"/>
    <section>
+   
 <h1>글 수정 화면</h1>
 
 <form action="/board/update/${vo.bno}/${curPage}" method="post">
@@ -44,7 +28,7 @@
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">작성자</label>
-  <input class="form-control" name="writer" id="exampleFormControlInput1" value="${vo.writer}">
+  <input class="form-control" name="mid" id="exampleFormControlInput1" value="${vo.mid}">
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">내용</label>
@@ -70,9 +54,9 @@
 				return;
 			}
 			
-			var writer = $("[name='writer']").val();
-			if(writer == ''){
-				$("[name='writer']").focus();
+			var mid = $("[name='mid']").val();
+			if(mid == ''){
+				$("[name='mid']").focus();
 				return;
 			}
 			
@@ -93,9 +77,5 @@
 </script>
 </section>
    <jsp:include page="../footer.jsp" />
-
-
-
-
 </body>
 </html>
