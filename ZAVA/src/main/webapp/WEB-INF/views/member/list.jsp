@@ -16,7 +16,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
 <title>고객 목록</title>
 </head>
 <body>

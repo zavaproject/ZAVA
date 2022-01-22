@@ -26,7 +26,7 @@
 		<table class="login">
 			<thead>
 				<tr>
-					<th style="border: none;">
+					<th style="width: 50%">
 						<h2>
 							<span>로그인</span>
 						</h2>

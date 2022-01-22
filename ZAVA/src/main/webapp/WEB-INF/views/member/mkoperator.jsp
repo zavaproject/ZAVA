@@ -22,8 +22,8 @@
 	
 <form action="/member/mkoperator" method="post" id="insert">
 <input name="mid" placeholder="아이디"><button id="idcheck" class="button">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
-<input name="mpw" type="password" placeholder="비밀번호" value="123"><br>
-<input name="mname" placeholder="이름" value="operator"><br>
+<input name="mpw" type="password" placeholder="비밀번호"><br>
+<input name="mname" placeholder="이름"><br>
 
 <div class="radiotoggle">
 	성별
@@ -38,14 +38,14 @@
 </div>
 
 <br>
-<input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호" value="010-9999-9999"/><br>
-<input name="memail" type="email" placeholder="이메일" value="operator@gmail.com"><br>
+<input type="tel" name="mphonenumber" id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="전화번호"/><br>
+<input name="memail" type="email" placeholder="이메일"><br>
 
-<input name="postcode" type="text" id="postcode" placeholder="우편번호" readonly value="13494">
+<input name="postcode" type="text" id="postcode" placeholder="우편번호" readonly>
 <input type="submit" onclick="execPostcode()" value="우편번호 찾기"><br>
-<input name="address" type="text" style="width: 365px;" id="address" placeholder="주소" readonly value="경기 성남시 분당구 판교역로 235"><br>
-<input name="extraAddress" type="text" style="width: 365px;" id="extraAddress" placeholder="참고항목" readonly value=" (삼평동)"><br>
-<input name="detailAddress" type="text" style="width: 365px;" id="detailAddress" placeholder="상세주소" value="101호">
+<input name="address" type="text" style="width: 365px;" id="address" placeholder="주소" readonly><br>
+<input name="extraAddress" type="text" style="width: 365px;" id="extraAddress" placeholder="참고항목" readonly><br>
+<input name="detailAddress" type="text" style="width: 365px;" id="detailAddress" placeholder="상세주소">
 
 <br>
 <input type="submit" value="회원 등록">
