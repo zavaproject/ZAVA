@@ -85,18 +85,35 @@ body::-webkit-scrollbar {
 	font-size: 3em;
 }
 
-
-
-p, a {
+.lmenu {
 	cursor: pointer;
-	color: black;
+	padding: 5px;
+	color: #000000;
 	text-decoration: none;
 }
 
-a:hover {
+.lmenu:hover {
 	cursor: pointer;
-	color: #666666;
+	padding: 5px;
+	color: #808080;
 	text-decoration: none;
+	border-radius: 5px;
+}
+
+.rmenu {
+	cursor: pointer;
+	padding: 5px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.rmenu:hover {
+	cursor: pointer;
+	padding: 5px;
+	color: #ffffff;
+	background-color: #000000;
+	text-decoration: none;
+	border-radius: 5px;
 }
 
 .menu .hide {
@@ -141,19 +158,27 @@ input[type=submit]:hover, .button:hover {
   
 }
 
+
+
 #table {
 	margin-left: auto;
 	margin-right: auto;
-	border-collapse: collapse;
-}
-
-#table, #table td, #table th {
-	border-collapse: collapse;
-	border: 1px solid #3d3d3d;
-}
-
+  border-collapse: collapse;
+}  
 #table th {
-	font-weight: bolder; 
+  padding: 10px;
+  color: #666;
+  border-bottom: 3px solid #666;
+  text-align: left;
+}
+#table td {
+  color: #666;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#table tr:hover td {
+  color: #004;
 }
 
 tr>td {
@@ -161,8 +186,11 @@ tr>td {
 }
 
 #table a:hover {
-	color: #aaa;	
+	color: #aaa;
+	text-decoration: none;
 }
+
+
 
 .radiotoggle input[type=radio]{
     display: none;
@@ -176,10 +204,12 @@ tr>td {
 }
 
 .login {
+	border: none; 
     width:70%; 
     margin-left:15%; 
     margin-right:15%;
     text-align: left;
+	margin-top: 10%;
 }
 
 .dropbtn {
@@ -203,14 +233,15 @@ tr>td {
 }
 
 .dropdown-content a {
-  color: black;
+  color: #000;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
 .dropdown-content a:hover {
-	background-color: #999;
+	background-color: #000;
+	color: #ffffff;
 }
 
 .dropdown:hover .dropdown-content {
@@ -298,7 +329,7 @@ tr>td {
 }
 
 .accordiontop {
-	top: 100px;
+	top: 110px;
 	z-index: 110;
 }
 
@@ -335,7 +366,7 @@ tr>td {
 }
 
 .accordion-toggle.active-tab {	
-  background: #999;
+  background: #000;
   transition: all 0.3s ease;
 }
 
@@ -346,7 +377,7 @@ tr>td {
 
 .accordion-toggle a.active:after {
     transform: rotate(180deg);
-    background: #fff !important;
+    background: #fff	 !important;
     opacity: 0;
 }
 

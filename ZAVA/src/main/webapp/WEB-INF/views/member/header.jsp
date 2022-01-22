@@ -13,62 +13,54 @@
 						<span></span>
 					</div>
 				</div>
-				<ul class="menu-list accordion">
+				<ul class="menu-list accordion accordiontop">
 					<li id="nav1" class="toggle accordion-toggle">
 					<span class="icon-plus"></span>
-					<a class="menu-link">MAN</a></li>
+					<a class="menu-link lmenu">MAN</a></li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/1010/">TOP</a></li>
-						<li><a class="head" href="/product/list/1020/">PANTS</a></li>
+						<li><a class="head lmenu" href="/product/list/1010/">TOP</a></li>
+						<li><a class="head lmenu" href="/product/list/1020/">PANTS</a></li>
 					</ul>
 					<li id="nav2" class="toggle accordion-toggle">
-					<spanclass="icon-plus"></span> 
-					<a class="menu-link">WOMAN</a>
+					<span class="icon-plus"></span> 
+					<a class="menu-link lmenu">WOMAN</a>
 					</li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/2010/">TOP</a></li>
-						<li><a class="head" href="/product/list/2020/">PANTS</a></li>
+						<li><a class="head lmenu" href="/product/list/2010/">TOP</a></li>
+						<li><a class="head lmenu" href="/product/list/2020/">PANTS</a></li>
 					</ul>
 					<li id="nav3" class="toggle accordion-toggle">
 					<span class="icon-plus"></span> 
-					<a class="menu-link">KIDS</a></li>
+					<a class="menu-link lmenu">KIDS</a></li>
 					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="/product/list/3010/">GIRL</a></li>
-						<li><a class="head" href="/product/list/3020/">BOY</a></li>
-					</ul>
-					<li id="nav4" class="toggle accordion-toggle">
-					<span class="icon-plus"></span> 
-					<a class="menu-link">BEAUTY</a>
-					</li>
-					<ul class="menu-submenu accordion-content">
-						<li><a class="head" href="#">MAKEUP</a></li>
+						<li><a class="head lmenu" href="/product/list/3010/">GIRL</a></li>
+						<li><a class="head lmenu" href="/product/list/3020/">BOY</a></li>
 					</ul>
 				</ul>
 			</div>
 			<div style="float: left;">
-				<a href="/zava" class="zava"><img src="../../../resources/img/ZAVA.png" alt="ZAVA"></a>	
+				<a href="/zava" class="zava"><img src="../../resources/img/ZAVA.png" alt="ZAVA"></a>	
 			</div>
 		</div>
 		<div class="right-menu">
-		
-			<a href="/product/searchui">검색</a>
+			<a href="/product/searchui"class="rmenu">검색</a>&emsp;
 				
 			<c:choose>
 				<c:when test="${empty login}">
-					<a href="/member/login">로그인</a>
+					<a href="/member/login"class="rmenu">로그인</a>&emsp;
 				</c:when>
 				<c:when test="${not empty login}">
-					<a href="/member/read/${login.mid}">${login.mid}</a>님환영합니다.
-					<a href="/member/logout">로그아웃</a>
+					<a href="/member/read/${login.mid}"class="rmenu">${login.mid}</a>님환영합니다.&emsp;
+					<a href="/member/logout"class="rmenu">로그아웃</a>&emsp;
 				</c:when>
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
-				<a href="/member/list/">고객목록</a>
-				<a href="/product/insert">제품등록</a>
+				<a href="/member/list/"class="rmenu">고객목록</a>&emsp;
+				<a href="/product/insert"class="rmenu">제품등록</a>&emsp;
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
-					<a class="dropbtn">CEOmenu</a>
+					<p class="dropbtn"class="rmenu">CEOmenu</p>
 					<div class="dropdown-content">
 						<a href="/member/mkoperator">Make Operator</a>
 						<a href="/member/dailysales">Daily Sales</a>
@@ -76,8 +68,8 @@
 					</div>
 				</div>
 			</c:if>
-			<a href="/board/list/1">공지사항</a>
-			<a href="/cart/list">바스켓백</a>
+			<a href="/board/list/1"class="rmenu">공지사항</a>&emsp;
+			<a href="/cart/list"class="rmenu">바스켓백</a>&emsp;
 		</div>
 	</div>
 </header>
@@ -104,5 +96,5 @@
 		    $(".menu-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
 		    $(".menu-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
 		  });
-		}); // jQuery load
+		});
 </script>

@@ -38,7 +38,7 @@ let barChartOne = new Chart(myChartOne,{
     data: {
         labels: ['나흘전', '사흘전', '이틀전', '하루전', '오늘'],
         datasets: [{
-            data: [1,2,3,4,5,6,7],
+            data: [1583000, 1288000, 1589000, 1448000, 1633000],
             backgroundColor: [
 				'rgba(255, 80, 80, 0.3)',
 				'rgba(255, 255, 0, 0.3)',
@@ -60,7 +60,7 @@ let barChartOne = new Chart(myChartOne,{
 		plugins:{
 			title:{
 				display:true,
-				text:'일별 매출 수',
+				text:'일별 매출액',
 		        color: '#911',
 				font:{
 					size:30,
@@ -100,11 +100,11 @@ let barChartOne = new Chart(myChartOne,{
 			},
 			y: {
 				ticks: {
-					stepSize: 1
+					stepSize: 500000
 				},
 				title:{
 			        display: true,
-					text:'매출수',
+					text:'매출 금액',
 			        color: '#911',
 			        font: {
 			        	family: 'Comic Sans MS',
