@@ -133,15 +133,15 @@ public class BoardController {
 		return "board/read";
 	}
 	
-//	@RequestMapping(value = "/read/{bno}", method = RequestMethod.GET)
-//	public String read(@PathVariable("bno") int bno, Model model) {
-//		BoardVO vo = bService.read(bno);
-//		
-//		model.addAttribute("vo", vo);
-//		model.addAttribute("curPage", 1);
-//		
-//		return "board/read";
-//	}
+	@RequestMapping(value = "/read/{bno}", method = RequestMethod.GET)
+	public String read(@PathVariable("bno") int bno, Model model) {
+		BoardVO vo = bService.read(bno);
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("curPage", 1);
+		
+		return "board/read";
+	}
 	
 	
 	

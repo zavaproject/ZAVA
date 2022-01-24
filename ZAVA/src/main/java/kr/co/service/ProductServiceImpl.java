@@ -59,6 +59,7 @@ public class ProductServiceImpl implements ProductService {
 		int amount = pDao.getAmount(category);
 		
 		pt.setAmount(amount);
+		pt.setPerPage(12);	
 		List<ProductVO> list = pDao.curlist(pt,category);
 		pt.setList(list);
 		return pt;

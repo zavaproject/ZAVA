@@ -24,7 +24,7 @@
 	<section>
 <form action="/member/insert" method="post" id="insert">
 <input name="mid" placeholder="아이디"><button id="idcheck" class="button">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>
-<input name="mpw" type="password" placeholder="비밀번호""><br>
+<input name="mpw" type="password" placeholder="비밀번호"><br>
 <input name="mname" placeholder="이름"><br>
 
 <div class="radiotoggle">

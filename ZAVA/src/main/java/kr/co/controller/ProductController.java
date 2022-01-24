@@ -62,7 +62,7 @@ public class ProductController {
 	  }
 	 
 	
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public void insertUI() {
 		
 	}
