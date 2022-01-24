@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import kr.co.domain.CartVO;
 import kr.co.domain.OptionVO;
+import kr.co.domain.OrderDetailVO;
+import kr.co.domain.OrderListVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.ProductVO;
 import kr.co.repository.CartDAO;
 
@@ -16,6 +19,7 @@ public class CartServiceImpl implements CartService {
 	
 	@Inject
 	private CartDAO cDao;
+	
 
 	@Override
 	public List<CartVO> list(String mid) {
@@ -79,4 +83,36 @@ public class CartServiceImpl implements CartService {
 		return cDao.getfile(pid);
 	}
 
+		
+	//order=============================>
+	
+	@Override
+	public void order(OrderVO order) throws Exception {
+		cDao.order(order);
+	}
+
+	@Override
+	public void orderDetail(OrderDetailVO orderDetail) throws Exception {
+		cDao.orderDetail(orderDetail);
+
+	}
+
+	@Override
+	public List<OrderVO> orderList(OrderVO order) throws Exception {
+
+		return cDao.orderList(order);
+	}
+
+	@Override
+	public List<OrderListVO> orderRead(OrderVO order) throws Exception {
+		
+		return cDao.orderRead(order);
+	}
+
+	@Override
+	public void cartDataDelete(String mid) throws Exception {
+		
+		cDao.cartDataDelete(mid);
+	
+}
 }
