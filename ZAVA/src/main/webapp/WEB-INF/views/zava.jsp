@@ -92,7 +92,7 @@ height: 100%;
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="member/header.jsp" />
 <jsp:include page="nav.jsp"/>
 <section class="section">
 
