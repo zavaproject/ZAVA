@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -131,12 +135,72 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/read/{pid}",method = RequestMethod.GET)
-	public String read(@PathVariable("pid") String pid, Model model) {
+	public String read(@PathVariable("pid") String pid, Model model, HttpServletRequest request,HttpServletResponse response,HttpSession session) {
 		
 		ProductVO vo = pService.read(pid);
 		List<OptionVO> ovo = pService.oread(pid);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ovo", ovo);
+		
+		
+		
+        Cookie[] cookies = request.getCookies();
+        
+        // 비교하기 위해 새로운 쿠키
+        Cookie viewCookie = null;
+ 
+        // 쿠키가 있을 경우 
+        if (cookies != null && cookies.length > 0) 
+        {
+            for (int i = 0; i < cookies.length; i++)
+            {
+                // Cookie의 name이 cookie + reviewNo와 일치하는 쿠키를 viewCookie에 넣어줌 
+                if (cookies[i].getName().equals("cookie"+pid))
+                { 
+                    System.out.println("처음 쿠키가 생성한 뒤 들어옴.");
+                    viewCookie = cookies[i];
+                }
+            }
+        }
+        
+        if (pid != null) {
+            
+
+ 
+            // 만일 viewCookie가 null일 경우 쿠키를 생성해서 조회수 증가 로직을 처리함.
+            if (viewCookie == null) {
+                System.out.println("cookie 없음");
+                
+                // 쿠키 생성(이름, 값)
+                Cookie newCookie = new Cookie("cookie"+pid, "|" + pid + "|");
+                                
+                // 쿠키 추가
+                response.addCookie(newCookie);
+ 
+                // 쿠키를 추가 시키고 조회수 증가시킴
+                int result = pService.productcnt(pid);
+                
+                if(result>0) {
+                    System.out.println("조회수 증가");
+                }else {
+                    System.out.println("조회수 증가 에러");
+                }
+            }
+            // viewCookie가 null이 아닐경우 쿠키가 있으므로 조회수 증가 로직을 처리하지 않음.
+            else {
+                System.out.println("cookie 있음");
+                
+                // 쿠키 값 받아옴.
+                String value = viewCookie.getValue();
+                
+                System.out.println("cookie 값 : " + value);
+        
+            }
+ 
+            return "product/read";
+        }
+		
+
 		
 		return "product/read";
 	}

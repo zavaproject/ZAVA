@@ -16,7 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js?var=2"> </script>
- <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+
  <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
  
 </head>

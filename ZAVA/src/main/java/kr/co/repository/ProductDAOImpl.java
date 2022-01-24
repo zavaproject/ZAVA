@@ -67,6 +67,12 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 	
 	@Override
+	public int productcnt(String pid) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NS+".productcnt", pid);
+	}
+	
+	@Override
 	public List<OptionVO> oread(String pid) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(OS+".oread", pid);

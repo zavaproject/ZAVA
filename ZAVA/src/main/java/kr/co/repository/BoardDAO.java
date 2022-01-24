@@ -13,7 +13,7 @@ public interface BoardDAO {
 
 	BoardVO read(int bno);
 
-	void increaseViewcnt(int bno);
+	int increaseViewcnt(int bno);
 
 	int getAmount();
 

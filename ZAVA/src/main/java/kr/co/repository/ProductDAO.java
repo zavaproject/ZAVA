@@ -36,6 +36,8 @@ public interface ProductDAO {
 
 	List<String> getFile(String pid);
 
+	int productcnt(String pid);
+
 
 
 }
