@@ -53,10 +53,11 @@
    <hr>
 <textarea class="form-control" rows="15" maxlength="1000" name="content" disabled>${vo.content}</textarea> 
  <br>
-   <button class="updateui">수정</button> 
-<button class="delete">삭제</button> 
+ <button class="updateui">수정</button>
+ <button class="delete" name="fordelete">삭제</button>
 <button>목록</button> 
 </div>
+<form name="fordelete"></form>
 
 
 
@@ -81,7 +82,7 @@ $(document).ready(function(){
 	
 		
 	
-	$("button").eq(2).click(function() {
+	$("button").eq(1).click(function() {
 		location.assign("/board/list/${curPage}");
 	});
 });

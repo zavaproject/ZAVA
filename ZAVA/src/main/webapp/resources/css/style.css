@@ -377,7 +377,7 @@ tr>td {
 }
 
 .accordion-toggle.active-tab {	
-  background: #000;
+  background: #808080;
   transition: all 0.3s ease;
 }
 

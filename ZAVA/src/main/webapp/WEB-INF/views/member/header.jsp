@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="../../../resources/css/style.css?var=2" rel="stylesheet" type="text/css">
 <header class="inline-block fixed">
 	<div class="layout-header__main">
 		<div class="left-menu">
@@ -57,6 +57,7 @@
 			<c:if test="${login.mcode == 1}">
 				<a href="/member/list/"class="rmenu">고객목록</a>&emsp;
 				<a href="javascript:void(0)" class="rmenu" onClick="javascript:goPost()">제품등록</a>&emsp;
+				<a href="/admin/adminOrderList"class="rmenu">주문 전체 목록</a>&emsp;
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
