@@ -20,7 +20,7 @@
 <title>고객 목록</title>
 </head>
 <body>
-	<jsp:include page="../header.jsp"/>
+	<jsp:include page="../member/header.jsp" />
 	<section>
 		<h1>고객 목록</h1>
 		<table id="table">

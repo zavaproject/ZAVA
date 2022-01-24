@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../member/header.jsp" />
 	<section>
 		<div id="chart">
 			<canvas id="myChartOne" width="500" height="300"></canvas>
