@@ -47,9 +47,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO read(int bno) {
 		
-		bDao.increaseViewcnt(bno);
+		
 		
 		return bDao.read(bno);
+	}
+	@Override
+	public int increaseViewcnt(int bno) {
+		// TODO Auto-generated method stub
+		return bDao.increaseViewcnt(bno);
 	}
 
 	@Override

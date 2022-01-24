@@ -17,4 +17,6 @@ public interface BoardService {
 
 	void delete(int bno);
 
+	int increaseViewcnt(int bno);
+
 }

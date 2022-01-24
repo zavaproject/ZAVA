@@ -73,7 +73,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductVO read(String pid) {
 		// TODO Auto-generated method stub
+		
+		
 		return pDao.read(pid);
+	}
+	@Override
+	public int productcnt(String pid) {
+		// TODO Auto-generated method stub
+		return pDao.productcnt(pid);
 	}
 	
 	@Override

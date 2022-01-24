@@ -39,8 +39,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void increaseViewcnt(int bno) {
-		sqlSession.update(NS+".increaseViewcnt", bno);
+	public int increaseViewcnt(int bno) {
+		return sqlSession.update(NS+".increaseViewcnt", bno);
 		
 	}
 	

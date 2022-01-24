@@ -32,4 +32,6 @@ public interface ProductService {
 
 	List<String> getFile(String pid);
 
+	int productcnt(String pid);
+
 }
