@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.product">
+  
+  	<insert id="insert">
+  		INSERT INTO zava_product (pid,pname,descript,category,price,mid) 
+  		VALUES(#{pid},#{pname},#{descript},#{category},#{price},#{mid})
+  	</insert>
+  	<select id="idcheck" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE pid = #{pid}
+  	</select>
+  
+  
+  	<select id="list" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE category = #{category}
+  	</select>
+  
+  	<select id="read" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE pid = #{pid}
+  	</select>
+  	<update id="productcnt">
+  		UPDATE zava_product SET readcnt = readcnt + 1 WHERE pid = #{pid}
+  	</update>
+  	
+  	<update id="pupdate">
+  		UPDATE zava_product SET pname = #{pname}, price = #{price}, category = #{category},descript = #{descript},regdate = SYSDATE, mid = #{mid} WHERE pid = #{pid}
+  	</update>
+  	
+  	<delete id="delete">
+  		DELETE FROM zava_product WHERE pid = #{pid}
+  	</delete>
+  	
+  	<select id="pname" resultType="string">
+  		SELECT pname FROM zava_product WHERE pid = #{pid}
+  	</select>
+  	
+  	<select id="getAmount" resultType="Integer">
+  		SELECT COUNT(pid) FROM zava_product WHERE category = #{category}
+  	</select>
+  	
+  	<select id="curlist" resultType="kr.co.domain.ProductVO">
+  	SELECT * FROM zava_product WHERE category = #{category} ORDER BY pid DESC
+  	</select>
+  	
+  	<select id="search" resultType="kr.co.domain.ProductVO">
+  		SELECT * FROM zava_product WHERE UPPER(pname) LIKE '%'||UPPER(#{pname})||'%'
+  	</select>
+  	
+  	<select id="getFile" resultType="string">
+		SELECT filename FROM zava_p_attach WHERE pid=#{pid}
+	</select>
+  	
+  </mapper>
+  
+  
