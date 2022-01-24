@@ -43,5 +43,6 @@ public interface CartDAO {
 
 	void cartDataDelete(String mid) throws Exception;
 
+	void updateOstock(OptionVO option) throws Exception;
 
 }

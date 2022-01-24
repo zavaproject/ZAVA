@@ -61,7 +61,7 @@ public class CartController {
 			} else {
 				result = 2;
 			}
-		}
+		}		
 
 		return result;
 	}
@@ -146,7 +146,7 @@ public class CartController {
 	      model.addAttribute("cartList", cartList);
 	   }
 	
-	/* order================================================================= */
+
 
 	// 주문
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -171,7 +171,8 @@ public class CartController {
 		cService.orderDetail(orderDetail);
 		
 		cService.cartDataDelete(mid);
-
+		
+		
 		return "redirect:/cart/orderList";
 	}
 

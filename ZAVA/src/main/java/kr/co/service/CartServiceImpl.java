@@ -108,11 +108,19 @@ public class CartServiceImpl implements CartService {
 		
 		return cDao.orderRead(order);
 	}
-
+	//주문 후 카트 삭제
 	@Override
 	public void cartDataDelete(String mid) throws Exception {
 		
 		cDao.cartDataDelete(mid);
 	
-}
+	}
+		
+	//수량 조절
+	@Override 
+	public void updateOstock(OptionVO option) throws Exception {
+		cDao.updateOstock(option); 
+	}
+
+	
 }
