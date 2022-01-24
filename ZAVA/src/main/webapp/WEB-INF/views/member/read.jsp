@@ -15,7 +15,7 @@
 <link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<jsp:include page="../header.jsp"/>
+<jsp:include page="../member/header.jsp" />
 		<section>
 			<h1>고객정보</h1>
 				<table id="table">
