@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.domain.CartVO;
 import kr.co.domain.OptionVO;
+import kr.co.domain.OrderDetailVO;
+import kr.co.domain.OrderListVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.ProductVO;
 
 @Repository
@@ -83,6 +86,37 @@ public class CartDAOImpl implements CartDAO {
 	public List<String> getfile(String pid) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS+".getfile", pid);
+	}
+	
+	//order==================>
+	
+	@Override
+	public void order(OrderVO order) throws Exception {
+		sqlSession.insert(NS + ".order", order);
+
+	}
+
+	@Override
+	public void orderDetail(OrderDetailVO orderDetail) throws Exception {
+		sqlSession.insert(NS + ".orderDetail", orderDetail);
+
+	}
+
+	@Override
+	public List<OrderVO> orderList(OrderVO order) throws Exception {
+
+		return sqlSession.selectList(NS + ".orderList", order);
+	}
+
+	@Override
+	public List<OrderListVO> orderRead(OrderVO order) throws Exception {
+
+		return sqlSession.selectList(NS + ".orderRead", order);
+	}
+
+	@Override
+	public void cartDataDelete(String mid) throws Exception {
+		sqlSession.delete(NS + ".cartDataDelete", mid);
 	}
 
 

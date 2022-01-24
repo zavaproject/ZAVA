@@ -21,6 +21,9 @@
   	<select id="read" resultType="kr.co.domain.ProductVO">
   		SELECT * FROM zava_product WHERE pid = #{pid}
   	</select>
+  	<update id="productcnt">
+  		UPDATE zava_product SET readcnt = readcnt + 1 WHERE pid = #{pid}
+  	</update>
   	
   	<update id="pupdate">
   		UPDATE zava_product SET pname = #{pname}, price = #{price}, category = #{category},descript = #{descript},regdate = SYSDATE, mid = #{mid} WHERE pid = #{pid}

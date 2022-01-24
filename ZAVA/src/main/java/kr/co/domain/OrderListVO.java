@@ -2,6 +2,7 @@ package kr.co.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class OrderListVO implements Serializable {
 
@@ -10,11 +11,12 @@ public class OrderListVO implements Serializable {
 	private String pid;
 	private String mid;
 	private Date odate;
-	private int ostatus;
+	private String ostatus;
 	private int amount;
-	private String address1;
-	private String address2;
-	private String address3;
+	private String postcode;
+	private String address;
+	private String extraAddress;
+	private String detailAddress;
 	private String oname;
 	private String ophone;
 
@@ -24,41 +26,21 @@ public class OrderListVO implements Serializable {
 	private String pname;
 	private int price;
 
-	public OrderListVO() {
-	}
+	public OrderListVO() {}
 
-	public OrderListVO(String oid, String pid, String mid, Date odate, int ostatus, int amount, String address1,
-			String address2, String address3, String oname, String ophone, int oDid, int pcnt, String pname,
-			int price) {
-		super();
+	public OrderListVO(String oid, String pid, String mid, Date odate, String ostatus, int amount, String postcode,
+			String address, String extraAddress, String detailAddress, String oname, String ophone, int oDid, int pcnt,
+			String pname, int price) {
 		this.oid = oid;
 		this.pid = pid;
 		this.mid = mid;
 		this.odate = odate;
 		this.ostatus = ostatus;
 		this.amount = amount;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.address3 = address3;
-		this.oname = oname;
-		this.ophone = ophone;
-		this.oDid = oDid;
-		this.pcnt = pcnt;
-		this.pname = pname;
-		this.price = price;
-	}
-
-	public OrderListVO(String oid, String mid, Date odate, int ostatus, int amount, String address1, String address2,
-			String address3, String oname, String ophone, int oDid, int pcnt, String pname, int price) {
-		super();
-		this.oid = oid;
-		this.mid = mid;
-		this.odate = odate;
-		this.ostatus = ostatus;
-		this.amount = amount;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.address3 = address3;
+		this.postcode = postcode;
+		this.address = address;
+		this.extraAddress = extraAddress;
+		this.detailAddress = detailAddress;
 		this.oname = oname;
 		this.ophone = ophone;
 		this.oDid = oDid;
@@ -99,11 +81,11 @@ public class OrderListVO implements Serializable {
 		this.odate = odate;
 	}
 
-	public int getOstatus() {
+	public String getOstatus() {
 		return ostatus;
 	}
 
-	public void setOstatus(int ostatus) {
+	public void setOstatus(String ostatus) {
 		this.ostatus = ostatus;
 	}
 
@@ -115,28 +97,36 @@ public class OrderListVO implements Serializable {
 		this.amount = amount;
 	}
 
-	public String getAddress1() {
-		return address1;
+	public String getPostcode() {
+		return postcode;
 	}
 
-	public void setAddress1(String address1) {
-		this.address1 = address1;
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
 	}
 
-	public String getAddress2() {
-		return address2;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String getAddress3() {
-		return address3;
+	public String getExtraAddress() {
+		return extraAddress;
 	}
 
-	public void setAddress3(String address3) {
-		this.address3 = address3;
+	public void setExtraAddress(String extraAddress) {
+		this.extraAddress = extraAddress;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 
 	public String getOname() {
@@ -191,4 +181,38 @@ public class OrderListVO implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, amount, detailAddress, extraAddress, mid, oDid, odate, oid, oname, ophone, ostatus,
+				pcnt, pid, pname, postcode, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderListVO other = (OrderListVO) obj;
+		return Objects.equals(address, other.address) && amount == other.amount
+				&& Objects.equals(detailAddress, other.detailAddress)
+				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(mid, other.mid)
+				&& oDid == other.oDid && Objects.equals(odate, other.odate) && Objects.equals(oid, other.oid)
+				&& Objects.equals(oname, other.oname) && Objects.equals(ophone, other.ophone)
+				&& Objects.equals(ostatus, other.ostatus) && pcnt == other.pcnt && Objects.equals(pid, other.pid)
+				&& Objects.equals(pname, other.pname) && Objects.equals(postcode, other.postcode)
+				&& price == other.price;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderListVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
+				+ ", amount=" + amount + ", postcode=" + postcode + ", address=" + address + ", extraAddress="
+				+ extraAddress + ", detailAddress=" + detailAddress + ", oname=" + oname + ", ophone=" + ophone
+				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", pname=" + pname + ", price=" + price + "]";
+	}
+	
+	
 }
