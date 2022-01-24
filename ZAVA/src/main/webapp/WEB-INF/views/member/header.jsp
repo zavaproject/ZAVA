@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 <header class="inline-block fixed">
 	<div class="layout-header__main">
 		<div class="left-menu">
@@ -39,9 +39,9 @@
 				</ul>
 			</div>
 			<div style="float: left;">
-				<a href="/zava" class="zava"><img src="../../resources/img/ZAVA.png" alt="ZAVA"></a>	
+				<a href="/zava" class="zava"><img src="../../../resources/img/ZAVA.png" alt="ZAVA"></a>	
 			</div>
-		</div>
+		</div> 
 		<div class="right-menu">
 			<a href="/product/searchui"class="rmenu">검색</a>&emsp;
 				
