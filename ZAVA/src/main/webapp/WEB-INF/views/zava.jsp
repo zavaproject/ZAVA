@@ -92,7 +92,7 @@ height: 100%;
 </head>
 
 <body>
-<jsp:include page="member/header.jsp"/>
+<jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
 <section class="section">
 
@@ -103,13 +103,7 @@ height: 100%;
     <div class="slider-items item3"><img alt="" src="../../resources/img/Fashion3.png"class="item3"></div>
   </div>
 </div>
-<table>
-  <tr>
-    <td><a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion1.png" style="width:100%;height:auto;"/></a></td>
-    <td><a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion2.png" style="width:100%;height:auto;"/></a></td>
-    <td><a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion3.png" style="width:100%;height:auto;"/></a></td>
-  <tr>
-</table>
+
 </section>
 <jsp:include page="aside.jsp"/>
 <jsp:include page="footer.jsp"/>
@@ -118,12 +112,12 @@ height: 100%;
 <script type="text/javascript"> 
 $(document).ready(function(){
 	  $('.slider').slick({    
-	    infinite: false,       // 무한반복
+	    infinite: true,      // 무한반복
 	     slidesToShow: 1,     // 보여지는 슬라이드 개수
 	     slidesToScroll: 1,   // 넘어가는 슬라이드 개수
-	     dots: true,          // 점 네비게이션 표시
-	     autoplay : true,     //자동넘김 구현
-		 autoplaySpeed: 1000, //자동넘김 속도
+	     dots: true,           // 점 네비게이션 표시
+	     autoplay : true,
+		 autoplaySpeed: 4000,
 		 prevArrow : "<button class='slick-prev' style='position: absolute; z-index: 2;'></button>",
 		 nextArrow : "<button class='slick-next' style='position: absolute; z-index: 2;'></button>"
 	  });

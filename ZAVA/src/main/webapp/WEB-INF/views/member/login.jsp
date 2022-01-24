@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	<jsp:include page="../member/header.jsp" />
+	<jsp:include page="../header.jsp" />
 	<section>
 		<table class="login">
 			<thead>
