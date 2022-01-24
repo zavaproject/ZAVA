@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../member/header.jsp" />
 		<section>
 	
 <form action="/member/mkoperator" method="post" id="insert">
