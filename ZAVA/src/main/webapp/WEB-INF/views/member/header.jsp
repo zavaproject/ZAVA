@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link href="../../resources/css/style.css" rel="stylesheet" type="text/css">
+<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
 <header class="inline-block fixed">
 	<div class="layout-header__main">
 		<div class="left-menu">
@@ -39,7 +39,7 @@
 				</ul>
 			</div>
 			<div style="float: left;">
-				<a href="/zava" class="zava"><img src="../../resources/img/ZAVA.png" alt="ZAVA"></a>	
+				<a href="/zava" class="zava"><img src="../../../resources/img/ZAVA.png" alt="ZAVA"></a>	
 			</div>
 		</div>
 		<div class="right-menu">
@@ -56,7 +56,7 @@
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
 				<a href="/member/list/"class="rmenu">고객목록</a>&emsp;
-				<a href="/product/insert"class="rmenu">제품등록</a>&emsp;
+				<a href="javascript:void(0)" class="rmenu" onClick="javascript:goPost()">제품등록</a>&emsp;
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
@@ -74,7 +74,14 @@
 	</div>
 </header>
 <script>
-	
+function goPost(){
+    let f = document.createElement('form');
+    f.setAttribute('method', 'post');
+    f.setAttribute('action', '/product/insert');
+    document.body.appendChild(f);
+    f.submit();
+}
+
 	$(function() {
 		  function slideMenu() {
 		    var activeState = $("#menu-container .menu-list").hasClass("active");
