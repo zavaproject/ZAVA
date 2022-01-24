@@ -59,11 +59,13 @@
 </head>
 <body>
 
-<jsp:include page="../member/header.jsp" />
+<%-- <jsp:include page="../header.jsp"/> --%>
 
 
 <section id="container">
+
 		<div id="container_box">
+		<h3>${login.mid} 님 주문 목록</h3><br>
 			<section id="content">
 				<ul class="orderList">
 					<c:forEach items="${orderList}" var="orderList">
