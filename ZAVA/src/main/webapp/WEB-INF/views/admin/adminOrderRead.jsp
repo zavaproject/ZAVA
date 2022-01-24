@@ -53,12 +53,7 @@
 	
 	
 <style>
-/*
-	section#content ul li { display:inline-block; margin:10px; }
-	section#content div.goodsThumb img { width:200px; height:200px; }
-	section#content div.goodsName { padding:10px 0; text-align:center; }
-	section#content div.goodsName a { color:#000; }
-*/
+
 	.order { border:5px solid #eee; padding:10px 20px; margin:20px 0;} 
 	.order span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }
 	
@@ -70,6 +65,12 @@
 	 */
 	.productInfo { float:right; width:calc(100% - 220px); line-height:2; }
 	.productInfo span { font-size:20px; font-weight:bold; display:inline-block; width:100px; margin-right:10px; }
+	
+	.changeOstock { text-align:right; }
+	.ostatus1_btn,
+	.ostatus2_btn,
+	.ostatus3_btn { font-size:15px; background:#fff; border:1px solid #999; margin-left:20px; }
+	
 </style>
 
 	
@@ -84,18 +85,53 @@
 		
 	<section id="content">		
 	<div class="order">
-		<c:forEach items="${orderRead}" var="orderRead" varStatus="status">
+		<c:forEach items="${adOrderRead}" var="adOrderRead" varStatus="status">
 		
  	<c:if test="${status.first}">
-			<p><span>수령인</span>${orderRead.oname}</p>
-			<p><span>주소</span>${orderRead.address} ${orderRead.extraAddress} ${orderRead.detailAddress}</p>
-			<p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${orderRead.amount}" /> 원</p>
-			<p><span>배송상황</span>${orderRead.ostatus}</p>		
+			<p><span>수령인</span>${adOrderRead.oname}</p>
+			<p><span>주소</span>${adOrderRead.address} ${adOrderRead.extraAddress} ${adOrderRead.detailAddress}</p>
+			<p><span>가격</span><fmt:formatNumber pattern="###,###,###" value="${adOrderRead.amount}" /> 원</p>
+			<p><span>배송상황</span>${adOrderRead.ostatus}</p>		
+			
+			<div class="changeOstock">
+				<form role="form" method="post" class="ostatusForm">
+					<input type="hidden" name = "oid" value="${adOrderRead.oid}" />
+					<input type="hidden" name = "ostatus" class = "ostatus" value="" />
+					
+					<button type="button" class="ostatus1_btn">배송 중</button>
+					<button type="button" class="ostatus2_btn">배송 완료</button>
+					<button type="button" class="ostatus3_btn">주문 취소</button>					
+					
+<script>
+$(".ostatus1_btn").click(function(){
+	$(".ostatus").val("배송 중");
+	run();
+});
+
+$(".ostatus2_btn").click(function(){
+	$(".ostatus").val("배송 완료");
+	run();
+});	
+	
+$(".ostatus3_btn").click(function(){
+	$(".ostatus").val("주문 취소");
+	run();	
+});
+
+function run(){
+	$(".ostatusForm").submit();
+}
+</script>
+				
+				</form>			
+			</div>
+			
+			
 		</c:if>	
 	</c:forEach>
 	</div>	
-	<ul class="orderRead">
-		<c:forEach items="${orderRead}" var="orderRead">
+	<ul class="adOrderRead">
+		<c:forEach items="${adOrderRead}" var="adOrderRead">
 		<li>
 		 <%--   <div class="img">
              <a href="/product/read/${orderRead.pid}">
@@ -109,10 +145,10 @@
               
 		<div class="productInfo">
 			<p>
-				<span>상품명</span>${orderRead.pname}<br />
-				<span>개당 가격</span><fmt:formatNumber pattern="###,###,###" value="${orderRead.price}" /> 원<br />
-				<span>수량</span>${orderRead.pcnt} 개<br />
-				<span>총 가격</span><fmt:formatNumber pattern="###,###,###" value="${orderRead.price * orderRead.pcnt}" /> 원               
+				<span>상품명</span>${adOrderRead.pname}<br />
+				<span>개당 가격</span><fmt:formatNumber pattern="###,###,###" value="${adOrderRead.price}" /> 원<br />
+				<span>수량</span>${adOrderRead.pcnt} 개<br />
+				<span>총 가격</span><fmt:formatNumber pattern="###,###,###" value="${adOrderRead.price * adOrderRead.pcnt}" /> 원               
 			</p>
 		</div>		
 		</li>
@@ -122,6 +158,7 @@
 	
 		</div>
 	</section>
+
 
 	<%-- <jsp:include page="../footer.jsp" /> --%>
 </div>

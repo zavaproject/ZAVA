@@ -25,6 +25,9 @@
 	type="text/css">
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <style type="text/css">
 .order {
 	border: 5px solid #eee;
@@ -69,8 +72,7 @@
 	<section>
 
 		<div class="container" style="margin-top: 20px;">
-			<form name="cart" id="cart" method="post" class="orderform"
-				action="/cart/list">
+			<form name="cart" id="cart" method="post" class="orderform" action="/cart/list">
 				<div class="right-align basketrowcmd">
 					<button type="button" class="selectDelete_btn abutton">선택상품삭제</button>
 				</div>
@@ -172,35 +174,39 @@
 						<fmt:formatNumber pattern="###,###,###" value="${sum}" />
 						원
 					</div>
-		
+
 					<div class="orderOpen">
 						<button type="button" class="orderOpen_bnt">주문 정보 입력</button>
 					</div>
 				</div>
-				
 		</div>
-
+		
 		<div class="order">
 			<form action="/cart/List" method="post" autocomplete="off">
 
 
 				<input type="hidden" name="mid" id="mid" value="${login.mid}">
-				<input type="hidden" name="amount" id="amount" value="${sum}">
+				<input type="hidden" name="amount" id="amount" value="${sum}">	
+				
+				<c:forEach items="${cartList}" var="cartList" varStatus="status">
+					<c:set var="pcnt" value="${cartList.pcnt}" />
+					<c:set var="pid" value="${cartList.pid}" />
+			
+						<input type="hidden" name="pcnt" id="pcnt" value="${pcnt}">		
+						<input type="hidden" name="pid" id="pid" value="${pid}">					
+				</c:forEach>			
+							
 				<div>
-
 					<input type="radio" id="originRadio" name="selectAddress" checked
 						value="originAddress" onclick="Select(this.value)"> 기존 배송지
-
 					<input type="radio" id="newRadio" name="selectAddress"
 						value="newAddress" onclick="Select(this.value)"> 신규 배송지
 				</div>
 
 				<div class="addressdiv" id="origin">
-
 					<div class="inputArea">
 						<label for="">우편 번호</label> <input name="postcode" type="text"
 							id="postcode" readonly value="${login.postcode}">
-						<input type="button" onclick="execPostcode()" value="우편번호 찾기"><br>
 					</div>
 
 					<div class="inputArea">
@@ -233,29 +239,26 @@
 
 
 				<div class="addressdiv" id="new">
-
 					<div class="inputArea">
 						<label for="">우편 번호</label> <input name="postcode" type="text"
-							id="postcode" value="">
-						<input type="button" onclick="execPostcode()" value="우편번호 찾기"><br>
+							id="postcode" value=""> <input type="button"
+							onclick="execPostcode()" value="우편번호 찾기"><br>
 					</div>
 
 					<div class="inputArea">
 						<label for="">주소</label> <input name="address" type="text"
-							style="width: 365px;" id="address"
-							value=""><br>
+							style="width: 365px;" id="address" value=""><br>
 					</div>
 
 					<div class="inputArea">
 						<label for="">참고 항목</label> <input name="extraAddress" type="text"
 							style="width: 365px;" id="extraAddress" placeholder="참고항목"
-							 value=""><br>
+							value=""><br>
 					</div>
 
 					<div class="inputArea">
 						<label for="">상세 주소</label> <input name="detailAddress"
-							type="text" style="width: 365px;" id="detailAddress"
-							value="">
+							type="text" style="width: 365px;" id="detailAddress" value="">
 					</div>
 
 					<div class="inputArea">
@@ -277,12 +280,11 @@
 						<option value="1">국민은행 123-45-67890</option>
 						<option value="2">신한은행 110-430-128010</option>
 				</select>
-				</span> <br> <input id="payment" type="submit" value="주문 결제"
-					class="btn btn-success" /> <input id="payCancel" type="submit"
-					value="취소" class="btn btn-danger" />
-			</form>
+				</span> <br>
+				<button type="submit" class="order_btn btn btn-success" id="payment" value="주문 결제">주문 결제</button>
+				<button type="button" class="cancel_btn btn-danger" id="payCancel" value="취소">취소</button>
+						</form>
 		</div>
-
 	</section>
 
 	<script type="text/javascript">
@@ -414,7 +416,12 @@
 
 	<!-- order================================== -->
 
-	<script type="text/javascript">
+	<script type="text/javascript">		
+		$("#payCancel").click(function() {
+			event.preventDefault();
+			location.reload();
+			});
+
       $(function() {
          $(".orderOpen_bnt").click(function() {
             $(".order").slideDown();
@@ -497,8 +504,7 @@
    </script>
 
 
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 	<script>
     function execPostcode() {
          new daum.Postcode({
@@ -530,11 +536,11 @@
                  document.getElementById("detailAddress").focus();
              }
          }).open();
-     }
-    </script>
+     }   
+</script>
 
 
-	</section>
+
 	<jsp:include page="../footer.jsp" />
 </body>
 

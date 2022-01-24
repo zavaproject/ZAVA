@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class OrderDetailVO implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	private int oDid;
 	private String oid;
@@ -78,6 +78,7 @@ public class OrderDetailVO implements Serializable {
 	@Override
 	public String toString() {
 		return "OrderDetailVO [oDid=" + oDid + ", oid=" + oid + ", pid=" + pid + ", pcnt=" + pcnt + "]";
-	}
+	}	
+	
 	
 }

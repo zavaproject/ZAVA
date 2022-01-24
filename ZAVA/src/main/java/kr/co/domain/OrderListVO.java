@@ -23,14 +23,17 @@ public class OrderListVO implements Serializable {
 	private int oDid;
 	private int pcnt;
 
+	private int ostock;
+
 	private String pname;
 	private int price;
 
-	public OrderListVO() {}
+	public OrderListVO() {
+	}
 
 	public OrderListVO(String oid, String pid, String mid, Date odate, String ostatus, int amount, String postcode,
 			String address, String extraAddress, String detailAddress, String oname, String ophone, int oDid, int pcnt,
-			String pname, int price) {
+			int ostock, String pname, int price) {
 		this.oid = oid;
 		this.pid = pid;
 		this.mid = mid;
@@ -45,6 +48,7 @@ public class OrderListVO implements Serializable {
 		this.ophone = ophone;
 		this.oDid = oDid;
 		this.pcnt = pcnt;
+		this.ostock = ostock;
 		this.pname = pname;
 		this.price = price;
 	}
@@ -161,6 +165,14 @@ public class OrderListVO implements Serializable {
 		this.pcnt = pcnt;
 	}
 
+	public int getOstock() {
+		return ostock;
+	}
+
+	public void setOstock(int ostock) {
+		this.ostock = ostock;
+	}
+
 	public String getPname() {
 		return pname;
 	}
@@ -184,7 +196,7 @@ public class OrderListVO implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(address, amount, detailAddress, extraAddress, mid, oDid, odate, oid, oname, ophone, ostatus,
-				pcnt, pid, pname, postcode, price);
+				ostock, pcnt, pid, pname, postcode, price);
 	}
 
 	@Override
@@ -201,9 +213,9 @@ public class OrderListVO implements Serializable {
 				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(mid, other.mid)
 				&& oDid == other.oDid && Objects.equals(odate, other.odate) && Objects.equals(oid, other.oid)
 				&& Objects.equals(oname, other.oname) && Objects.equals(ophone, other.ophone)
-				&& Objects.equals(ostatus, other.ostatus) && pcnt == other.pcnt && Objects.equals(pid, other.pid)
-				&& Objects.equals(pname, other.pname) && Objects.equals(postcode, other.postcode)
-				&& price == other.price;
+				&& Objects.equals(ostatus, other.ostatus) && ostock == other.ostock && pcnt == other.pcnt
+				&& Objects.equals(pid, other.pid) && Objects.equals(pname, other.pname)
+				&& Objects.equals(postcode, other.postcode) && price == other.price;
 	}
 
 	@Override
@@ -211,8 +223,8 @@ public class OrderListVO implements Serializable {
 		return "OrderListVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
 				+ ", amount=" + amount + ", postcode=" + postcode + ", address=" + address + ", extraAddress="
 				+ extraAddress + ", detailAddress=" + detailAddress + ", oname=" + oname + ", ophone=" + ophone
-				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", pname=" + pname + ", price=" + price + "]";
+				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", ostock=" + ostock + ", pname=" + pname + ", price=" + price
+				+ "]";
 	}
-	
-	
+
 }

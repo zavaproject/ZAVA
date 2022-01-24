@@ -24,6 +24,7 @@ public class OrderVO implements Serializable {
 
 	public OrderVO(String oid, String pid, String mid, Date odate, String ostatus, int amount, String postcode,
 			String address, String extraAddress, String detailAddress, String oname, String ophone) {
+		super();
 		this.oid = oid;
 		this.pid = pid;
 		this.mid = mid;
@@ -136,7 +137,7 @@ public class OrderVO implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}	
+	}
 
 	@Override
 	public int hashCode() {
