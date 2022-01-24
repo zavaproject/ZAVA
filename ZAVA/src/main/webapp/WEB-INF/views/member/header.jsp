@@ -56,7 +56,7 @@
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
 				<a href="/member/list/"class="rmenu">고객목록</a>&emsp;
-				<a href="/product/insert"class="rmenu">제품등록</a>&emsp;
+				<a href="javascript:void(0)" class="rmenu" onClick="javascript:goPost()">제품등록</a>&emsp;
 			</c:if>
 			<c:if test="${login.mcode == 2}">
 				<div class="dropdown">
@@ -74,7 +74,14 @@
 	</div>
 </header>
 <script>
-	
+	function goPost(){
+       let f = document.createElement('form');
+       f.setAttribute('method', 'post');
+       f.setAttribute('action', '/product/insert');
+       document.body.appendChild(f);
+       f.submit();
+
+   }
 	$(function() {
 		  function slideMenu() {
 		    var activeState = $("#menu-container .menu-list").hasClass("active");
