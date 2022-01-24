@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../member/header.jsp" />
+	<jsp:include page="../header.jsp" />
 	<section>
 
 		<div class="container" style="margin-top: 20px;">

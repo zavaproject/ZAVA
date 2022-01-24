@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-	<jsp:include page="../member/header.jsp" />
+	<jsp:include page="../header.jsp" />
 	<section>
 <form action="/member/insert" method="post" id="insert">
 <input name="mid" placeholder="아이디"><button id="idcheck" class="button">중복검사</button><i id="idCheckResult" style="margin-left: 0"></i><br>

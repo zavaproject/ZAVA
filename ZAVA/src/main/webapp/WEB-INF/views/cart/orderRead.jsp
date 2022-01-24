@@ -77,7 +77,7 @@
 
 <body>
 <div id="root">
-	<jsp:include page="../member/header.jsp" />
+	<jsp:include page="../header.jsp" />
 
 <section id="container">
 	<div id="container_box">	

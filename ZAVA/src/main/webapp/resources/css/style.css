@@ -49,7 +49,6 @@ footer {
 	font-weight: bold;
 	display: flex;
 	justify-content: space-between;
-  	box-shadow: 3px #666666;
 }
 
 body::-webkit-scrollbar { 
@@ -133,16 +132,6 @@ ul {
 p {
 	width: 100px;
 	margin: 0 auto;
-}
-
-a {
-	color: #000000;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #000000;
-	text-decoration: none;
 }
 
 input {
