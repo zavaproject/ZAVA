@@ -72,5 +72,11 @@ public class MemberServiceImpl implements MemberService {
 
 		return pt;
 	}
+
+	@Override
+	public int logincheck(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return  mDAO.logincheck(vo);
+	}
 	
 }

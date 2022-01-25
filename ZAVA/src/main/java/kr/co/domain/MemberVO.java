@@ -30,6 +30,12 @@ public class MemberVO implements Serializable {
 		this.memail = memail;
 	}
 
+	public MemberVO(String mid, String mpw) {
+		super();
+		this.mid = mid;
+		this.mpw = mpw;
+	}
+
 
 
 	public MemberVO(String mid, String mpw, String mname, String mgender, String mphonenumber, String memail,

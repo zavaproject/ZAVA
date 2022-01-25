@@ -27,5 +27,7 @@ public interface MemberService {
 
 	public PageTO<MemberVO> list(PageTO<MemberVO> pt);
 
+	public int logincheck(MemberVO vo);
+
 	
 }

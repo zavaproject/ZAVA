@@ -78,4 +78,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(NS+".getAmount");
 	}
 
+	@Override
+	public int logincheck(MemberVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".logincheck", vo);
+	}
+
 }
