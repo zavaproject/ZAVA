@@ -29,4 +29,6 @@ public interface MemberDAO {
 
 	public int getAmount();
 
+	public int logincheck(MemberVO vo);
+
 }

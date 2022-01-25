@@ -57,5 +57,7 @@
 	<select id="getAmount" resultType="Integer">
 		SELECT COUNT(mid) FROM zava_member where mcode = 0
 	</select>
-	
+	<select id="logincheck" resultType="Integer">
+		SELECT COUNT(*) FROM zava_member where mid = #{mid} and mpw =  #{mpw}
+	</select>
 </mapper>

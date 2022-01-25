@@ -33,6 +33,7 @@
 						<form action="/member/login" method="post">
 							id: <input name="mid"><br>
 							pw: <input type="password" name="mpw"><br>
+							<div id="logincheck"></div>
 							<input type="submit" value="login">
 						</form>
 					</th>
@@ -54,22 +55,29 @@
 		$(document).ready(function() {
 			$("form").click(function(event) {
 				event.preventDefault();
-
-				var title = $("[name='mid']").val();
-				if (title == '') {
+				var id = $("[name='mid']").val();
+				if (id == '') {
 					$("[name='mid']").focus();
 					return;
 				}
 				
 				
 				
-				var content = $("[name='mpw']").val();
-				if (content == '') {
+				var pw = $("[name='mpw']").val();
+				if (pw == '') {
 					$("[name='mpw']").focus();
 					return;
 				}
-
-				$("form").submit();
+				$.getJSON("/member/logincheck/"+id+"/"+pw, function(data) {
+					$("#logincheck").empty();
+		           if(data > 0){
+		        	   $("form").submit();
+		        	}else{
+			        	var msg = "아이디와 비밀번호가 일치하지 않습니다."
+			        		$("#logincheck").append(msg);
+			        	return;
+		         	}
+		         });
 
 			});
 			

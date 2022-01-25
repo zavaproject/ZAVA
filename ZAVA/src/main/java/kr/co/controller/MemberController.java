@@ -2,9 +2,13 @@ package kr.co.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,18 +58,31 @@ public class MemberController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(MemberVO vo, Model model, HttpServletRequest request) {
-
 		try {
 			MemberVO login = mService.login(vo);
-
+			
 			HttpSession session = request.getSession();
-
+			
 			session.setAttribute("login", login);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "/member/login";
 		}
 		return "redirect:/zava";
+	}
+	
+	@RequestMapping(value = "/logincheck/{id}/{pw}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> logincheck(@PathVariable("id") String id, @PathVariable("pw") String pw) {
+		MemberVO vo = new MemberVO(id, pw, null, null);
+		ResponseEntity<Integer> res = null;
+		try {
+			int logincheck = mService.logincheck(vo);
+			
+			res = new ResponseEntity<Integer>(logincheck, HttpStatus.OK);
+		}catch (Exception e) {
+			e.printStackTrace();
+			res = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return res;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
