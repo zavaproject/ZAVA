@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.member">
+
+	<select id="list" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member where mcode = 0
+	</select>
+	
+	<select id="read" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<select id="login" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member 
+		WHERE mid = #{mid} AND mpw = #{mpw}
+	</select>
+	
+	<insert id="insertmember">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber, 
+		memail, postcode, address, extraAddress, detailAddress, mcode)
+		VALUES
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 0)
+	</insert>
+	
+	<insert id="insertoperator">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber,
+		memail, postcode, address, extraAddress, detailAddress, mcode)
+		VALUES
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 1)
+	</insert>
+
+	<update id="update">
+		UPDATE zava_member SET mname=#{mname}, mgender = #{mgender}, 
+		mphonenumber = #{mphonenumber}, memail=#{memail}
+		WHERE mid=#{mid}
+	</update>
+	
+	<select id="updateUI" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM zava_member WHERE mid = #{mid}
+	</delete>
+	
+	<select id="idcheck" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<select id="getAmount" resultType="Integer">
+		SELECT COUNT(mid) FROM zava_member where mcode = 0
+	</select>
+	
+</mapper>
