@@ -48,7 +48,9 @@ public interface CartService {
 
 	void cartDataDelete(String mid) throws Exception;
 
-	void updateOstock(OptionVO option) throws Exception;
+	int ostock(String ocode);
+
+//	void updateOstock(OptionVO option) throws Exception;
 
 
 }

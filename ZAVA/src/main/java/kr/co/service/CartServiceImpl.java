@@ -48,12 +48,30 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public int insert(CartVO vo) {
 		// TODO Auto-generated method stub
+		int ostock= cDao.ostock(vo.getOcode());
+		if(vo.getPcnt() <= ostock) {
+		vo.setOstock(ostock);
+		cDao.updateOstock(vo);
+		}else {
+		vo.setPcnt(ostock);
+		cDao.updateOstock(vo);
+		}
 		return cDao.insert(vo);
+	}
+	@Override
+	public int ostock(String ocode) {
+		// TODO Auto-generated method stub
+		
+		return cDao.ostock(ocode);
 	}
 
 	@Override
 	public void delete(CartVO vo) {
 		// TODO Auto-generated method stub
+		vo = cDao.cidcart(vo);
+		int ostock= cDao.ostock(vo.getOcode());
+		vo.setOstock(ostock);
+		cDao.deleteOstock(vo);
 		cDao.delete(vo);
 	}
 
@@ -115,12 +133,13 @@ public class CartServiceImpl implements CartService {
 		cDao.cartDataDelete(mid);
 	
 	}
-		
+
+
 	//수량 조절
-	@Override 
-	public void updateOstock(OptionVO option) throws Exception {
-		cDao.updateOstock(option); 
-	}
+//	@Override 
+//	public void updateOstock(OptionVO option) throws Exception {
+//		cDao.updateOstock(option); 
+//	}
 
 	
 }

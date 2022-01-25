@@ -52,7 +52,7 @@ public class CartController {
 			vo.setMid(mid);
 			vo.setPid(pid);
 			vo.setOcode(ocode);
-
+			
 			int count = cService.countCart(ocode, mid); // 상품이 몇개 있는지 카운트
 
 			if (count == 0) {
@@ -70,7 +70,7 @@ public class CartController {
 	@ResponseBody
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt,
-			@RequestParam(value = "ocode") String ocode, CartVO vo) {
+			@RequestParam(value = "ocode") String ocode,@RequestParam(value = "maxlength") int maxlength,CartVO vo) {
 
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		String mid = member.getMid();
@@ -79,8 +79,13 @@ public class CartController {
 		if (member != null) {
 			vo.setMid(mid);
 			vo.setPid(ocode);
+			int ostock =cService.ostock(ocode);
+			if(pcnt <= ostock) {
 			vo.setPcnt(pcnt);
-
+			}else {
+			
+			vo.setPcnt(maxlength);
+			}
 			cService.updateCart(vo);
 			result = 1;
 		}
@@ -134,7 +139,7 @@ public class CartController {
 	            files.add(0, "imgNO.jpg");
 	         }
 	         String   file = files.get(0);
-
+	         cartList.get(i).setOstock(ovo.getOstock());
 	         cartList.get(i).setOcolor(ovo.getOcolor());
 	         cartList.get(i).setOsize(ovo.getOsize());
 	         cartList.get(i).setPname(pvo.getPname());

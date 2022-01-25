@@ -121,11 +121,26 @@ public class CartDAOImpl implements CartDAO {
 
 	// ==================>재고 수량
 
+
 	@Override
-	public void updateOstock(OptionVO option) throws Exception {
-
-		sqlSession.update(NS + ".updateOstock", option);
-
+	public void updateOstock(CartVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.update(NS + ".updateOstock", vo);
+	}
+	@Override
+	public int ostock(String ocode) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".ostock",ocode);
 	}
 
+	@Override
+	public CartVO cidcart(CartVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".cidcart", vo);
+	}
+	@Override
+	public void deleteOstock(CartVO vo) {
+		// TODO Auto-generated method stub
+		sqlSession.update(NS + ".deleteOstock", vo);
+	}
 }

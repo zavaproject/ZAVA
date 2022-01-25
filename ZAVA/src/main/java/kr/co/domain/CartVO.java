@@ -19,6 +19,7 @@ public class CartVO implements Serializable {
 	private double pDiscount;
 
 	// option
+	private int ostock;
 	private String ocolor;
 	private String osize;
 	private String ocode;
@@ -48,6 +49,15 @@ public class CartVO implements Serializable {
 		this.filename = filename;
 		this.salePrice = salePrice;
 		this.totalPrice = totalPrice;
+	}
+
+	
+	public int getOstock() {
+		return ostock;
+	}
+
+	public void setOstock(int ostock) {
+		this.ostock = ostock;
 	}
 
 	public String getCid() {
