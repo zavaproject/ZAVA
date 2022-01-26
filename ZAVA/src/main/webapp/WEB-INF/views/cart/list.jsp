@@ -140,7 +140,7 @@
 													class="minus_btn abutton" data-pcnt="${cartList.cid}">-</button>
 												<input type="text" name="p_num" id="p_num" size="2"
 													data-ocode="${cartList.ocode}" class="p_num"
-													value="${cartList.pcnt}" readonly>
+													value="${cartList.pcnt}" readonly maxlength="${cartList.pcnt + cartList.ostock}">
 												<button type="button" name="plus_btn"
 													class="plus_btn abutton" data-pcnt="${cartList.cid}">+</button>
 											</div>
@@ -179,6 +179,7 @@
 						<button type="button" class="orderOpen_bnt">주문 정보 입력</button>
 					</div>
 				</div>
+				</form>
 		</div>
 		
 		<div class="order">
@@ -295,16 +296,18 @@
       /* + */
       $(".plus_btn").on("click", function() {
          var ocode = $(this).closest("div").find("input").attr("data-ocode");
+         var maxlength = $(this).closest("div").find("input").attr("maxlength");
          
          var p_num = $(this).closest("div").find("input").val();
-         $(this).closest("div").find("input").val(++p_num);
+	     $(this).closest("div").find("input").val(++p_num);
          
          $.ajax({
             url : "/cart/update",
             type : "post",
             data : {
-               ocode : ocode,
-               pcnt : p_num
+       			maxlength : maxlength,
+       			ocode : ocode,
+       			pcnt : p_num
             },
             dataType : "text",
             success : function(result) {
@@ -320,6 +323,7 @@
       $(".minus_btn").on("click", function() {
          var ocode = $(this).closest("div").find("input").attr("data-ocode");
          var p_num = $(this).closest("div").find("input").val();
+         var maxlength = $(this).closest("div").find("input").attr("maxlength");
          
          if(p_num > 1){
             $(this).closest("div").find("input").val(--p_num);
@@ -328,6 +332,7 @@
                url : "/cart/update",
                type : "post",
                data : {
+            	   maxlength : maxlength,
                   ocode : ocode,
                   pcnt : p_num
                },

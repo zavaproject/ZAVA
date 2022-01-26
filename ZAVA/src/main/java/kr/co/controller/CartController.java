@@ -70,18 +70,22 @@ public class CartController {
 	@ResponseBody
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt,
-			@RequestParam(value = "ocode") String ocode,@RequestParam(value = "maxlength") int maxlength,CartVO vo) {
+			@RequestParam(value = "ocode") String ocode, @RequestParam(value = "maxlength") int maxlength, CartVO vo) {
 
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		String mid = member.getMid();
 		int result = 0;
+		System.out.println(result);
 
 		if (member != null) {
+			
 			vo.setMid(mid);
 			vo.setPid(ocode);
-			int ostock =cService.ostock(ocode);
+			
+			int ostock = cService.ostock(ocode);
+			
 			if(pcnt <= ostock) {
-			vo.setPcnt(pcnt);
+				vo.setPcnt(pcnt);
 			}else {
 			
 			vo.setPcnt(maxlength);
