@@ -7,15 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${vo.pname}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js"> </script>
-<script src="/resources/js/review.js?var=2" type="text/javascript"></script>
-<link href="../../../resources/css/style.css" rel="stylesheet" type="text/css">
+<script src="/resources/js/review.js" type="text/javascript"></script>
 <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -50,7 +49,6 @@
          <option value="">--Please choose an option--</option>
          <c:forEach items="${ovo}" var="ovo">
          <option value="${ovo.ocode}" ${ovo.ostock == 0 ? "disabled" : ""}>색상 : ${ovo.ocolor} |사이즈 : ${ovo.osize} ${ovo.ostock == 0 ? "| 품절" : ""} </option>
-        
          </c:forEach>
       </select>   
       <br>
@@ -72,17 +70,17 @@
          </div>
       </div>
    <hr>
-   <div style="float:right" class="d-grid gap-2 d-md-block">
-        <button class="btn btn-outline-success addCart" type="button">장바구니</button>
-        <button class="btn btn-success" type="button">상품구매</button><br>
+   <div style="float:right; margin-right: 30px;" class="d-grid gap-2 d-md-block">
+        <button class="btn btn-outline-success addCart" type="button">장 바 구 니</button>
+        <!-- <button class="btn btn-success" type="button">상품구매</button><br> -->
    </div>
    
  </div>
  
-   <%--   <c:if test="${vo.mid == login.mid}"> --%>
+   <c:if test="${login.mcode == 1}">
    <button id="update" class="btn btn-outline-warning btn-sm">제품 수정</button>
    <button id="delete" class="btn btn-outline-danger btn-sm">제품 삭제</button><br>
-<%-- </c:if> --%>
+	</c:if> 
  <div class="uploadedList">
  </div>
  <br>
@@ -172,9 +170,12 @@
             $("form").submit();
          });
          $("button#delete").click(function() {
+        	 var delConfirm = confirm("제품을 삭제하시겠습니까?")
+        	 if(delConfirm){
             $("form").attr("method","post")
             $("form").attr("action","/product/delete")
             $("form").submit();
+         }
          });
          
          
