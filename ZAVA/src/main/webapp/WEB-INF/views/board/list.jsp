@@ -19,7 +19,9 @@
    <section>
 	<div class="container">
  <h2><font color="#555555">NOTICE</font> </h2>
+ 	<c:if test="${login.mcode == 1}">
 	<a style="float: right" href="/board/insertui">공지사항 작성</a>
+	</c:if>
 	<table class="table">
 		<thead>
 			<tr>

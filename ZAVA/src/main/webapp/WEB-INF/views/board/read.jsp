@@ -51,11 +51,15 @@
 </table>   
 
    <hr>
-<textarea class="form-control" rows="15" maxlength="1000" name="content" disabled>${vo.content}</textarea> 
+<textarea class="form-control" rows="30" maxlength="1000" name="content" disabled>${vo.content}</textarea> 
  <br>
- <button class="updateui">수정</button>
- <button class="delete" name="fordelete">삭제</button>
-<button>목록</button> 
+ <button class="btn btn-outline-warning btn-sm">목록</button> 
+ <div style="float: right;">
+  	<c:if test="${login.mcode == 1}">
+ <button class="updateui btn btn-outline-danger btn-sm">수정</button>
+ <button class="delete btn btn-outline-danger btn-sm" name="fordelete">삭제</button>
+	</c:if>
+ </div>
 </div>
 <form name="fordelete"></form>
 
@@ -75,14 +79,17 @@ $(document).ready(function(){
 	});
 	
 	$("body").on("click", ".delete", function() {
+		var delConfirm = confirm("공지사항을 삭제하시겠습니까?")
+		if(delConfirm){
 		$("[name='fordelete']").attr("action", "/board/delete/${vo.bno}/${curPage}");
 		$("[name='fordelete']").attr("method", "post");
 		$("[name='fordelete']").submit();
+		}
 	});
 	
 		
 	
-	$("button").eq(1).click(function() {
+	$("button").eq(0).click(function() {
 		location.assign("/board/list/${curPage}");
 	});
 });

@@ -18,19 +18,48 @@
 <body>
  <jsp:include page="../member/header.jsp"/>
    <section>
-   후기상품 : <input name="pid" value="${vo.pid}" readonly> <br>
-   작성자 : <input name="mid" value="${vo.mid}" readonly> <br>
-   평점 : <input name="rating" value="${vo.rating}" readonly> <br>
-   제목 : <input name="title" value="${vo.title}" readonly> <br>
-   상품후기 : <input name="content" value="${vo.content}" readonly> <br>
-   <br>
-   
- 
-<!--  로그인데이터 확인후 운영자만 나오게 -->
-<c:if test="${vo.mid == login.mid}">
+   <div class="container">
+ <h3><font color="#555555"></font>${vo.mid}님의 상품후기</h3>
+ <br>
+ <a href="/product/read/${vo.pid}">상품으로 돌아가기</a>
+ <div style="float: right;">
+ <c:if test="${vo.mid == login.mid}">
    <button id="update" class="btn btn-warning btn-sm">후기 수정</button>
    <button id="delete" class="btn btn-danger btn-sm">후기 삭제</button>
 </c:if>
+</div>
+ <table class="table" style="margin-top: 30px;">
+<colgroup>
+<col style="width:130px;"/>
+<col style="width:auto;"/>
+</colgroup>
+<tbody>
+   <tr>
+		<th scope="row">후기상품</th>
+          <td style="text-align: left;"> ${vo.pid} </td>
+   </tr>
+	<tr>
+		<th scope="row">작성자</th>
+          <td style="text-align: left;">${vo.mid}</td>
+   </tr>
+	<tr>
+		<th scope="row">평점</th>
+          <td style="text-align: left;"> ${vo.rating} </td>
+   </tr>
+   <tr>
+		<th scope="row">제목</th>
+          <td style="text-align: left;"> ${vo.title} </td>
+   </tr>
+   <tr>
+		<th scope="row">상품후기</th>
+          <td style="text-align: left;"> ${vo.content} </td>
+   </tr>
+</tbody>
+</table>   
+<!--  로그인데이터 확인후 운영자만 나오게 -->
+
+</div>
+ 
 
 <form>
    <input type="hidden" name="rno" value="${vo.rno}">

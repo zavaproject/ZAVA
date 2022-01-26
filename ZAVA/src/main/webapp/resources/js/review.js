@@ -29,7 +29,7 @@ function getReviewsPage(pid, curPage, el){
       var strPage = `
       <nav aria-label="Page pagination-sm navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
+    <li class="page-item">
       <a class="page-link reply_page_left" href="${data['curPage']}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
