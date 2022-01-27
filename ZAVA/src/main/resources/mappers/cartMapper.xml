@@ -142,5 +142,9 @@
 	<select id="cidcart" resultType="kr.co.domain.CartVO">
 		SELECT * FROM zava_cart WHERE cid = #{cid}
 	</select>
+	
+	<select id="getPcnt" resultType="Integer">
+		SELECT pcnt FROM zava_cart WHERE mid = #{mid} AND ocode = #{ocode}
+	</select>
 
 </mapper>

@@ -51,4 +51,6 @@ public interface CartDAO {
 
 	void deleteOstock(CartVO vo);
 
+	int getPcnt(CartVO vo);
+
 }

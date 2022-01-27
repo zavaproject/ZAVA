@@ -50,6 +50,12 @@ public interface CartService {
 
 	int ostock(String ocode);
 
+	int getPcnt(CartVO vo);
+
+	void updateOstock(CartVO vo);
+
+	void deleteOstock(CartVO vo);
+
 //	void updateOstock(OptionVO option) throws Exception;
 
 

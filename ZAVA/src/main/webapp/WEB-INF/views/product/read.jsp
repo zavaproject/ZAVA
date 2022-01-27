@@ -54,11 +54,7 @@
       <br>
    <!-- 수량 추가(임시) -->
    수량 :
-    <select name="pcnt" id="pcnt">
-    	<c:forEach begin="1" end="10" step="1" var="i">
-        	 <option id="pcnt" value="${i}">${i}</option>
-        </c:forEach>
-    </select>
+    	<input name="pcnt" id="pcnt" type="number" min="1">
     <br>
       
       <br>
@@ -218,7 +214,7 @@
          /* 장바구니 */
 			$(".addCart").click(function() {
 			var ocode = $("select[name=option] > option:selected").val();
-			var pcnt = $("select[name=pcnt] > option:selected").val();
+			var pcnt = $("input[name=pcnt]").val();
 			
 			if(ocode == ''){
 				alert("상품 옵션을 선택해주세요.");
