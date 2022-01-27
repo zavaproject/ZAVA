@@ -143,4 +143,10 @@ public class CartDAOImpl implements CartDAO {
 		// TODO Auto-generated method stub
 		sqlSession.update(NS + ".deleteOstock", vo);
 	}
+
+	@Override
+	public int getPcnt(CartVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".getPcnt", vo);
+	}
 }

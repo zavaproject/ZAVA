@@ -67,35 +67,42 @@ public class CartController {
 	}
 
 	// 수량 변경
-	@ResponseBody
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt,
-			@RequestParam(value = "ocode") String ocode, @RequestParam(value = "maxlength") int maxlength, CartVO vo) {
+		@ResponseBody
+		@RequestMapping(value = "/update", method = RequestMethod.POST)
+		public int update(HttpSession session, @RequestParam(value = "pcnt") int pcnt,
+				@RequestParam(value = "ocode") String ocode,@RequestParam(value = "maxlength") int maxlength,CartVO vo) {
 
-		MemberVO member = (MemberVO) session.getAttribute("login");
-		String mid = member.getMid();
-		int result = 0;
-		System.out.println(result);
+			MemberVO member = (MemberVO) session.getAttribute("login");
+			String mid = member.getMid();
+			int result = 0;
 
-		if (member != null) {
-			
-			vo.setMid(mid);
-			vo.setPid(ocode);
-			
-			int ostock = cService.ostock(ocode);
-			
-			if(pcnt <= ostock) {
+			if (member != null) {
+				vo.setMid(mid);
+				vo.setOcode(ocode);
+				int realpcnt = cService.getPcnt(vo);
+				int ostock =cService.ostock(ocode) + realpcnt;
+				
+				if(pcnt <= ostock) {
+					
+				if(realpcnt<pcnt) {
+					vo.setPcnt(pcnt-realpcnt);
+					cService.updateOstock(vo);
+				}else {
+					vo.setPcnt(realpcnt-pcnt);
+					cService.deleteOstock(vo);
+				}
 				vo.setPcnt(pcnt);
-			}else {
-			
-			vo.setPcnt(maxlength);
+				}else {
+				
+				vo.setPcnt(ostock);
+				cService.updateCart(vo);
+				}
+				cService.updateCart(vo);
+				result = 1;
 			}
-			cService.updateCart(vo);
-			result = 1;
-		}
 
-		return result;
-	}
+			return result;
+		}
 
 	@ResponseBody
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
