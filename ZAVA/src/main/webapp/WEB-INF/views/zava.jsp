@@ -18,75 +18,45 @@
 <!-- slick Carousel CDN -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
 <!--slick slider 필요 태그 en-->
-
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 <title>ZAVA</title>
 <style type="text/css">		
 
-/* 노멀라이징 */
+.swiper {
+        width: 863px;
+        height: 356px;
+      }
 
-/* 라이브러리 */
-.con{
-  width: 60vw;
-  margin: 0 auto ;
-}
-/* 스타일 */
-/* 슬릭js 스타일 변경 st */
-/* 슬라이드 높이 변경  */
-.slick-track{
-  height: 60vh;
-}
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
 
-/* 화살표 색상 변경*/
-.slick-prev:before, .slick-next:before{
-  color: black !important;
-  opacity: 1 ; 
-}
-/* 화살표 위치 변경 */
-.slick-prev{
-  left: 20px !important ;
-  z-index: 9;
-}
-.slick-next{
-  right: 20px !important ;
-  z-index: 9;  
-}
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
 
-/* 버튼 위치 변경 */
-.slick-dots{
-  bottom : 0 !important;
-}
-/* 버튼 색상 변경 (마우스 오버)  */
-.slick-dots li button:hover:before, .slick-dots li button:focus:before{
-  color: black ;
-}
-
-/* 버튼 색상 변경 (활성화)  */
-.slick-dots li.slick-active button:before{
-  color: black !important;  
-}
-
-/* 버튼 색상 변경 (비활성화)  */
-.slick-dots li button:before{
-  color: black !important;  
-}
-/* 슬릭js 스타일 변경 en */
-.slider-items{
-  background-repeat: no-repeat ;
-  background-size: cover ;
-}
-
-.item1{
- width: 100%;
- height: 100%;
-}
-.item2{
-width: 100%;
-height: 100%;
-}
-.item3{
-width: 100%;
-height: 100%;
-}
+      .swiper-slide img {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+      .section{
+      width: 100%
+      }
 </style>
 
 </head>
@@ -96,39 +66,36 @@ height: 100%;
 <jsp:include page="nav.jsp"/>
 <section class="section">
 
-<div class="con">
-  <div class="slider slider-wrap">
-    <div class="slider-items item1"><img alt="" src="../../resources/img/Fashion1.png"class="item1"></div>
-    <div class="slider-items item2"><img alt="" src="../../resources/img/Fashion2.png"class="item2"></div>
-    <div class="slider-items item3"><img alt="" src="../../resources/img/Fashion3.png"class="item3"></div>
-  </div>
-</div>
-<table>
-  <tr>
-    <td><a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion1.png" style="width:100%;height:auto;"/></a></td>
-    <td><a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion2.png" style="width:100%;height:auto;"/></a></td>
-    <td><a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion3.png" style="width:100%;height:auto;"/></a></td>
-  <tr>
-</table>
+    <!-- Swiper -->
+    <div class="swiper mySwiper"style="width:100%;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="product/list/1010/"><img alt="" src="../../resources/img/Fashion1.png"class="item1"style="width:100%;height:auto;"></a></div>
+        <div class="swiper-slide"><a href="product/list/2010/"><img alt="" src="../../resources/img/Fashion2.png"class="item1"style="width:100%;height:auto;"></a></div>
+        <div class="swiper-slide"><a href="product/list/3010/"><img alt="" src="../../resources/img/Fashion3.png"class="item1"style="width:100%;height:auto;"></a></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion4.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion5.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion6.png" style="padding:5px;	width:33%;height:auto; float: left;"/></a>
+
 </section>
 <jsp:include page="aside.jsp"/>
-<jsp:include page="footer.jsp"/>
-		
-		
-<script type="text/javascript"> 
-$(document).ready(function(){
-	  $('.slider').slick({    
-	    infinite: false,      // 무한반복
-	     slidesToShow: 1,     // 보여지는 슬라이드 개수
-	     slidesToScroll: 1,   // 넘어가는 슬라이드 개수
-	     dots: true,          // 점 네비게이션 표시
-	     autoplay : true,     //자동넘김 구현
-		 autoplaySpeed: 1500, //자동넘김 속도
-		 prevArrow : "<button class='slick-prev' style='position: absolute; z-index: 2;'></button>",
-		 nextArrow : "<button class='slick-next' style='position: absolute; z-index: 2;'></button>"
-	  });
-	});
 
-</script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+    
 </body>
+<jsp:include page="footer.jsp"/>
 </html>
