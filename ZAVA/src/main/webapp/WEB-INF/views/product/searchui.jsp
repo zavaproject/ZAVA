@@ -16,9 +16,9 @@
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
-   <section>
-	<form action="/product/search" method="get" class="collapse d-flex" style="margin-top: 150px">
-		<input type="search" name="pname" class="search form-control" placeholder="검색학 상품을 입력해주세요.." aria-label="Search">
+   <section class="container">
+	<form action="/product/search" method="get" class="collapse d-flex" style="margin-top: 150px; width:1100px;">
+		<input type="search" name="pname" class="search form-control" placeholder="검색할 상품을 입력해주세요.." aria-label="Search">
 		&nbsp;<button type="submit" class="search_btn btn btn-dark">Search</button>
 	</form>
 
