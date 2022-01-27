@@ -24,14 +24,18 @@
 <style type="text/css">		
 
 .swiper {
-        width: 863px;
-        height: 356px;
+        width: 100%;
+        height: auto;
+        z-index: 7;
       }
 
       .swiper-slide {
         text-align: center;
         font-size: 18px;
         background: #fff;
+        width:99%;
+        margin: 0;
+        padding: 0;
 
         /* Center slide text vertically */
         display: -webkit-box;
@@ -53,6 +57,8 @@
         width: 100vw;
         height: 100vh;
         object-fit: cover;
+        margin: 0 13px 0 0;
+        padding: 0 0 0 0 ;
       }
       .section{
       width: 100%
@@ -63,25 +69,25 @@
 
 <body>
 <jsp:include page="member/header.jsp" />
-<jsp:include page="nav.jsp"/>
+<%-- <jsp:include page="nav.jsp"/> --%>
 <section class="section">
 
     <!-- Swiper -->
-    <div class="swiper mySwiper"style="width:100%;">
+    <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><a href="product/list/1010/"><img alt="" src="../../resources/img/Fashion1.png"class="item1"style="width:100%;height:auto;"></a></div>
-        <div class="swiper-slide"><a href="product/list/2010/"><img alt="" src="../../resources/img/Fashion2.png"class="item1"style="width:100%;height:auto;"></a></div>
-        <div class="swiper-slide"><a href="product/list/3010/"><img alt="" src="../../resources/img/Fashion3.png"class="item1"style="width:100%;height:auto;"></a></div>
+        <div class="swiper-slide"><img alt="" src="../../resources/img/Fashion1.jpg"class="item1"></div>
+        <div class="swiper-slide"><img alt="" src="../../resources/img/Fashion2.jpg"class="item1"></div>
+        <div class="swiper-slide"><img alt="" src="../../resources/img/Fashion3.jpg"class="item1"></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-    <a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion4.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
-    <a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion5.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
-    <a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion6.png" style="padding:5px;	width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion5.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion6.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion4.png" style="padding:5px;	width:33%;height:auto; float: left;"/></a>
 
 </section>
-<jsp:include page="aside.jsp"/>
+<%-- <jsp:include page="aside.jsp"/> --%>
 
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

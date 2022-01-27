@@ -1,15 +1,16 @@
 body {
+	min-height: 1700px;
 	font-family: Arial;
 	display: grid;
 	grid-template-areas:     
 	"header header header"
-    "nav section aside"
+    "section section section"
     "footer footer footer";
 	grid-template-rows: 100px 1fr 80px;
 	grid-template-columns: 15% 70% 15%;
 	grid-gap: 5px;
 	/* height: 100%; */
-	margin: 5px;
+	margin: 1px;
 	overflow:scroll;
 	-ms-overflow-style: none;
 }
@@ -26,13 +27,14 @@ header {
 	justify-content: space-between;
 	grid-area: header;
     z-index: 9;
-  	box-shadow: 3px 3px 3px #666666;
+  	box-shadow: 1px 1px 3px #666666;
 }
 nav {
 	grid-area: nav;
 }
 section {
 	grid-area: section;
+	margin: 0px;
 }
 aside {
 	grid-area: aside;
