@@ -82,9 +82,9 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
-    <a href="product/list/1010/"><img alt="Fashion1" src="../../resources/img/Fashion5.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
-    <a href="product/list/2010/"><img alt="Fashion2" src="../../resources/img/Fashion6.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
-    <a href="product/list/3010/"><img alt="Fashion3" src="../../resources/img/Fashion4.png" style="padding:5px;	width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/2010/"><img alt="Fashion1" src="../../resources/img/Fashion5.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/3010/"><img alt="Fashion2" src="../../resources/img/Fashion6.png" style="padding:5px;width:33%;height:auto; float: left;"/></a>
+    <a href="product/list/1010/"><img alt="Fashion3" src="../../resources/img/Fashion4.png" style="padding:5px;	width:33%;height:auto; float: left;"/></a>
 
 </section>
 <%-- <jsp:include page="aside.jsp"/> --%>
