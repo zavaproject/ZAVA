@@ -12,4 +12,4 @@
 3. Back-End 도구
 - Mybatis, Servlet
 - MVC2 Pattern
-- 프레임워크 : Spring FrameWork ver4
+- Spring FrameWork ver4
