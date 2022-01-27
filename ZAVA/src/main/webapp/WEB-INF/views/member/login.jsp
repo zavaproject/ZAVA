@@ -60,9 +60,6 @@
 					$("[name='mid']").focus();
 					return;
 				}
-				
-				
-				
 				var pw = $("[name='mpw']").val();
 				if (pw == '') {
 					$("[name='mpw']").focus();
