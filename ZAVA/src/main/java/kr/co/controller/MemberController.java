@@ -1,5 +1,7 @@
 package kr.co.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.PageTO;
 import kr.co.service.MemberService;
 
@@ -164,13 +167,41 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/dailysales", method = RequestMethod.GET)
-	public void dailysales() {
+	public void dailysales(Model model) 	{
 
+		int dailysales1 = mService.dailysales1();
+		model.addAttribute("dailysales1", dailysales1);
+		
+		int dailysales2 = mService.dailysales2();
+		model.addAttribute("dailysales2", dailysales2);
+		
+		int dailysales3 = mService.dailysales3();
+		model.addAttribute("dailysales3", dailysales3);
+		
+		int dailysales4 = mService.dailysales4();
+		model.addAttribute("dailysales4", dailysales4);
+		
+		int dailysales5 = mService.dailysales5();
+		model.addAttribute("dailysales5", dailysales5);
 	}
 
 	@RequestMapping(value = "/monthlysales", method = RequestMethod.GET)
-	public void monthlysales() {
+	public void monthlysales(Model model) {
 
+		int monthlysales1 = mService.monthlysales1();
+		model.addAttribute("monthlysales1", monthlysales1);
+
+		int monthlysales2 = mService.monthlysales2();
+		model.addAttribute("monthlysales2", monthlysales2);
+
+		int monthlysales3 = mService.monthlysales3();
+		model.addAttribute("monthlysales3", monthlysales3);
+
+		int monthlysales4 = mService.monthlysales4();
+		model.addAttribute("monthlysales4", monthlysales4);
+
+		int monthlysales5 = mService.monthlysales5();
+		model.addAttribute("monthlysales5", monthlysales5);
 	}
 
 }

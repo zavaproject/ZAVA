@@ -3,6 +3,7 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.PageTO;
 
 public interface MemberService {
@@ -28,6 +29,26 @@ public interface MemberService {
 	public PageTO<MemberVO> list(PageTO<MemberVO> pt);
 
 	public int logincheck(MemberVO vo);
+
+	public int dailysales1();
+
+	public int dailysales2();
+
+	public int dailysales3();
+
+	public int dailysales4();
+
+	public int dailysales5();
+
+	public int monthlysales1();
+
+	public int monthlysales2();
+
+	public int monthlysales3();
+
+	public int monthlysales4();
+
+	public int monthlysales5();
 
 	
 }
