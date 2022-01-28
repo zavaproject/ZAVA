@@ -37,7 +37,7 @@
 				data : {
 					labels : [ '넉달전', '세달전', '두달전', '한달전', '이번달' ],
 					datasets : [ {
-						data : [ 47490000, 38640000, 47670000, 47670000, 48990000],
+						data : [ ${monthlysales5}, ${monthlysales4}, ${monthlysales3}, ${monthlysales2}, ${monthlysales1}],
 						backgroundColor : [ 'rgba(255, 80, 80, 0.3)',
 								'rgba(255, 255, 0, 0.3)',
 								'rgba(51, 204, 51, 0.3)',
@@ -95,7 +95,7 @@
 						},
 						y : {
 							ticks : {
-								stepSize : 15000000
+								stepSize : 100000
 							},
 							title : {
 								display : true,

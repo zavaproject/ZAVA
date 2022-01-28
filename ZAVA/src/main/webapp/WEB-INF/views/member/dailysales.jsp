@@ -22,9 +22,8 @@
 </style>
 </head>
 <body>
-	<jsp:include page="../member/header.jsp" />
-	<section>
-
+<jsp:include page="../member/header.jsp" />
+<section>
 
 <div id="chart">
 	<canvas id="myChartOne" width="500" height="300"></canvas>
@@ -38,7 +37,7 @@ let barChartOne = new Chart(myChartOne,{
     data: {
         labels: ['나흘전', '사흘전', '이틀전', '하루전', '오늘'],
         datasets: [{
-            data: [1583000, 1288000, 1589000, 1448000, 1633000],
+            data: [${dailysales5}, ${dailysales4}, ${dailysales3}, ${dailysales2}, ${dailysales1}],
             backgroundColor: [
 				'rgba(255, 80, 80, 0.3)',
 				'rgba(255, 255, 0, 0.3)',
@@ -100,7 +99,7 @@ let barChartOne = new Chart(myChartOne,{
 			},
 			y: {
 				ticks: {
-					stepSize: 500000
+					stepSize: 100000
 				},
 				title:{
 			        display: true,

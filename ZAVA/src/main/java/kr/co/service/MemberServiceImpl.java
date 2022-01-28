@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.PageTO;
 import kr.co.repository.MemberDAO;
 
@@ -75,8 +76,57 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int logincheck(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return  mDAO.logincheck(vo);
+	}
+
+	@Override
+	public int dailysales1() {
+		return mDAO.dailysales1();
+	}
+
+	@Override
+	public int dailysales2() {
+		return mDAO.dailysales2();
+	}
+
+	@Override
+	public int dailysales3() {
+		return mDAO.dailysales3();
+	}
+
+	@Override
+	public int dailysales4() {
+		return mDAO.dailysales4();
+	}
+
+	@Override
+	public int dailysales5() {
+		return mDAO.dailysales5();
+	}
+
+	@Override
+	public int monthlysales1() {
+		return mDAO.monthlysales1();
+	}
+
+	@Override
+	public int monthlysales2() {
+		return mDAO.monthlysales2();
+	}
+
+	@Override
+	public int monthlysales3() {
+		return mDAO.monthlysales3();
+	}
+
+	@Override
+	public int monthlysales4() {
+		return mDAO.monthlysales4();
+	}
+
+	@Override
+	public int monthlysales5() {
+		return mDAO.monthlysales5();
 	}
 	
 }

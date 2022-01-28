@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.OrderVO;
 import kr.co.domain.PageTO;
 
 @Repository
@@ -80,8 +81,57 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int logincheck(MemberVO vo) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+".logincheck", vo);
+	}
+
+	@Override
+	public int dailysales1() {
+		return sqlSession.selectOne(NS + ".dailysales1");
+	}
+
+	@Override
+	public int dailysales2() {
+		return sqlSession.selectOne(NS + ".dailysales2");
+	}
+
+	@Override
+	public int dailysales3() {
+		return sqlSession.selectOne(NS + ".dailysales3");
+	}
+
+	@Override
+	public int dailysales4() {
+		return sqlSession.selectOne(NS + ".dailysales4");
+	}
+
+	@Override
+	public int dailysales5() {
+		return sqlSession.selectOne(NS + ".dailysales5");
+	}
+
+	@Override
+	public int monthlysales1() {
+		return sqlSession.selectOne(NS + ".monthlysales1");
+	}
+
+	@Override
+	public int monthlysales2() {
+		return sqlSession.selectOne(NS + ".monthlysales2");
+	}
+
+	@Override
+	public int monthlysales3() {
+		return sqlSession.selectOne(NS + ".monthlysales3");
+	}
+
+	@Override
+	public int monthlysales4() {
+		return sqlSession.selectOne(NS + ".monthlysales4");
+	}
+
+	@Override
+	public int monthlysales5() {
+		return sqlSession.selectOne(NS + ".monthlysales5");
 	}
 
 }
