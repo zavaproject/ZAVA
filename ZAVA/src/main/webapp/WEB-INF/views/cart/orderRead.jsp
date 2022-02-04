@@ -22,7 +22,7 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-	<style>
+		<style>
 	
 		body { margin:0; padding:0; font-family:'맑은 고딕', verdana; }
 		a { color:#05f; text-decoration:none; }
@@ -41,43 +41,31 @@
 			aside#aside { float:left; width:180px; }
 			section#container::after { content:""; display:block; clear:both; }	
 			
-		/* ---------- */
-		
+		/* ---------- */	
 	
-	
-		section#container { }
-		
-
-		
+		section#container { }	
 	</style>
 	
-	
 <style>
-/*
-	section#content ul li { display:inline-block; margin:10px; }
-	section#content div.goodsThumb img { width:200px; height:200px; }
-	section#content div.goodsName { padding:10px 0; text-align:center; }
-	section#content div.goodsName a { color:#000; }
-*/
+
 	.order { border:5px solid #eee; padding:10px 20px; margin:20px 0;} 
 	.order span { font-size:20px; font-weight:bold; display:inline-block; width:90px; }
 	
-	.orderRead li { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid #999; }
+	.orderRead li { margin-bottom:20px; padding-bottom:0px; border-bottom:1px solid #999; }
 	.orderRead li::after { content:""; display:block; clear:both; }
-	/* 
+
 	.img { float:left; width:200px; }
 	.img img { width:200px; height:200px; }
-	 */
+
 	.productInfo { float:right; width:calc(100% - 220px); line-height:2; }
 	.productInfo span { font-size:20px; font-weight:bold; display:inline-block; width:100px; margin-right:10px; }
 </style>
-
 	
 </head>
 
 <body>
 <div id="root">
-<%-- 	<jsp:include page="../header.jsp" /> --%>
+	<jsp:include page="../member/header.jsp" />
 
 <section id="container">
 	<div id="container_box">	
@@ -97,15 +85,13 @@
 	<ul class="orderRead">
 		<c:forEach items="${orderRead}" var="orderRead">
 		<li>
-		 <%--   <div class="img">
-             <a href="/product/read/${orderRead.pid}">
-          		<img alt="thumbnail" src="/resources/productupload/${orderRead.filename}" width="40">
-           	</a>
-           </div>
-              <div class="pname">
-                 <span><a href="/product/read/${orderRead.pid}">${orderRead.pname}</a></span><br>
-                 <span style="font-size: 12px;">옵션:${orderRead.pname}, ${orderRead.ocolor}, ${orderRead.osize}</span>
-              </div> --%>
+		<div class="img">
+			<a href="/product/read/${orderRead.pid}"> 
+			<img alt="thumbnail" 
+			src="/resources/productupload/${orderRead.filename}" 
+			width="200">
+			</a>
+		</div>
               
 		<div class="productInfo">
 			<p>
@@ -123,7 +109,7 @@
 		</div>
 	</section>
 
-	<%-- <jsp:include page="../footer.jsp" /> --%>
+	<jsp:include page="../footer.jsp" />
 </div>
 </body>
 </html>
