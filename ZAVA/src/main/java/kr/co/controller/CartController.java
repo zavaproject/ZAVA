@@ -165,7 +165,7 @@ public class CartController {
 
 
 	// 주문
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	@RequestMapping(value = "/List", method = RequestMethod.POST)
 	public String order(HttpSession session, OrderVO order, OrderDetailVO orderDetail) throws Exception {
 		MemberVO member = (MemberVO) session.getAttribute("login");
 		String mid = member.getMid();
