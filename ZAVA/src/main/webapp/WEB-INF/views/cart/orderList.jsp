@@ -46,7 +46,7 @@
 				<tr>
 										
 								<td><a href="/cart/orderRead?oid=${orderList.oid}">${orderList.oid}</a></td>
-								<td>${orderList.odate}</td>
+								<td><fmt:formatDate value="${orderList.odate}" pattern="yyyy.MM.dd" /></td>
 								<td>${orderList.oname}</td>
 								<td><fmt:formatNumber pattern="###,###,###" value="${orderList.amount}" />원</td>
 								<td>${orderList.ophone}</td>
