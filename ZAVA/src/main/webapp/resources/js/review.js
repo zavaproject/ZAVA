@@ -80,10 +80,15 @@ function reviewform(rno, title, mid, updatedate, rating){
 
             <tr>
                <td>${rno}</td>
+				<td class="star2" style="float:left"> ${rating ==1 ? "★" : ""}
+					${rating ==2 ? "★★" : ""}
+					${rating ==3 ? "★★★" : ""}
+					${rating ==4 ? "★★★★" : ""}
+					${rating ==5 ? "★★★★★" : ""}</td>
                <td><a href="/review/read/${rno}/1">${title}</a></td>
                <td>${mid}</td>
                <td>${updatedate}</td>
-               <td>${rating}</td>
+               
             </tr>
 
    `;

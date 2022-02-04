@@ -34,7 +34,7 @@
 							id: <input name="mid"><br>
 							pw: <input type="password" name="mpw"><br>
 							<div id="logincheck"></div>
-							<input type="submit" value="login">
+							<input type="submit" value="login" id="login">
 						</form>
 					</th>
 					<th style="border: none;">
@@ -53,7 +53,7 @@
 	<jsp:include page="../footer.jsp" />
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("form").click(function(event) {
+			$("#login").click(function(event) {
 				event.preventDefault();
 				var id = $("[name='mid']").val();
 				if (id == '') {
