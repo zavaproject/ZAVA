@@ -152,7 +152,82 @@ function insertFile(filename){
 	return msg;
 }
 
+function newHtml(){
+   var msg = `
+   <div class="inputArea">
+                  <label for="">우편 번호</label> <input name="postcode" type="text"
+                     id="postcode" value=""> <input type="button"
+                     onclick="execPostcode()" value="우편번호 찾기"><br>
+               </div>
 
+               <div class="inputArea">
+                  <label for="">주소</label> <input name="address" type="text"
+                     style="width: 365px;" id="address" value=""><br>
+               </div>
+
+               <div class="inputArea">
+                  <label for="">참고 항목</label> <input name="extraAddress" type="text"
+                     style="width: 365px;" id="extraAddress" placeholder="참고항목"
+                     value=""><br>
+               </div>
+
+               <div class="inputArea">
+                  <label for="">상세 주소</label> <input name="detailAddress"
+                     type="text" style="width: 365px;" id="detailAddress" value="">
+               </div>
+
+               <div class="inputArea">
+                  <label for="">수령인</label> <input type="text" name="oname"
+                     id="oname">
+               </div>
+               <div class="inputArea">
+                  <label for="">수령인 연락처</label> <input type="text" name="ophone"
+                     id="ophone">
+               </div>
+
+`;
+
+return msg;
+}
+
+function originHtml(postcode, address,extraAddress, detailAddress ){
+   var msg = `
+<div class="inputArea">
+                  <label for="">우편 번호</label> <input name="postcode" type="text"
+                     id="" readonly value="${postcode}">
+               </div>
+
+               <div class="inputArea">
+                  <label for="">주소</label> <input name="address" type="text"
+                     style="width: 365px;" id="" readonly
+                     value="${address}"><br>
+               </div>
+
+               <div class="inputArea">
+                  <label for="">참고 항목</label> <input name="extraAddress" type="text"
+                     style="width: 365px;" id="" placeholder="참고항목"
+                     readonly value="${extraAddress}"><br>
+               </div>
+
+               <div class="inputArea">
+                  <label for="">상세 주소</label> <input name="detailAddress"
+                     type="text" style="width: 365px;" id=""
+                     value="${detailAddress}">
+               </div>
+
+               <div class="inputArea">
+                  <label for="">수령인</label> <input type="text" name="oname"
+                     id="oname">
+               </div>
+               <div class="inputArea">
+                  <label for="">수령인 연락처</label> <input type="text" name="ophone"
+                     id="ophone">
+               </div>
+
+`;
+
+return msg;
+}
 
 
 

@@ -27,6 +27,10 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+<script type="text/javascript" src="/resources/js/product.js">
+	
+</script>
 
 <style type="text/css">
 .order {
@@ -207,24 +211,24 @@
 				<div class="addressdiv" id="origin">
 					<div class="inputArea">
 						<label for="">우편 번호</label> <input name="postcode" type="text"
-							id="postcode" readonly value="${login.postcode}">
+							id="" readonly value="${login.postcode}">
 					</div>
 
 					<div class="inputArea">
 						<label for="">주소</label> <input name="address" type="text"
-							style="width: 365px;" id="address" readonly
+							style="width: 365px;" id="" readonly
 							value="${login.address}"><br>
 					</div>
 
 					<div class="inputArea">
 						<label for="">참고 항목</label> <input name="extraAddress" type="text"
-							style="width: 365px;" id="extraAddress" placeholder="참고항목"
+							style="width: 365px;" id="" placeholder="참고항목"
 							readonly value="${login.extraAddress}"><br>
 					</div>
 
 					<div class="inputArea">
 						<label for="">상세 주소</label> <input name="detailAddress"
-							type="text" style="width: 365px;" id="detailAddress"
+							type="text" style="width: 365px;" id=""
 							value="${login.detailAddress}">
 					</div>
 
@@ -289,6 +293,8 @@
 	</section>
 
 	<script type="text/javascript">
+	
+	$("#new").hide();
 
    $(document).ready(function() {
       
@@ -421,7 +427,9 @@
 
 	<!-- order================================== -->
 
-	<script type="text/javascript">		
+	<script type="text/javascript">	
+		
+		
 		$("#payCancel").click(function() {
 			event.preventDefault();
 			location.reload();
@@ -434,7 +442,9 @@
          });
       });
       
-      $("#new").hide();
+      
+      
+      
 
       function Select(payWay) {
          
@@ -444,7 +454,7 @@
             $(function() {
                $("#payment").click(function(event) { 
                   event.preventDefault();
-
+				
                   var IMP = window.IMP;
                   IMP.init('imp45175040');//식별코드
                   IMP.request_pay({
@@ -501,10 +511,15 @@
          $(".addressdiv").hide();
          var id = $(this).attr("id");
          if(id=="originRadio") {
+        	 $("#origin").html(originHtml('${login.postcode}', '${login.address}','${login.extraAddress}', '${login.detailAddress}'));
+        	$("#new").children().remove();
             $("#origin").show();
          } else {
+        	 $("#new").html(newHtml());
+        	$("#origin").children().remove();
             $("#new").show();
          }
+         
       })         
    </script>
 
