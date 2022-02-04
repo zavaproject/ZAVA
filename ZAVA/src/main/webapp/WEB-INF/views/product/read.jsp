@@ -14,8 +14,41 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/product.js"> </script>
-<script src="/resources/js/review.js" type="text/javascript"></script>
+<script src="/resources/js/review.js?var=2" type="text/javascript"></script>
 <link href="../../../resources/css/product.css" rel="stylesheet" type="text/css">
+   <style type="text/css">
+  .star2{
+  color:#f90;
+  } 
+   
+  .star-rating {
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  width:5em;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+}
+  </style>
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
@@ -48,7 +81,7 @@
     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="option" id="product-option">
          <option value="">--Please choose an option--</option>
          <c:forEach items="${ovo}" var="ovo">
-         <option value="${ovo.ocode}" ${ovo.ostock == 0 ? "disabled" : ""}>색상 : ${ovo.ocolor} |사이즈 : ${ovo.osize} ${ovo.ostock == 0 ? "| 품절" : ""} </option>
+         <option value="${ovo.ocode}" ${ovo.ostock == 0 ? "disabled" : ""}>색상 : ${ovo.ocolor} |사이즈 : ${ovo.osize} |재고 : ${ovo.ostock == 0 ? "품절" : ovo.ostock} </option>
          </c:forEach>
       </select>   
       <br>
@@ -93,12 +126,12 @@
    <div class= "container">
    <table class ="table table-hover table-borderless">
       <thead>
-         <tr>
-                <th scope="col">NO</th>
+         <tr style="text-align: center;">
+            <th scope="col">NO</th>
+            <th scope="col" style="text-align: left;">RATING</th>
             <th scope="col">SUBJECT</th>
             <th scope="col">NAME</th>
             <th scope="col">DATE</th>
-            <th scope="col">평점</th>
             </tr>
             </thead>
       <tbody id="reviews">
@@ -233,7 +266,7 @@
 				type : "post",
 				data : data,
 				success : function(result) {
-					/* var confirm_val = confirm("카트 담기 성공, 장바구니로 이동하시겠습니까?"); */
+					
 					console.log(result);
 					cartAlert(result)
 					}
@@ -245,6 +278,10 @@
 					alert("장바구니에 추가되었습니다.");
 					$("#product-option").val("");
 					$("#pcnt").val("1");
+					var confirm_val = confirm("카트 담기 성공, 장바구니로 이동하시겠습니까?");
+					if(confirm_val){
+					location.assign("http://localhost:8089/cart/list");
+					}
 				} else if(result == 2){
 					alert("장바구니에 이미 추가되어져 있습니다.");
 					$("#product-option").val("");
