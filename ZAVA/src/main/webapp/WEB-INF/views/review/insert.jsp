@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,12 +50,12 @@
 <body>
 <jsp:include page="../member/header.jsp"/>
    <section>
-<h5>구매상품 평점과 리뷰를 남겨주세요.</h5>
-<form action="/review/insert" method="post"><br>
+<form class="container" action="/review/insert" method="post"><br>
+<h3>구매상품 별점과 리뷰를 남겨주세요.</h3>
 <div class="star-rating">
-  <input type="radio" id="5-stars" name="rating" value="5" />
+  <input type="radio" id="5-stars" name="rating" value="5" checked="checked"/>
   <label for="5-stars" class="star">★</label>
-  <input type="radio" id="4-stars" name="rating" value="4" checked="checked"/>
+  <input type="radio" id="4-stars" name="rating" value="4" />
   <label for="4-stars" class="star">★</label>
   <input type="radio" id="3-stars" name="rating" value="3"/>
   <label for="3-stars" class="star">★</label>
@@ -65,18 +64,12 @@
   <input type="radio" id="1-star" name="rating" value="1" />
   <label for="1-star" class="star">★</label>
 </div>
-<!-- 평점 : <select name="rating" class="rating">
-	<option value="1">1</option>
-	<option value="2">2</option>
-	<option value="3">3</option>
-	<option value="4">4</option>
-	<option value="5">5</option>
-</select><br> -->
+
 작성자 : <input name="mid" value="${login.mid}" readonly><br>
 후기상품 : <input name="pid" value="${pid}" readonly><br>
 제목 : <input name="title"><br>
 후기 : <br>
-<textarea rows="5" name="content" maxlength="1000" placeholder="후기를 작성해주세요"></textarea><br>
+<textarea rows="5" name="content" maxlength="1000" cols="100" placeholder="후기를 작성해주세요"></textarea><br>
 <input type="submit" value = "후기작성완료">
 </form>
 
