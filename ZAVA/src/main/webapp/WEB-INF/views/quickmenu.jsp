@@ -44,9 +44,9 @@
 				</div>
 			</li>
 			<li>추천 목록</li>
-			<li><a href="/product/read/1"><img alt="img1" src="../../resources/img/sideproduct1.jpg" style="width: 50px; height: auto;"></a></li>
-			<li><a href="#"><img alt="img2" src="../../resources/img/sideproduct2.jpg" style="width: 50px; height: auto;"></a></li>
-			<li><a href="#"><img alt="img3" src="../../resources/img/sideproduct3.jpg" style="width: 50px; height: auto;"></a></li>
+			<li><a href="/product/read/1"><img alt="img1" src="../../../resources/img/sideproduct1.jpg" style="width: 50px; height: auto;"></a></li>
+			<li><a href="#"><img alt="img2" src="../../../resources/img/sideproduct2.jpg" style="width: 50px; height: auto;"></a></li>
+			<li><a href="#"><img alt="img3" src="../../../resources/img/sideproduct3.jpg" style="width: 50px; height: auto;"></a></li>
 			<li><a href="/board/list">1:1문의</a></li>
 			<li>
 				<div style="cursor:pointer;" onclick="window.scrollTo(0,document.body.scrollHeight);">

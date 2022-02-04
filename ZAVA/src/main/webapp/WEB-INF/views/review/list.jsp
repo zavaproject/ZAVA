@@ -19,6 +19,7 @@
 </head>
 <body>
   <jsp:include page="../member/header.jsp"/>
+  <jsp:include page="../quickmenu.jsp"/>
    <section>
 <h3>상품후기</h3>
 

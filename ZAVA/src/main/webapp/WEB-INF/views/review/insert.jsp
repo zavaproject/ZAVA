@@ -49,6 +49,7 @@
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
+<jsp:include page="../quickmenu.jsp"/>
    <section>
 <form class="container" action="/review/insert" method="post"><br>
 <h3>구매상품 별점과 리뷰를 남겨주세요.</h3>

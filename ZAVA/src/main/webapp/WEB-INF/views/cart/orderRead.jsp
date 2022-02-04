@@ -66,7 +66,7 @@
 <body>
 <div id="root">
 	<jsp:include page="../member/header.jsp" />
-
+	<jsp:include page="../quickmenu.jsp"/>
 <section id="container">
 	<div id="container_box">	
 		

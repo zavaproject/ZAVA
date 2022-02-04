@@ -52,6 +52,7 @@
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
+<jsp:include page="../quickmenu.jsp"/>
    <section>
 
 <c:if test="${vo.category == 1010}">
@@ -280,7 +281,7 @@
 					$("#pcnt").val("1");
 					var confirm_val = confirm("카트 담기 성공, 장바구니로 이동하시겠습니까?");
 					if(confirm_val){
-					location.assign("http://localhost:8089/cart/list");
+					location.assign("/cart/list");
 					}
 				} else if(result == 2){
 					alert("장바구니에 이미 추가되어져 있습니다.");

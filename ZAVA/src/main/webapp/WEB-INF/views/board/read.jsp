@@ -16,6 +16,7 @@
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
+<jsp:include page="../quickmenu.jsp"/>
 <section>        
 
  

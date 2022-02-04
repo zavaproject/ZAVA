@@ -16,6 +16,7 @@
 </head>
 <body>
 <jsp:include page="../member/header.jsp"/>
+<jsp:include page="../quickmenu.jsp"/>
    <section>
 	<div class="container">
  <h2><font color="#555555">NOTICE</font> </h2>
