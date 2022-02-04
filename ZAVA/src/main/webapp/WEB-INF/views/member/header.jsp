@@ -52,6 +52,7 @@
 				<c:when test="${not empty login}">
 					<a href="/member/read/${login.mid}"class="rmenu">${login.mid}</a>님환영합니다.&emsp;
 					<a href="/member/logout"class="rmenu">로그아웃</a>&emsp;
+					<a href="/cart/orderList"class="rmenu">주문 목록</a>&emsp;
 				</c:when>
 			</c:choose>
 			<c:if test="${login.mcode == 1}">
