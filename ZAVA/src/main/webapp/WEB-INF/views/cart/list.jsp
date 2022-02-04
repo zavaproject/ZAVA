@@ -73,6 +73,7 @@
 </head>
 <body>
 	<jsp:include page="../member/header.jsp" />
+	<jsp:include page="../quickmenu.jsp"/>
 	<section>
 
 		<div class="container" style="margin-top: 20px;">
@@ -108,6 +109,7 @@
 					<c:choose>
 						<c:when test="${empty cartList}">
 							<div align="center" style="font-size: 30px;">장바구니가 비었습니다.</div>
+							<button type="button" class="home">쇼핑 계속 하기</button>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${cartList}" var="cartList" varStatus="status">
@@ -179,9 +181,13 @@
 						원
 					</div>
 
+					<c:choose>
+						<c:when test="${not empty cartList}">
 					<div class="orderOpen">
 						<button type="button" class="orderOpen_bnt">주문 정보 입력</button>
 					</div>
+					</c:when>
+					</c:choose>
 				</div>
 				</form>
 		</div>
@@ -421,6 +427,10 @@
             });
          }
       });
+      
+      $(".home").click(function() {
+		location.assign("/zava");
+	});
    });
 
 </script>
