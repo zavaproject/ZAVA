@@ -53,6 +53,7 @@
 </head>
 <body>
  <jsp:include page="../member/header.jsp"/>
+ <jsp:include page="../quickmenu.jsp"/>
    <section>
    <div class="container">
  <h3><font color="#555555"></font>${vo.mid}님의 상품후기</h3>

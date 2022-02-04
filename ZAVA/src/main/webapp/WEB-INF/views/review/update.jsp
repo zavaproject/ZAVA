@@ -75,5 +75,6 @@
 
   </section>
    <jsp:include page="../footer.jsp" />
+   <jsp:include page="../quickmenu.jsp"/>
 </body>
 </html>

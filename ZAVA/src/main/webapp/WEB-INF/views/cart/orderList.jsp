@@ -21,8 +21,8 @@
 <title>주문 목록</title>
 </head>
 <body>
-
 <jsp:include page="../member/header.jsp"/>
+<jsp:include page="../quickmenu.jsp"/>
 
 <section id="content">
 
