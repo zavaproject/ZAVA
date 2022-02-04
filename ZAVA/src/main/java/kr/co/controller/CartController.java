@@ -218,7 +218,18 @@ public class CartController {
 		order.setOid(oid);
 
 		List<OrderListVO> orderRead = cService.orderRead(order);
-
+		
+		  for (int i = 0; i < orderRead.size(); i++) { String pid =
+				  orderRead.get(i).getPid();
+				  
+				  ProductVO pvo = cService.productCart(pid);
+				  
+				  List<String> files = cService.getfile(pvo.getPid()); if(files.size()==0) {
+				  files.add(0, "imgNO.jpg"); } String file = files.get(0);
+				  
+				  orderRead.get(i).setFilename(file); }
+				
+		
 		model.addAttribute("orderRead", orderRead);
 
 	}

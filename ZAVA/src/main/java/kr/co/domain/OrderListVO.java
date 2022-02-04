@@ -22,18 +22,27 @@ public class OrderListVO implements Serializable {
 
 	private int oDid;
 	private int pcnt;
-
+	
+	// option
 	private int ostock;
+	private String ocolor;
+	private String osize;
+	private String ocode;
+	
+	// attach
+	private String filename; 
 
 	private String pname;
 	private int price;
-
+	
 	public OrderListVO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public OrderListVO(String oid, String pid, String mid, Date odate, String ostatus, int amount, String postcode,
 			String address, String extraAddress, String detailAddress, String oname, String ophone, int oDid, int pcnt,
-			int ostock, String pname, int price) {
+			int ostock, String ocolor, String osize, String ocode, String filename, String pname, int price) {
+		super();
 		this.oid = oid;
 		this.pid = pid;
 		this.mid = mid;
@@ -49,6 +58,10 @@ public class OrderListVO implements Serializable {
 		this.oDid = oDid;
 		this.pcnt = pcnt;
 		this.ostock = ostock;
+		this.ocolor = ocolor;
+		this.osize = osize;
+		this.ocode = ocode;
+		this.filename = filename;
 		this.pname = pname;
 		this.price = price;
 	}
@@ -173,6 +186,38 @@ public class OrderListVO implements Serializable {
 		this.ostock = ostock;
 	}
 
+	public String getOcolor() {
+		return ocolor;
+	}
+
+	public void setOcolor(String ocolor) {
+		this.ocolor = ocolor;
+	}
+
+	public String getOsize() {
+		return osize;
+	}
+
+	public void setOsize(String osize) {
+		this.osize = osize;
+	}
+
+	public String getOcode() {
+		return ocode;
+	}
+
+	public void setOcode(String ocode) {
+		this.ocode = ocode;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
 	public String getPname() {
 		return pname;
 	}
@@ -195,8 +240,8 @@ public class OrderListVO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, amount, detailAddress, extraAddress, mid, oDid, odate, oid, oname, ophone, ostatus,
-				ostock, pcnt, pid, pname, postcode, price);
+		return Objects.hash(address, amount, detailAddress, extraAddress, filename, mid, oDid, ocode, ocolor, odate,
+				oid, oname, ophone, osize, ostatus, ostock, pcnt, pid, pname, postcode, price);
 	}
 
 	@Override
@@ -210,9 +255,11 @@ public class OrderListVO implements Serializable {
 		OrderListVO other = (OrderListVO) obj;
 		return Objects.equals(address, other.address) && amount == other.amount
 				&& Objects.equals(detailAddress, other.detailAddress)
-				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(mid, other.mid)
-				&& oDid == other.oDid && Objects.equals(odate, other.odate) && Objects.equals(oid, other.oid)
-				&& Objects.equals(oname, other.oname) && Objects.equals(ophone, other.ophone)
+				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(filename, other.filename)
+				&& Objects.equals(mid, other.mid) && oDid == other.oDid && Objects.equals(ocode, other.ocode)
+				&& Objects.equals(ocolor, other.ocolor) && Objects.equals(odate, other.odate)
+				&& Objects.equals(oid, other.oid) && Objects.equals(oname, other.oname)
+				&& Objects.equals(ophone, other.ophone) && Objects.equals(osize, other.osize)
 				&& Objects.equals(ostatus, other.ostatus) && ostock == other.ostock && pcnt == other.pcnt
 				&& Objects.equals(pid, other.pid) && Objects.equals(pname, other.pname)
 				&& Objects.equals(postcode, other.postcode) && price == other.price;
@@ -223,8 +270,8 @@ public class OrderListVO implements Serializable {
 		return "OrderListVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
 				+ ", amount=" + amount + ", postcode=" + postcode + ", address=" + address + ", extraAddress="
 				+ extraAddress + ", detailAddress=" + detailAddress + ", oname=" + oname + ", ophone=" + ophone
-				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", ostock=" + ostock + ", pname=" + pname + ", price=" + price
-				+ "]";
+				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", ostock=" + ostock + ", ocolor=" + ocolor + ", osize=" + osize
+				+ ", ocode=" + ocode + ", filename=" + filename + ", pname=" + pname + ", price=" + price + "]";
 	}
 
 }
