@@ -5,7 +5,7 @@
 ![ZAVA5](https://user-images.githubusercontent.com/97006299/152652616-9a80a177-b837-47ee-b9e0-97df1115973a.PNG)
 ![ZAVA6](https://user-images.githubusercontent.com/97006299/152652619-1765a501-5c99-4c47-a519-5dafb6094221.PNG)
 ![ZAVA7](https://user-images.githubusercontent.com/97006299/152652623-08cf986a-7002-4aff-9e30-7e979c45cd5f.PNG)
-![ZAVA8](https://user-images.githubusercontent.com/97006299/152653433-897b7555-c894-4309-9758-e0ca821d5ce1.gif)
+![ZAVA8](https://user-images.githubusercontent.com/97006299/152653633-cb7438fc-9c49-4711-9214-09057560a100.gif)
 ![ZAVA9](https://user-images.githubusercontent.com/97006299/152652631-7d866164-63a1-4554-adf5-ad156b2dda8d.PNG)
 ![ZAVA10](https://user-images.githubusercontent.com/97006299/152652635-d3fdf324-fe6c-431b-93f6-e37b9668d4ef.PNG)
 ![ZAVA11](https://user-images.githubusercontent.com/97006299/152652641-96da6ae6-38a6-4d97-8c52-8de5ff70aa3f.PNG)
