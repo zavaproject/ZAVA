@@ -1,6 +1,6 @@
 ![ZAVA1](https://user-images.githubusercontent.com/97006299/152652602-4b9b779f-f64e-4558-bc9b-7b1fcf481a89.PNG)
 ![ZAVA2](https://user-images.githubusercontent.com/97006299/152652606-324e03db-4411-43a9-a526-23f62f8f57cc.PNG)
-![ZAVA3](https://user-images.githubusercontent.com/97006299/152652609-74cde2a4-c4dc-4a04-be20-fd1b1ddfe0e1.PNG)
+![ZAVA3](https://user-images.githubusercontent.com/97006299/153378829-f2486ac9-4465-44b2-ba14-acec92add795.png)
 ![ZAVA4](https://user-images.githubusercontent.com/97006299/152652615-2f74d8d9-230a-4fe5-a359-6ea79a66fbdd.PNG)
 ![ZAVA5](https://user-images.githubusercontent.com/97006299/152652616-9a80a177-b837-47ee-b9e0-97df1115973a.PNG)
 ![ZAVA6](https://user-images.githubusercontent.com/97006299/152652619-1765a501-5c99-4c47-a519-5dafb6094221.PNG)
