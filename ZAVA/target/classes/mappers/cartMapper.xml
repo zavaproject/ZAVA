@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.cart">
+
+	<!-- 장바구니 추가 -->
+	<insert id="insert">
+		INSERT INTO zava_cart (cid, mid, pid, pcnt, ocode) VALUES (seq_cart.NEXTVAL,
+		#{mid}, #{pid}, #{pcnt}, #{ocode})
+	</insert>
+
+	<!-- 장바구니 목록 -->
+	<select id="list" resultType="kr.co.domain.CartVO">
+		<!-- SELECT c.cid, c.pid, c.mid, p.pname, c.pcnt, p.price, (p.price*c.pcnt) 
+			tPrice, a.filename, o.ocode FROM zava_member m, zava_cart c, zava_product 
+			p, zava_p_attach a, zava_option o WHERE m.mid=c.mid AND c.mid=#{mid} AND 
+			a.pid=p.pid AND c.ocode=o.ocode ORDER BY c.cid -->
+		SELECT * FROM zava_cart WHERE mid=#{mid}
+	</select>
+
+	<!-- 장바구니 상품 삭제 -->
+	<delete id="delete">
+		DELETE FROM zava_cart WHERE cid=#{cid} AND mid=#{mid}
+	</delete>
+
+	<!-- 총 금액 -->
+	<select id="sumMoney" resultType="int">
+		SELECT nvl(sum(p.price*c.pcnt),
+		0)
+		FROM zava_cart c, zava_product p
+		WHERE c.pid=p.pid AND mid=#{mid}
+	</select>
+
+	<!-- 장바구니에 기존상품이 있는지 -->
+	<select id="countCart" resultType="int">
+		SELECT COUNT(*) FROM zava_cart
+		WHERE mid=#{mid} AND ocode=#{ocode}
+	</select>
+
+	<!-- 장바구니 상품 수량 변경 -->
+	<update id="updateCart">
+		UPDATE zava_cart SET pcnt=#{pcnt} WHERE mid=#{mid}
+		AND ocode=#{ocode}
+	</update>
+
+	<!-- 장바구니 확인 -->
+	<select id="checkCart" resultType="kr.co.domain.CartVO">
+		SELECT * FROM zava_cart WHERE
+		mid=#{mid} AND pid=#{pid}
+	</select>
+
+	<select id="cartOcode" resultType="kr.co.domain.OptionVO">
+		SELECT * FROM zava_option
+		WHERE ocode=#{ocode}
+	</select>
+
+	<select id="productCart" resultType="kr.co.domain.ProductVO">
+		SELECT * FROM zava_product
+		WHERE pid=#{pid}
+	</select>
+
+	<select id="getfile" resultType="string">
+		SELECT filename FROM
+		zava_p_attach WHERE pid=#{pid}
+	</select>
+
+	<!-- order===================================== -->
+
+
+	<!-- 주문 -->
+	<insert id="order">
+		INSERT INTO zava_order(oid, pid, mid, amount,
+		postcode, address, extraAddress, detailAddress, oname, ophone)
+		VALUES
+		(#{oid}, #{pid}, #{mid}, #{amount}, #{postcode}, #{address},
+		#{extraAddress}, #{detailAddress}, #{oname}, #{ophone})
+
+	</insert>
+
+	<!-- 주문 상세정보 -->
+	<insert id="orderDetail">
+		INSERT INTO zava_order_detail(oDid, oid, pid, pcnt)
+		SELECT zava_order_detail_seq.nextval, #{oid, jdbcType=VARCHAR}, pid,
+		pcnt
+		FROM zava_cart
+	</insert>
+
+	<!-- 장바구니 데이터 삭제 -->
+	<delete id="cartDataDelete">
+		DELETE zava_cart
+		WHERE
+		mid = #{mid}
+	</delete>
+
+	<!--주문목록 -->
+	<select id="orderList" resultType="kr.co.domain.OrderVO">
+		SELECT oid, mid, odate,
+		ostatus, amount, postcode, address, extraAddress, detailAddress,
+		oname, ophone
+		FROM zava_order
+		WHERE mid = #{mid}
+	</select>
+
+	<!--주문 자세히보기 -->
+	<select id="orderRead" resultType="kr.co.domain.OrderListVO">
+		SELECT
+		o.oid, o.pid, o.mid, o.odate, o.ostatus,
+		o.amount, o.postcode, o.address, o.extraAddress,
+		o.detailAddress, o.oname, o.ophone,
+		d.oDid, d.pcnt, p.pname, p.price
+		FROM zava_order o
+		INNER JOIN zava_order_detail d
+		ON o.oid = d.oid
+		INNER JOIN zava_product
+		p
+		ON d.pid = p.pid
+		WHERE
+		o.mid = #{mid}
+		AND o.oid = #{oid}
+	</select>
+
+
+	<!-- 결제 후 수량 감소 -->
+	<update id="updateOstock">
+		UPDATE zava_option
+		SET ostock = ostock - #{pcnt}
+		WHERE ocode = #{ocode}
+	</update>
+	
+	<update id="deleteOstock">
+		UPDATE zava_option
+		SET ostock = ostock + #{pcnt}
+		WHERE ocode = #{ocode}
+	</update>
+
+	<select id="ostock" resultType="Integer">
+		SELECT ostock FROM zava_option WHERE ocode = #{ocode}
+	</select>
+
+	<select id="cidcart" resultType="kr.co.domain.CartVO">
+		SELECT * FROM zava_cart WHERE cid = #{cid}
+	</select>
+	
+	<select id="getPcnt" resultType="Integer">
+		SELECT pcnt FROM zava_cart WHERE mid = #{mid} AND ocode = #{ocode}
+	</select>
+
+</mapper>

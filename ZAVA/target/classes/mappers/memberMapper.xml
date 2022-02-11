@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.member">
+
+	<select id="list" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member where mcode = 0
+	</select>
+	
+	<select id="read" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<select id="login" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member 
+		WHERE mid = #{mid} AND mpw = #{mpw}
+	</select>
+	
+	<insert id="insertmember">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber, 
+		memail, postcode, address, extraAddress, detailAddress, mcode)
+		VALUES
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 0)
+	</insert>
+	
+	<insert id="insertoperator">
+		INSERT INTO zava_member 
+		(mid, mpw, mname, mgender, mphonenumber,
+		memail, postcode, address, extraAddress, detailAddress, mcode)
+		VALUES
+		(#{mid}, #{mpw}, #{mname}, #{mgender}, #{mphonenumber},
+		#{memail}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, 1)
+	</insert>
+
+	<update id="update">
+		UPDATE zava_member SET mname=#{mname}, mgender = #{mgender}, 
+		mphonenumber = #{mphonenumber}, memail=#{memail}
+		WHERE mid=#{mid}
+	</update>
+	
+	<select id="updateUI" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM zava_member WHERE mid = #{mid}
+	</delete>
+	
+	<select id="idcheck" resultType="kr.co.domain.MemberVO">
+		SELECT * FROM zava_member WHERE mid = #{mid}
+	</select>
+	
+	<select id="getAmount" resultType="Integer">
+		SELECT COUNT(mid) FROM zava_member where mcode = 0
+	</select>
+	<select id="logincheck" resultType="Integer">
+		SELECT COUNT(*) FROM zava_member where mid = #{mid} and mpw =  #{mpw}
+	</select>
+	
+	<select id="dailysales1" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where TO_DATE(ODATE,'yyyy-mm-dd') = TO_DATE(SYSDATE, 'yyyy-mm-dd')
+	</select>
+	
+	<select id="dailysales2" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where TO_DATE(ODATE,'yyyy-mm-dd') = TO_DATE(SYSDATE-1, 'yyyy-mm-dd')
+	</select>
+	
+	<select id="dailysales3" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where TO_DATE(ODATE,'yyyy-mm-dd') = TO_DATE(SYSDATE-2, 'yyyy-mm-dd')
+	</select>
+	
+	<select id="dailysales4" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where TO_DATE(ODATE,'yyyy-mm-dd') = TO_DATE(SYSDATE-3, 'yyyy-mm-dd')
+	</select>
+	
+	<select id="dailysales5" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where TO_DATE(ODATE,'yyyy-mm-dd') = TO_DATE(SYSDATE-4, 'yyyy-mm-dd')
+	</select>
+	
+	
+	
+	<select id="monthlysales1" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where ODATE between trunc(sysdate)-30 and trunc(sysdate)
+	</select>
+	
+	<select id="monthlysales2" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where ODATE between trunc(sysdate)-60 and trunc(sysdate)-30
+	</select>
+	
+	<select id="monthlysales3" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where ODATE between trunc(sysdate)-90 and trunc(sysdate)-60
+	</select>
+	
+	<select id="monthlysales4" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where ODATE between trunc(sysdate)-120 and trunc(sysdate)-90
+	</select>
+	
+	<select id="monthlysales5" resultType="Integer">
+		SELECT NVL(sum(amount), 0) FROM ZAVA_ORDER where ODATE between trunc(sysdate)-150 and trunc(sysdate)-120
+	</select>
+</mapper>

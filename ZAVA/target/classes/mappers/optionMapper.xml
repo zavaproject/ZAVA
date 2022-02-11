@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.option">
+  	<insert id="oinsert">
+  		INSERT INTO zava_option (pid,ocode,ostock,ocolor,osize) 
+  		VALUES(#{pid},#{ocode},#{ostock},#{ocolor},#{osize})
+  	</insert>
+  	
+	<select id="oread" resultType="kr.co.domain.OptionVO">
+  		SELECT * FROM zava_option WHERE pid = #{pid} ORDER BY ocode
+  	</select>
+  
+  	<update id="oupdate">
+  		UPDATE zava_option SET ostock = #{ostock} WHERE ocode = #{ocode}
+  	</update>
+  	
+  	<delete id="odelete">
+  		DELETE FROM zava_option WHERE pid = #{pid}
+  	</delete>
+  </mapper>
+  
+  

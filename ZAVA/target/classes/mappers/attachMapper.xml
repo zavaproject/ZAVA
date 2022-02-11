@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.attach">
+
+	<delete id="deleteFileByFilename">
+		DELETE FROM zava_p_attach WHERE filename = #{filename}
+	</delete>
+
+	<insert id="insert">
+		INSERT INTO zava_p_attach (id, pid, filename) VALUES 
+		(seq_p_attach_id.nextval, #{pid}, #{filename})
+	</insert>
+	
+	<select id="getAttach" resultType="String">
+		SELECT filename FROM zava_p_attach WHERE pid = #{pid} ORDER BY regdate
+	</select>
+
+
+</mapper>
