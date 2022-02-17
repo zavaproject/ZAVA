@@ -87,9 +87,7 @@
 		<li>
 		<div class="img">
 			<a href="/product/read/${orderRead.pid}"> 
-			<img alt="thumbnail" 
-			src="/resources/productupload/${orderRead.filename}" 
-			width="200">
+			<img alt="thumbnail" src="/resources/productupload/${orderRead.filename}" width="200">
 			</a>
 		</div>
               

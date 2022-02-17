@@ -12,10 +12,10 @@
 	
 	<select id="adOrderRead" resultType="kr.co.domain.OrderListVO">
 		SELECT 
-		o.oid, o.pid, o.mid, o.odate, o.ostatus, 
+		o.oid, o.mid, o.odate, o.ostatus, 
 		o.amount, o.postcode, o.address, o.extraAddress, 
 		o.detailAddress, o.oname, o.ophone,
-		d.oDid, d.pcnt, p.pname, p.price
+		d.oDid, d.pcnt, d.pid, p.pname, p.price
 		FROM zava_order o 
 		INNER JOIN zava_order_detail d
 		ON o.oid = d.oid
