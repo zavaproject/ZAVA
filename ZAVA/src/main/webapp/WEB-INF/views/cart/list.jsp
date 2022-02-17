@@ -28,7 +28,7 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
-<script type="text/javascript" src="/resources/js/product.js">
+<script type="text/javascript" src="/resources/js/product.js?var=3">
 	
 </script>
 
@@ -54,9 +54,7 @@
 	padding: 5px;
 }
 
-#address2, #address3 {
-	width: 250px;
-}
+
 
 .order .inputArea:last-child {
 	margin-top: 30px;
@@ -195,99 +193,91 @@
 		<div class="order">
 			<form action="/cart/List" method="post" autocomplete="off">
 
-
 				<input type="hidden" name="mid" id="mid" value="${login.mid}">
 				<input type="hidden" name="amount" id="amount" value="${sum}">	
 				
 				<c:forEach items="${cartList}" var="cartList" varStatus="status">
 					<c:set var="pcnt" value="${cartList.pcnt}" />
-					<c:set var="pid" value="${cartList.pid}" />
-			
+					<c:set var="pid" value="${cartList.pid}" />			
 						<input type="hidden" name="pcnt" id="pcnt" value="${pcnt}">		
 						<input type="hidden" name="pid" id="pid" value="${pid}">					
 				</c:forEach>			
 							
 				<div>
-					<input type="radio" id="originRadio" name="selectAddress" checked
-						value="originAddress" onclick="Select(this.value)"> 기존 배송지
-					<input type="radio" id="newRadio" name="selectAddress"
-						value="newAddress" onclick="Select(this.value)"> 신규 배송지
+					<input type="radio" id="originRadio" name="selectAddress" value="originAddress" onclick="Select(this.value)" checked>기존 배송지
+					<input type="radio" id="newRadio" name="selectAddress"  value="newAddress" onclick="Select(this.value)">신규 배송지
+				
 				</div>
-
+				
 				<div class="addressdiv" id="origin">
 					<div class="inputArea">
-						<label for="">우편 번호</label> <input name="postcode" type="text"
-							id="" readonly value="${login.postcode}">
+						<label for="">우편 번호</label> 
+						<input name="postcode" type="text" id="" readonly value="${login.postcode}">
 					</div>
 
 					<div class="inputArea">
-						<label for="">주소</label> <input name="address" type="text"
-							style="width: 365px;" id="" readonly
-							value="${login.address}"><br>
+						<label for="">주소</label> 
+						<input name="address" type="text" style="width: 365px;" id="" readonly value="${login.address}"><br>
 					</div>
 
 					<div class="inputArea">
-						<label for="">참고 항목</label> <input name="extraAddress" type="text"
-							style="width: 365px;" id="" placeholder="참고항목"
-							readonly value="${login.extraAddress}"><br>
+						<label for="">참고 항목</label> 
+						<input name="extraAddress" type="text" style="width: 365px;" id="" placeholder="참고항목" readonly value="${login.extraAddress}"><br>
 					</div>
 
 					<div class="inputArea">
-						<label for="">상세 주소</label> <input name="detailAddress"
-							type="text" style="width: 365px;" id=""
-							value="${login.detailAddress}">
+						<label for="">상세 주소</label> 
+						<input name="detailAddress" type="text" style="width: 365px;" id="" value="${login.detailAddress}">
 					</div>
 
 					<div class="inputArea">
-						<label for="">수령인</label> <input type="text" name="oname"
-							id="oname">
+						<label for="">수령인</label> 
+						<input type="text" name="oname" id="oname">
 					</div>
 					<div class="inputArea">
-						<label for="">수령인 연락처</label> <input type="text" name="ophone"
-							id="ophone">
+						<label for="">수령인 연락처</label> 
+						<input type="text" name="ophone" id="ophone">
 					</div>
 				</div>
-
 
 				<div class="addressdiv" id="new">
 					<div class="inputArea">
-						<label for="">우편 번호</label> <input name="postcode" type="text"
-							id="postcode" value=""> <input type="button"
-							onclick="execPostcode()" value="우편번호 찾기"><br>
+						<label for="">우편 번호</label> 
+						<input name="postcode" type="text" id="postcode" value=""> <input type="button" onclick="execPostcode()" value="우편번호 찾기"><br>
 					</div>
 
 					<div class="inputArea">
-						<label for="">주소</label> <input name="address" type="text"
-							style="width: 365px;" id="address" value=""><br>
+						<label for="">주소</label> 
+						<input name="address" type="text" style="width: 365px;" id="address" value=""><br>
 					</div>
 
 					<div class="inputArea">
-						<label for="">참고 항목</label> <input name="extraAddress" type="text"
-							style="width: 365px;" id="extraAddress" placeholder="참고항목"
-							value=""><br>
+						<label for="">참고 항목</label> 
+						<input name="extraAddress" type="text" style="width: 365px;" id="extraAddress" placeholder="참고항목" value=""><br>
 					</div>
 
 					<div class="inputArea">
-						<label for="">상세 주소</label> <input name="detailAddress"
-							type="text" style="width: 365px;" id="detailAddress" value="">
+						<label for="">상세 주소</label> 
+						<input name="detailAddress" type="text" style="width: 365px;" id="detailAddress" value="">
 					</div>
 
 					<div class="inputArea">
-						<label for="">수령인</label> <input type="text" name="oname"
-							id="oname">
+						<label for="">수령인</label> 
+						<input type="text" name="oname" id="oname">
 					</div>
 					<div class="inputArea">
-						<label for="">수령인 연락처</label> <input type="text" name="ophone"
-							id="ophone">
+						<label for="">수령인 연락처</label> 
+						<input type="text" name="ophone" id="ophone">
 					</div>
-				</div>
+				</div>				
 
-				<input type="radio" id="bank" name="paymentWay" checked
-					value="wayBank" onclick="Select(this.value)"> <label
-					for="bank">무통장입금</label> <input type="radio" id="card"
-					name="paymentWay" value="wayCard" onclick="Select(this.value)">
-				<label for="card">카드결제</label> <br> <span id="c1"> <b>주문
-						후 12시간 이내에 입금 해주시기 바랍니다.</b> <br> <select name="bank" id="bank">
+				<input type="radio" id="bank" name="paymentWay" checked value="wayBank" onclick="Select(this.value)"> 
+				<label for="bank">무통장입금</label> 
+				<input type="radio" id="card" name="paymentWay" value="wayCard" onclick="Select(this.value)">
+				<label for="card">카드결제</label> <br> 
+				<span id="c1"> 
+				<b> 주문 후 12시간 이내에 입금 해주시기 바랍니다.</b> <br> 
+				<select name="bank" id="bank">
 						<option value="1">국민은행 123-45-67890</option>
 						<option value="2">신한은행 110-430-128010</option>
 				</select>
@@ -435,29 +425,27 @@
 
 </script>
 
-	<!-- order================================== -->
+	<!-- 주문=========================================== -->
 
 	<script type="text/javascript">	
 		
-		
+		/* 주문 취소 버튼 */
 		$("#payCancel").click(function() {
 			event.preventDefault();
 			location.reload();
 			});
-
+		
+		/* 주문 정보 입력 버튼 */
       $(function() {
          $(".orderOpen_bnt").click(function() {
             $(".order").slideDown();
             $(".orderOpen_bnt").slideUp();
          });
-      });
+      });      
       
-      
-      
-      
-
+		/* 결제 수단 */
       function Select(payWay) {
-         
+         /* 카드 결제 */ 
          if (payWay=="wayCard") {
             $('#c1').hide();
 
@@ -500,7 +488,7 @@
                });
 
             });
-            
+            /* 무통장 입금 */
          } else if (payWay=="wayBank") {
             $('#c1').show();
 
@@ -516,24 +504,22 @@
             });
          }
       }
-      
+		
+	  /* 배송지 선택 */
       $('input[name="selectAddress"]').on("change", function() {
          $(".addressdiv").hide();
          var id = $(this).attr("id");
          if(id=="originRadio") {
-        	 $("#origin").html(originHtml('${login.postcode}', '${login.address}','${login.extraAddress}', '${login.detailAddress}'));
+        	$("#origin").html(originHtml('${login.postcode}' , '${login.address}' , '${login.extraAddress}' , '${login.detailAddress}'));
         	$("#new").children().remove();
-            $("#origin").show();
-         } else {
-        	 $("#new").html(newHtml());
+            $("#origin").show();            
+         }else{
+        	$("#new").html(newHtml());
         	$("#origin").children().remove();
             $("#new").show();
-         }
-         
+         }         
       })         
    </script>
-
-
 
 	<script>
     function execPostcode() {
@@ -561,7 +547,7 @@
                  } else {
                      document.getElementById("extraAddress").value = '';
                  }
-                 document.getElementById('postcode').value = data.zonecode;
+                 document.getElementById("postcode").value = data.zonecode;
                  document.getElementById("address").value = addr;
                  document.getElementById("detailAddress").focus();
              }

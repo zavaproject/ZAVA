@@ -23,6 +23,7 @@ public class AdminOrderController {
 	@Inject
 	AdminOrderService adService;
 	
+	//전체 주문 목록
 	@RequestMapping(value = "/adminOrderList", method = RequestMethod.GET)
 	public void adminOrderList(Model model) throws Exception {
 		
@@ -31,6 +32,7 @@ public class AdminOrderController {
 		model.addAttribute("adOrderList", adOrderList);
 	}
 	
+	//주문 자세히 보기
 	@RequestMapping(value = "/adminOrderRead", method = RequestMethod.GET)
 	public void adminOrderRead(@RequestParam("n") String oid, OrderVO order, Model model) throws Exception{
 		

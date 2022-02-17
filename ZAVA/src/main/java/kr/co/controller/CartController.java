@@ -146,6 +146,7 @@ public class CartController {
 	         
 	         
 	         List<String> files = cService.getfile(pvo.getPid());
+	         
 	         if(files.size()==0) {
 	            files.add(0, "imgNO.jpg");
 	         }
@@ -158,7 +159,7 @@ public class CartController {
 	         cartList.get(i).setFilename(file);
 
 	      }
-
+	      
 	      model.addAttribute("cartList", cartList);
 	   }
 	
@@ -177,17 +178,16 @@ public class CartController {
 		}
 
 		String oid = sNum;
-
+				
 		order.setOid(oid);
 		order.setMid(mid);
-
+		
 		cService.order(order);
-
+		
 		orderDetail.setOid(oid);
 		cService.orderDetail(orderDetail);
 		
-		cService.cartDataDelete(mid);
-		
+		cService.cartDataDelete(mid);		
 		
 		return "redirect:/cart/orderList";
 	}
@@ -200,6 +200,8 @@ public class CartController {
 		String mid = member.getMid();
 		
 		order.setMid(mid);
+		
+
 
 		List<OrderVO> orderList = cService.orderList(order);
 
@@ -219,19 +221,22 @@ public class CartController {
 
 		List<OrderListVO> orderRead = cService.orderRead(order);
 		
-		  for (int i = 0; i < orderRead.size(); i++) { String pid =
-				  orderRead.get(i).getPid();
-				  
+		  for (int i = 0; i < orderRead.size(); i++) {
+			  	  String pid = orderRead.get(i).getPid();				  
 				  ProductVO pvo = cService.productCart(pid);
 				  
-				  List<String> files = cService.getfile(pvo.getPid()); if(files.size()==0) {
-				  files.add(0, "imgNO.jpg"); } String file = files.get(0);
 				  
-				  orderRead.get(i).setFilename(file); }
+				  List<String> files = cService.getfile(pvo.getPid());
+					/* System.out.println(pid); */
 				
+				  if(files.size()==0) {
+				  files.add(0, "imgNO.jpg"); 
+				  }				  
+				  String file = files.get(0);				  
+				  
+				  orderRead.get(i).setFilename(file);
+				  }				
 		
-		model.addAttribute("orderRead", orderRead);
-
+		model.addAttribute("orderRead", orderRead);	
 	}
-
 }

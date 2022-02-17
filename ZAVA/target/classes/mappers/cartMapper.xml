@@ -71,12 +71,9 @@
 
 	<!-- 주문 -->
 	<insert id="order">
-		INSERT INTO zava_order(oid, pid, mid, amount,
-		postcode, address, extraAddress, detailAddress, oname, ophone)
+		INSERT INTO zava_order(oid, pid, mid, amount, postcode, address, extraAddress, detailAddress, oname, ophone)
 		VALUES
-		(#{oid}, #{pid}, #{mid}, #{amount}, #{postcode}, #{address},
-		#{extraAddress}, #{detailAddress}, #{oname}, #{ophone})
-
+		(#{oid}, #{pid}, #{mid}, #{amount}, #{postcode}, #{address}, #{extraAddress}, #{detailAddress}, #{oname}, #{ophone})		
 	</insert>
 
 	<!-- 주문 상세정보 -->
@@ -106,10 +103,10 @@
 	<!--주문 자세히보기 -->
 	<select id="orderRead" resultType="kr.co.domain.OrderListVO">
 		SELECT
-		o.oid, o.pid, o.mid, o.odate, o.ostatus,
+		o.oid, o.mid, o.odate, o.ostatus,
 		o.amount, o.postcode, o.address, o.extraAddress,
 		o.detailAddress, o.oname, o.ophone,
-		d.oDid, d.pcnt, p.pname, p.price
+		d.oDid, d.pcnt, d.pid, p.pname, p.price
 		FROM zava_order o
 		INNER JOIN zava_order_detail d
 		ON o.oid = d.oid

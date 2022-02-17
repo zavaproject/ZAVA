@@ -35,7 +35,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Tomcat/apache-tomcat-7.0.47/lib/jstl.jar"/>
-	<classpathentry kind="lib" path="C:/Tomcat/apache-tomcat-7.0.47/lib/standard.jar"/>
+	<classpathentry kind="lib" path="C:/tomcat7/apache-tomcat-7.0.47/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="C:/tomcat7/apache-tomcat-7.0.47/lib/standard.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

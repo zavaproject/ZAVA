@@ -238,40 +238,4 @@ public class OrderListVO implements Serializable {
 		return serialVersionUID;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(address, amount, detailAddress, extraAddress, filename, mid, oDid, ocode, ocolor, odate,
-				oid, oname, ophone, osize, ostatus, ostock, pcnt, pid, pname, postcode, price);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderListVO other = (OrderListVO) obj;
-		return Objects.equals(address, other.address) && amount == other.amount
-				&& Objects.equals(detailAddress, other.detailAddress)
-				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(filename, other.filename)
-				&& Objects.equals(mid, other.mid) && oDid == other.oDid && Objects.equals(ocode, other.ocode)
-				&& Objects.equals(ocolor, other.ocolor) && Objects.equals(odate, other.odate)
-				&& Objects.equals(oid, other.oid) && Objects.equals(oname, other.oname)
-				&& Objects.equals(ophone, other.ophone) && Objects.equals(osize, other.osize)
-				&& Objects.equals(ostatus, other.ostatus) && ostock == other.ostock && pcnt == other.pcnt
-				&& Objects.equals(pid, other.pid) && Objects.equals(pname, other.pname)
-				&& Objects.equals(postcode, other.postcode) && price == other.price;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderListVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
-				+ ", amount=" + amount + ", postcode=" + postcode + ", address=" + address + ", extraAddress="
-				+ extraAddress + ", detailAddress=" + detailAddress + ", oname=" + oname + ", ophone=" + ophone
-				+ ", oDid=" + oDid + ", pcnt=" + pcnt + ", ostock=" + ostock + ", ocolor=" + ocolor + ", osize=" + osize
-				+ ", ocode=" + ocode + ", filename=" + filename + ", pname=" + pname + ", price=" + price + "]";
-	}
-
 }

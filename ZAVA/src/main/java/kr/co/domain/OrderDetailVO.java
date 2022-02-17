@@ -73,12 +73,6 @@ public class OrderDetailVO implements Serializable {
 		OrderDetailVO other = (OrderDetailVO) obj;
 		return oDid == other.oDid && Objects.equals(oid, other.oid) && pcnt == other.pcnt
 				&& Objects.equals(pid, other.pid);
-	}
-
-	@Override
-	public String toString() {
-		return "OrderDetailVO [oDid=" + oDid + ", oid=" + oid + ", pid=" + pid + ", pcnt=" + pcnt + "]";
 	}	
-	
 	
 }

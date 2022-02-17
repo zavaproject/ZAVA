@@ -138,38 +138,5 @@ public class OrderVO implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(address, amount, detailAddress, extraAddress, mid, odate, oid, oname, ophone, ostatus, pid,
-				postcode);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OrderVO other = (OrderVO) obj;
-		return Objects.equals(address, other.address) && amount == other.amount
-				&& Objects.equals(detailAddress, other.detailAddress)
-				&& Objects.equals(extraAddress, other.extraAddress) && Objects.equals(mid, other.mid)
-				&& Objects.equals(odate, other.odate) && Objects.equals(oid, other.oid)
-				&& Objects.equals(oname, other.oname) && Objects.equals(ophone, other.ophone)
-				&& Objects.equals(ostatus, other.ostatus) && Objects.equals(pid, other.pid)
-				&& Objects.equals(postcode, other.postcode);
-	}
-
-	@Override
-	public String toString() {
-		return "OrderVO [oid=" + oid + ", pid=" + pid + ", mid=" + mid + ", odate=" + odate + ", ostatus=" + ostatus
-				+ ", amount=" + amount + ", postcode=" + postcode + ", address=" + address + ", extraAddress="
-				+ extraAddress + ", detailAddress=" + detailAddress + ", oname=" + oname + ", ophone=" + ophone + "]";
-	}
-	
-	
 	
 }
